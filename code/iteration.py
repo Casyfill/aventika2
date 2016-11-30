@@ -20,8 +20,6 @@ def iterate(buff, poi, reg, filename, settings):
     '''
     cntr = 1  # iteration counter
 
-    buff, poi, reg = prepare(buff, poi, reg, settings)
-
     # buffers of newly adopted offices will be added here iteratively
     bound = settings['limit']
     logger = settings['logger']

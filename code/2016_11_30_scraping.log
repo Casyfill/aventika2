@@ -631,3 +631,19 @@
 2016-11-30 12:20:58,201 - misc.logger - INFO - [1, 1]: koefficient 0.2 applied
 2016-11-30 12:20:58,204 - misc.logger - INFO - []: koefficient 0.1 applied
 2016-11-30 12:20:58,207 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-11-30 12:30:42,932 - misc.logger - INFO - 2016_11_30: start logging
+2016-11-30 12:31:55,642 - misc.logger - INFO - 2016_11_30: start logging
+2016-11-30 12:31:58,173 - misc.logger - INFO - loaded 11870 POIs from ../data/real/poi.geojson
+2016-11-30 12:32:03,451 - misc.logger - INFO - loaded 4782 BUFFs from ../data/real/circles.geojson
+2016-11-30 12:32:03,858 - misc.logger - INFO - loaded 125 REGIONSs from ../data/real/regions.geojson
+2016-11-30 12:36:57,656 - misc.logger - INFO - 2016_11_30: start logging
+2016-11-30 12:36:59,982 - misc.logger - INFO - loaded 11870 POIs from ../data/real/poi.geojson
+2016-11-30 12:37:04,866 - misc.logger - INFO - loaded 4782 BUFFs from ../data/real/circles.geojson
+2016-11-30 12:37:05,257 - misc.logger - INFO - loaded 125 REGIONSs from ../data/real/regions.geojson
+2016-11-30 12:38:26,535 - misc.logger - INFO - 2016_11_30: start logging
+2016-11-30 12:38:28,879 - misc.logger - INFO - loaded 11870 POIs from ../data/real/poi.geojson
+2016-11-30 12:38:33,719 - misc.logger - INFO - loaded 4782 BUFFs from ../data/real/circles.geojson
+2016-11-30 12:38:34,117 - misc.logger - INFO - loaded 125 REGIONSs from ../data/real/regions.geojson
+2016-11-30 12:38:38,161 - misc.logger - INFO - Unary_union created
+2016-11-30 12:45:35,624 - misc.logger - INFO - Dropped -4026 pois, as they are out of borders
+2016-11-30 12:45:40,222 - misc.logger - INFO - Unary_union created

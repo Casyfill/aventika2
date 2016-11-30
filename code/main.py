@@ -3,6 +3,7 @@ from iteration import iterate
 from datetime import datetime
 import json
 from misc.logger import getLogger
+from misc.preparation import prepare
 
 __appname__ = "AVENTIKA_PRIORITY"
 __author__ = "Phipipp Kats (casyfill)"
@@ -11,10 +12,10 @@ __version__ = "0.9.6.01 testing"
 LIMIT = None  # manual execution bound
 
 
-def data_preload(settings, logger):
+def data_preload(settings):
     '''data preloader
     '''
-
+    logger = settings['logger']
     dpath = settings['data_path']
     # banks_path = dpath + settings['files']['banks']
     # banks = gp.read_file(banks_path).to_crs(epsg='32637')
@@ -55,18 +56,17 @@ def getSettings():
 if __name__ == '__main__':
 
     settings = getSettings()
-
     start = datetime.now()  # start of the calculations
 
-    logger = getLogger()
     settings['limit'] = LIMIT
-    settings['logger'] = logger
+    settings['logger'] = getLogger()
     result_path = datetime.now().strftime(start.strftime(settings['results']))
 
     timestamp = start.strftime('%Y_%m_%d')
-    logger.info('{ts}: start logging'.format(ts=timestamp))
+    settings['logger'].info('{ts}: start logging'.format(ts=timestamp))
 
-    poi, buff, reg = data_preload(settings, logger)
+    poi, buff, reg = data_preload(settings)
+    buff, poi, reg = prepare(buff, poi, reg, settings)
 
     iterate(buff, poi, reg,
             filename=result_path,
