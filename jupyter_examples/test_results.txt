@@ -1,0 +1,20 @@
+f_pois,s_pois,reg_score,priority,office_id,score
+3|5|2|4|1,,"score    1202
+Name: 3, dtype: int64",1,3,4242.0
+,1,"score    625
+Name: 1, dtype: int64",2,1,1825.0
+f_pois,s_pois,reg_score,priority,office_id,score
+3|5|2|4|1,,"score    1202
+Name: 3, dtype: int64",1,3,4242.0
+,1,"score    625
+Name: 1, dtype: int64",2,1,1825.0
+f_pois,s_pois,reg_score,priority,office_id,score
+3|5|2|4|1,,"score    1202
+Name: 3, dtype: int64",1,3,4242.0
+,1,"score    625
+Name: 1, dtype: int64",2,1,1825.0
+f_pois,s_pois,reg_score,priority,office_id,score
+3|5|2|4|1,,"score    1202
+Name: 3, dtype: int64",1,3,4242.0
+,1,"score    625
+Name: 1, dtype: int64",2,1,1825.0

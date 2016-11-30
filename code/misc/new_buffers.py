@@ -41,12 +41,15 @@ def update_buff(buff, bid):
     buff = buff[buff.index.get_level_values(1) != bid]
 
     # normal reduction
-    buff.loc[idx['foot', :], 'geometry'] = buff.loc[
-        idx['foot', :], 'geometry'].difference(slctd_foot)
-    buff.loc[idx['foot', :], 'geometry'] = buff.loc[
-        idx['foot', :], 'geometry'].difference(slctd_step)
-    buff.loc[idx['stepless', :], 'geometry'] = buff.loc[
-        idx['stepless', :], 'geometry'].difference(slctd_step)
+    if 'foot' in buff.index.get_level_values(0):
+        buff.loc[idx['foot', :], 'geometry'] = buff.loc[
+            idx['foot', :], 'geometry'].difference(slctd_foot)
+        buff.loc[idx['foot', :], 'geometry'] = buff.loc[
+            idx['foot', :], 'geometry'].difference(slctd_step)
+
+    if 'stepless' in buff.index.get_level_values(0):
+        buff.loc[idx['stepless', :], 'geometry'] = buff.loc[
+            idx['stepless', :], 'geometry'].difference(slctd_step)
 
     if 'foot_to_step' in buff.index.get_level_values(0):
         buff.loc[idx['foot_to_step', :], 'geometry'] = buff.loc[

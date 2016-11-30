@@ -20,12 +20,11 @@ def iterate(buff, poi, reg, filename, settings):
     '''
     cntr = 1  # iteration counter
 
-    buff, poi, reg, reg_centroids = prepare(buff, poi, reg)
+    buff, poi, reg = prepare(buff, poi, reg, settings)
 
     # buffers of newly adopted offices will be added here iteratively
     bound = settings['limit']
     logger = settings['logger']
-    COVERED = {'foot': None, 'stepless': None}
     logger.info('Started iteration')
 
     while True:
@@ -39,15 +38,13 @@ def iterate(buff, poi, reg, filename, settings):
                                                           reg, settings)
 
         # update information
-        buff, poi, region, COVERED = update_data(buff, poi, region,
-                                                 bid, s_pois, COVERED)
-
-        logger.info(
-            '{i}: After iteration, pois: {n}'.format(i=cntr, n=len(poi)))
-
         if math.isnan(bid) or bid is None:
             break
         else:
+            buff, poi = update_data(buff, poi, bid, s_pois)
+
+            logger.info(
+                '{i}: After iteration, pois: {n}'.format(i=cntr, n=len(poi)))
             row = {'priority': cntr,
                    'office_id': bid,
                    'score': score,
@@ -87,7 +84,7 @@ def iteration(i, buff, poi, reg, settings):
 
     if sum(pd.isnull(buff['priority'])) == 0:
         logger.info('none unassigned banks, Iteration complete')
-        return None, None, None, None
+        return None, None, None, None, None
 
     # get Scores
     poi_score, poi_counted = getPoiScore(buff, poi, settings)
@@ -97,7 +94,7 @@ def iteration(i, buff, poi, reg, settings):
 
     if bid is None or math.isnan(bid):
         logger.info('Iteration complete, none unassigned banks')
-        return None, None, None, None
+        return None, None, None, None, None
 
     foot_pois = poi_counted.loc[bid, 'foot_poi']
     if type(foot_pois) != list:
@@ -143,6 +140,8 @@ def update_data(buff, poi, bid, s_pois):
     buff = update_buff(buff, bid)
 
     poi = poi[~poi['pid'].isin(s_pois)]  # remove stepless pois
+
+    return buff, poi
 
 
 def writerow(row, filename, header):

@@ -148,3 +148,258 @@
 2016-11-30 11:20:46,537 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
 2016-11-30 11:20:46,539 - code.misc.logger - INFO - []: koefficient 0.2 applied
 2016-11-30 11:20:46,542 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:22:44,268 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:22:44,271 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:22:44,273 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:22:44,276 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:22:44,594 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:22:44,596 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:22:44,598 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:22:44,600 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:22:44,604 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:23:24,818 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:23:24,834 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:23:24,838 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:24:15,949 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:24:16,013 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:24:16,017 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:26:13,325 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:26:13,428 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:26:13,439 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:26:19,069 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:26:19,071 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:26:19,073 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:26:19,076 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:26:19,588 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:26:19,592 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:26:19,594 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:26:19,597 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:26:19,602 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:26:20,877 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:26:20,909 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:26:20,916 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:26:21,483 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:26:21,483 - code.misc.logger - INFO - Started iteration
+2016-11-30 11:26:21,484 - code.misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:26:21,512 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:26:21,518 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:26:21,524 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:26:21,535 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:26:21,851 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:26:21,853 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:26:21,857 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:26:21,859 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:26:21,863 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:27:12,075 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:27:12,101 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:27:12,105 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:27:23,830 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:27:23,848 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:27:23,852 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:27:25,084 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:27:25,084 - code.misc.logger - INFO - Started iteration
+2016-11-30 11:27:25,084 - code.misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:27:25,102 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:27:25,108 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:27:25,113 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:27:25,118 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:27:25,430 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:27:25,432 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:27:25,433 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:27:25,435 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:27:25,440 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:28:15,127 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:28:15,331 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:28:15,372 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:28:19,090 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:28:19,093 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:28:19,097 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:28:19,103 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:28:19,403 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:28:19,406 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:28:19,408 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:28:19,410 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:28:19,413 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:28:21,572 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:28:21,588 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:28:21,593 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:28:22,896 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:28:22,896 - code.misc.logger - INFO - Started iteration
+2016-11-30 11:28:22,896 - code.misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:28:22,913 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:28:22,916 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:28:22,920 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:28:22,926 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:28:23,241 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:28:23,244 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:28:23,247 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:28:23,250 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:28:23,253 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:29:43,848 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:29:44,153 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:29:44,159 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:29:50,341 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:29:50,358 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:29:50,362 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:29:50,790 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:29:50,790 - code.misc.logger - INFO - Started iteration
+2016-11-30 11:29:50,790 - code.misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:29:50,820 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:29:50,823 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:29:50,830 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:29:50,837 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:29:51,135 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:29:51,137 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:29:51,139 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:29:51,141 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:29:51,145 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:29:51,266 - code.misc.logger - INFO - 1: After iteration, pois: 5
+2016-11-30 11:29:51,268 - code.misc.logger - INFO - 1: row stored, results: office_id:3 |score: 4242.0
+2016-11-30 11:29:51,268 - code.misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-11-30 11:29:51,287 - code.misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:29:51,290 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:29:51,293 - code.misc.logger - INFO - [1]: koefficient 0.2 applied
+2016-11-30 11:29:51,296 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:29:51,598 - code.misc.logger - INFO - [2, 3, 2, 1, 3, 1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:29:51,602 - code.misc.logger - INFO - [2, 2, 2, 1, 1]: koefficient 1.0 applied
+2016-11-30 11:29:51,609 - code.misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:29:51,614 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:29:51,621 - code.misc.logger - INFO - Priority 2: bank office 1, score: 1825.0
+2016-11-30 11:29:51,796 - code.misc.logger - INFO - 2: After iteration, pois: 4
+2016-11-30 11:29:51,797 - code.misc.logger - INFO - 2: row stored, results: office_id:1 |score: 1825.0
+2016-11-30 11:29:51,797 - code.misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-11-30 11:29:51,817 - code.misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:29:51,821 - code.misc.logger - INFO - []: koefficient 1.0 applied
+2016-11-30 11:29:51,824 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:29:51,826 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:29:51,938 - code.misc.logger - INFO - [1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:29:51,939 - code.misc.logger - INFO - [1, 1]: koefficient 1.0 applied
+2016-11-30 11:29:51,941 - code.misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:29:51,943 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:29:51,946 - code.misc.logger - INFO - Iteration complete, none unassigned banks
+2016-11-30 11:31:21,698 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:31:21,725 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:31:21,734 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:31:58,547 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:31:58,575 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:31:58,582 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:31:59,218 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:31:59,218 - code.misc.logger - INFO - Started iteration
+2016-11-30 11:31:59,218 - code.misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:31:59,251 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:31:59,258 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:31:59,268 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:31:59,278 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:31:59,575 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:31:59,579 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:31:59,583 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:31:59,587 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:31:59,592 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:31:59,714 - code.misc.logger - INFO - 1: After iteration, pois: 5
+2016-11-30 11:31:59,715 - code.misc.logger - INFO - 1: row stored, results: office_id:3 |score: 4242.0
+2016-11-30 11:31:59,715 - code.misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-11-30 11:31:59,735 - code.misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:31:59,737 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:31:59,740 - code.misc.logger - INFO - [1]: koefficient 0.2 applied
+2016-11-30 11:31:59,743 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:00,056 - code.misc.logger - INFO - [2, 3, 2, 1, 3, 1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:32:00,061 - code.misc.logger - INFO - [2, 2, 2, 1, 1]: koefficient 1.0 applied
+2016-11-30 11:32:00,066 - code.misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:32:00,071 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:00,079 - code.misc.logger - INFO - Priority 2: bank office 1, score: 1825.0
+2016-11-30 11:32:00,229 - code.misc.logger - INFO - 2: After iteration, pois: 4
+2016-11-30 11:32:00,230 - code.misc.logger - INFO - 2: row stored, results: office_id:1 |score: 1825.0
+2016-11-30 11:32:00,230 - code.misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-11-30 11:32:00,251 - code.misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:32:00,253 - code.misc.logger - INFO - []: koefficient 1.0 applied
+2016-11-30 11:32:00,255 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:32:00,257 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:00,374 - code.misc.logger - INFO - [1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:32:00,376 - code.misc.logger - INFO - [1, 1]: koefficient 1.0 applied
+2016-11-30 11:32:00,378 - code.misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:32:00,380 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:00,382 - code.misc.logger - INFO - Iteration complete, none unassigned banks
+2016-11-30 11:32:47,012 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:32:47,228 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:32:47,244 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:32:52,121 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:32:52,140 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:32:52,144 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:32:52,481 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:32:52,482 - code.misc.logger - INFO - Started iteration
+2016-11-30 11:32:52,482 - code.misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:32:52,509 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:32:52,512 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:32:52,515 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:32:52,518 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:52,777 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:32:52,779 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:32:52,781 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:32:52,783 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:52,787 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:32:52,910 - code.misc.logger - INFO - 1: After iteration, pois: 5
+2016-11-30 11:32:52,911 - code.misc.logger - INFO - 1: row stored, results: office_id:3 |score: 4242.0
+2016-11-30 11:32:52,911 - code.misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-11-30 11:32:52,931 - code.misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:32:52,934 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:32:52,936 - code.misc.logger - INFO - [1]: koefficient 0.2 applied
+2016-11-30 11:32:52,938 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:53,186 - code.misc.logger - INFO - [2, 3, 2, 1, 3, 1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:32:53,188 - code.misc.logger - INFO - [2, 2, 2, 1, 1]: koefficient 1.0 applied
+2016-11-30 11:32:53,191 - code.misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:32:53,196 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:53,203 - code.misc.logger - INFO - Priority 2: bank office 1, score: 1825.0
+2016-11-30 11:32:53,429 - code.misc.logger - INFO - 2: After iteration, pois: 4
+2016-11-30 11:32:53,430 - code.misc.logger - INFO - 2: row stored, results: office_id:1 |score: 1825.0
+2016-11-30 11:32:53,430 - code.misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-11-30 11:32:53,451 - code.misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:32:53,455 - code.misc.logger - INFO - []: koefficient 1.0 applied
+2016-11-30 11:32:53,458 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:32:53,462 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:53,586 - code.misc.logger - INFO - [1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:32:53,588 - code.misc.logger - INFO - [1, 1]: koefficient 1.0 applied
+2016-11-30 11:32:53,591 - code.misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:32:53,593 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:32:53,596 - code.misc.logger - INFO - Iteration complete, none unassigned banks
+2016-11-30 11:39:30,827 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:39:31,013 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:39:31,030 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:39:36,134 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:39:36,150 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:39:36,154 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:39:37,045 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:39:37,046 - code.misc.logger - INFO - Started iteration
+2016-11-30 11:39:37,046 - code.misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:39:37,065 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:39:37,068 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:39:37,073 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:39:37,081 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:39:37,377 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:39:37,379 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:39:37,381 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:39:37,383 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:39:37,387 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:39:37,526 - code.misc.logger - INFO - 1: After iteration, pois: 5
+2016-11-30 11:39:37,527 - code.misc.logger - INFO - 1: row stored, results: office_id:3 |score: 4242.0
+2016-11-30 11:39:37,527 - code.misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-11-30 11:39:37,541 - code.misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:39:37,543 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:39:37,545 - code.misc.logger - INFO - [1]: koefficient 0.2 applied
+2016-11-30 11:39:37,548 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:39:37,805 - code.misc.logger - INFO - [2, 3, 2, 1, 3, 1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:39:37,809 - code.misc.logger - INFO - [2, 2, 2, 1, 1]: koefficient 1.0 applied
+2016-11-30 11:39:37,812 - code.misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:39:37,817 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:39:37,821 - code.misc.logger - INFO - Priority 2: bank office 1, score: 1825.0
+2016-11-30 11:39:37,999 - code.misc.logger - INFO - 2: After iteration, pois: 4
+2016-11-30 11:39:38,000 - code.misc.logger - INFO - 2: row stored, results: office_id:1 |score: 1825.0
+2016-11-30 11:39:38,000 - code.misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-11-30 11:39:38,014 - code.misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:39:38,015 - code.misc.logger - INFO - []: koefficient 1.0 applied
+2016-11-30 11:39:38,019 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:39:38,022 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:39:38,130 - code.misc.logger - INFO - [1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:39:38,132 - code.misc.logger - INFO - [1, 1]: koefficient 1.0 applied
+2016-11-30 11:39:38,134 - code.misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:39:38,136 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:39:38,138 - code.misc.logger - INFO - Iteration complete, none unassigned banks
