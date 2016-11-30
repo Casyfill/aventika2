@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "results":"data/results/%Y_%m_%d_%H:%M:%S_results.csv",
+    "data_path": "../data/test/",
+    "files": {
+      "regions": "at_regions.geojson",
+      "poi": "at_poi.geojson",
+      "buffers": "at_buffers.geojson",
+      "banks": "at_banks.geojson"
+    },
+    "mp_settings":{
+    	"WORKERS":2,
+    }
+  }
+}

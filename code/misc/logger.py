@@ -3,20 +3,16 @@
 
 import logging
 import datetime
-from glob import glob
-import os
+# from glob import glob
+# import os
 
 
-def getLogger(recent=False):
+def getLogger():
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
 
-    if recent:
-        path = mostRecentFile('.', tp='.log')
-        handler = logging.FileHandler(path)
-    else:
-        date = datetime.datetime.now().strftime('%Y_%m_%d')
-        handler = logging.FileHandler('%s_scraping.log' % date)
+    date = datetime.datetime.now().strftime('%Y_%m_%d')
+    handler = logging.FileHandler('%s_scraping.log' % date)
     handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter(
@@ -26,3 +22,6 @@ def getLogger(recent=False):
     logger.addHandler(handler)
     return logger
 
+
+log_row_string = '{i}: row stored, results: office_id:{bid} |score: {s}'
+log_pois_string = '{i}: Pois at the start of the loop: {n}'
