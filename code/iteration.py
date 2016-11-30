@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pandas as pd
-import geopandas as gp
+# import geopandas as gp
 import math
-from shapely.ops import cascaded_union
+# from shapely.ops import cascaded_union
 import csv
 from misc import *
 from misc.logger import log_row_string, log_pois_string
@@ -35,11 +35,12 @@ def iterate(buff, poi, reg, filename, settings):
 
         logger.info(log_pois_string.format(i=cntr, n=len(poi)))
 
-        bid, score, reg_score, pois = iteration(cntr, buff, poi,
-                                                reg, settings)
+        bid, score, reg_score, f_pois, s_pois = iteration(cntr, buff, poi,
+                                                          reg, settings)
 
         # update information
-        buff, poi, region, COVERED = update_data(buff, poi, region, bid, pois, COVERED)
+        buff, poi, region, COVERED = update_data(buff, poi, region,
+                                                 bid, s_pois, COVERED)
 
         logger.info(
             '{i}: After iteration, pois: {n}'.format(i=cntr, n=len(poi)))
@@ -51,7 +52,9 @@ def iterate(buff, poi, reg, filename, settings):
                    'office_id': bid,
                    'score': score,
                    'reg_score': reg_score,
-                   'pois': '|'.join([str(x) for x in pois])}
+                   'f_pois': '|'.join([str(x) for x in f_pois]),
+                   's_pois': '|'.join([str(x) for x in s_pois])
+                   }
 
             writerow(row, filename, cntr < 2)
             logger.info(log_row_string.format(
@@ -96,12 +99,14 @@ def iteration(i, buff, poi, reg, settings):
         logger.info('Iteration complete, none unassigned banks')
         return None, None, None, None
 
-    pois = poi_counted.loc[bid, 'pid']
+    foot_pois = poi_counted.loc[bid, 'foot_poi']
+    stepless_pois = poi_counted.loc[bid, 'stepless_poi']
+
     reg_score.iloc[bid]  # get reg_score for chosen object
 
     logger.info(priority_string.format(i, bid, score))
 
-    return bid, score, r_score, pois
+    return bid, score, r_score, foot_pois, stepless_pois
 
 
 # Aggregation
@@ -129,19 +134,19 @@ def update_data(buff, poi, region, bid, pois, COVERED):
     buff = buff[buff['office_id'] != bid]
 
 
-    poi = gp.GeoDataFrame(poi[~poi['pid'].isin(pois)])  # remove used POIs
+    # poi = gp.GeoDataFrame(poi[~poi['pid'].isin(pois)])  # remove used POIs
         
 
-        for t in COVERED.keys():
-            if COVERED[t] is None:
-                COVERED[t] = buff.loc[idx[t, bid], 'geometry']
-            else:
-                try:
-                    # add a new buffer to that
-                    COVERED[t] = cascaded_union(
-                        [COVERED[t], buff.loc[idx[t, bid], 'geometry']])
-                except:
-                    pass
+    #     for t in COVERED.keys():
+    #         if COVERED[t] is None:
+    #             COVERED[t] = buff.loc[idx[t, bid], 'geometry']
+    #         else:
+    #             try:
+    #                 # add a new buffer to that
+    #                 COVERED[t] = cascaded_union(
+    #                     [COVERED[t], buff.loc[idx[t, bid], 'geometry']])
+    #             except:
+    #                 pass
 
 
 def writerow(row, filename, header):

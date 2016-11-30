@@ -76,6 +76,18 @@ def adjustScore(poi, settings, mode='poi'):
     return poic
 
 
+def get_aqured_pois(pois):
+    '''gets two types of pois,
+    depending of "aquisition" buffer'''
+    stepless_poi = pois[pois['type'] == 'stepless'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
+    foot_poi = pois[pois['type'] == 'foot'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
+
+    pois = pd.DataFrame({'stepless_poi': stepless_poi,
+                         'foot_poi': foot_poi})
+    pois.index = pois.index.get_level_values(1)
+    return pois
+
+
 def getPoiScore(buff, poi, settings):
     '''calculate adjusted POI score for each bank
     and returns both total POI score and POIS corresponding to each bank
@@ -93,5 +105,5 @@ def getPoiScore(buff, poi, settings):
 
     # .sort_values('SCORE', ascending=False)
     result_score = x.groupby('office_id').agg({'score': 'sum'})
-    result_poi = x.groupby('office_id').agg({'pid': lambda x: list(x)})
+    result_poi = get_aqured_pois(x)
     return result_score, result_poi

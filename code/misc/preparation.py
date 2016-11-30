@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from buffers import selfSubstract
+# from buffers import selfSubstract
 
 #####################################################   Preparation
 
@@ -11,7 +11,7 @@ def prepare(buff, poi, reg):
     #poi = poi[poi.intersects(buff['geometry'].unary_union)]
     #print('Dropped {} POIS outside of the buffer zone'.format(l1 - len(poi)))
           
-    buff = selfSubstract(buff)
+    # buff = selfSubstract(buff)
     reg_centroids = reg.centroid
     reg.loc[reg.type=='foot','score']*=.8
     
