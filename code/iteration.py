@@ -38,13 +38,11 @@ def iterate(buff, poi, reg, filename, settings):
                                                           reg, settings)
 
         # update information
-        if math.isnan(bid) or bid is None:
+        if bid is None or math.isnan(bid):
             break
         else:
             buff, poi = update_data(buff, poi, bid, s_pois)
 
-            logger.info(
-                '{i}: After iteration, pois: {n}'.format(i=cntr, n=len(poi)))
             row = {'priority': cntr,
                    'office_id': bid,
                    'score': score,
@@ -104,7 +102,7 @@ def iteration(i, buff, poi, reg, settings):
     if type(stepless_pois) != list:
         stepless_pois = []
 
-    r_score = reg_score.loc[bid]  # get reg_score for chosen object
+    r_score = reg_score.loc[bid].iloc[0]  # get reg_score for chosen object
 
     logger.info(priority_string.format(i, bid, score))
     return bid, score, r_score, foot_pois, stepless_pois

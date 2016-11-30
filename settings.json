@@ -8,7 +8,7 @@
     "banks": "at_banks.geojson"
   },
   "mp_settings": {
-    "WORKERS": 1
+    "WORKERS": 2
   },
   "koefficients": {
     "stepless": 1.0,
