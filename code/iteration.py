@@ -41,8 +41,6 @@ def iterate(buff, poi, reg, filename, settings):
         if bid is None or math.isnan(bid):
             break
         else:
-            buff, poi = update_data(buff, poi, bid, s_pois)
-
             row = {'priority': cntr,
                    'office_id': bid,
                    'score': score,
@@ -55,6 +53,11 @@ def iterate(buff, poi, reg, filename, settings):
             logger.info(log_row_string.format(
                 i=cntr, bid=row['office_id'], s=row['score']))
             cntr += 1
+
+            try:
+                buff, poi = update_data(buff, poi, bid, s_pois)
+            except:
+                break
 
     return None
 
@@ -82,29 +85,44 @@ def iteration(i, buff, poi, reg, settings):
 
     if sum(pd.isnull(buff['priority'])) == 0:
         logger.info('none unassigned banks, Iteration complete')
-        return None, None, None, None, None
+        return None, None, None, [], []
 
     # get Scores
     poi_score, poi_counted = getPoiScore(buff, poi, settings)
     reg_score = getRegScore(buff, reg, settings)
 
     bid, score = agg_results(poi_score, reg_score, get_max=True)
-
+    print 'BID:', bid
     if bid is None or math.isnan(bid):
-        logger.info('Iteration complete, none unassigned banks')
-        return None, None, None, None, None
+        if len(buff.index.get_level_values(1).unique()) == 1:
+            return buff.index.get_level_values(1).tolist()[0], None, None, [], []
+        else:
+            logger.info('Iteration complete, none unassigned banks')
+            return None, None, None, [], []
 
-    foot_pois = poi_counted.loc[bid, 'foot_poi']
-    if type(foot_pois) != list:
+    try:
+        foot_pois = poi_counted.loc[bid, 'foot_poi']
+        if type(foot_pois) != list:
+            foot_pois = []
+    except:
         foot_pois = []
 
-    stepless_pois = poi_counted.loc[bid, 'stepless_poi']
-    if type(stepless_pois) != list:
+    try:
+        stepless_pois = poi_counted.loc[bid, 'stepless_poi']
+        if type(stepless_pois) != list:
+            stepless_pois = []
+
+    except:
         stepless_pois = []
 
-    r_score = reg_score.loc[bid].iloc[0]  # get reg_score for chosen object
+    try:
+        r_score = reg_score.loc[bid].iloc[0]  # get reg_score for chosen object
+    except:
+        r_score = None
 
     logger.info(priority_string.format(i, bid, score))
+
+
     return bid, score, r_score, foot_pois, stepless_pois
 
 
@@ -114,8 +132,10 @@ def agg_results(p=None, r=None, get_max=True):
     if p is None and r is None:
         raise IOError('No information at all')
     elif p is None:
+        logger.info('no poi score')
         result = r
     elif r is None:
+        logger.info('no regions score')
         result = p
     else:
         result = p + r
