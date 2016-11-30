@@ -1,0 +1,56 @@
+2016-11-30 11:55:06,596 - misc.logger - INFO - 2016_11_30: start logging
+2016-11-30 11:55:06,607 - misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:55:06,625 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:55:06,628 - misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:55:06,640 - misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:55:06,640 - misc.logger - INFO - Started iteration
+2016-11-30 11:55:06,640 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:55:06,655 - misc.logger - INFO -    Pool:2 workers
+2016-11-30 11:55:06,720 - misc.logger - INFO - [3, 3, 2, 2, 4, 5, 5, 5, 1]: koefficient 0.8 applied
+2016-11-30 11:55:06,723 - misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:55:06,725 - misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:55:06,728 - misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:55:06,976 - misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:55:06,978 - misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:55:06,980 - misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:55:06,983 - misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:55:06,987 - misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:55:24,052 - misc.logger - INFO - 2016_11_30: start logging
+2016-11-30 11:55:24,061 - misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:55:24,079 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:55:24,083 - misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:55:24,099 - misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:55:24,099 - misc.logger - INFO - Started iteration
+2016-11-30 11:55:24,099 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-11-30 11:55:24,119 - misc.logger - INFO -    Pool:2 workers
+2016-11-30 11:55:24,169 - misc.logger - INFO - [3, 3, 2, 2, 4, 5, 5, 5, 1]: koefficient 0.8 applied
+2016-11-30 11:55:24,171 - misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:55:24,173 - misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:55:24,175 - misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:55:24,452 - misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:55:24,455 - misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:55:24,458 - misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:55:24,460 - misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:55:24,464 - misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:55:24,556 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 4242.0
+2016-11-30 11:55:24,556 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-11-30 11:55:24,585 - misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:55:24,587 - misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:55:24,589 - misc.logger - INFO - [1]: koefficient 0.2 applied
+2016-11-30 11:55:24,592 - misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:55:24,765 - misc.logger - INFO - [2, 3, 2, 1, 3, 1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:55:24,767 - misc.logger - INFO - [2, 2, 2, 1, 1]: koefficient 1.0 applied
+2016-11-30 11:55:24,769 - misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:55:24,771 - misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:55:24,775 - misc.logger - INFO - Priority 2: bank office 1, score: 1825.0
+2016-11-30 11:55:24,880 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 1825.0
+2016-11-30 11:55:24,880 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-11-30 11:55:24,913 - misc.logger - INFO - []: koefficient 0.8 applied
+2016-11-30 11:55:24,917 - misc.logger - INFO - []: koefficient 1.0 applied
+2016-11-30 11:55:24,920 - misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:55:24,923 - misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:55:25,029 - misc.logger - INFO - [1, 2, 3]: koefficient 0.8 applied
+2016-11-30 11:55:25,032 - misc.logger - INFO - [1, 1]: koefficient 1.0 applied
+2016-11-30 11:55:25,034 - misc.logger - INFO - [1, 1]: koefficient 0.2 applied
+2016-11-30 11:55:25,036 - misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:55:25,039 - misc.logger - INFO - Iteration complete, none unassigned banks

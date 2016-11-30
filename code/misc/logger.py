@@ -20,6 +20,12 @@ def getLogger():
     handler.setFormatter(formatter)
 
     logger.addHandler(handler)
+
+    console = logging.StreamHandler()
+    console.setLevel(logging.INFO)
+    console.setFormatter(formatter)
+    logger.addHandler(console)
+
     return logger
 
 
