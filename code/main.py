@@ -12,7 +12,7 @@ __version__ = "0.9.6.01 testing"
 LIMIT = None  # manual execution bound
 
 
-def data_preload(settings):
+def data_preload(settings, mode='refined'):
     '''data preloader
     '''
     logger = settings['logger']
@@ -21,20 +21,20 @@ def data_preload(settings):
     # banks = gp.read_file(banks_path).to_crs(epsg='32637')
     # logger.info('loaded {n} banks'.format(n=len(banks), p=banks_path))
 
-    poi_path = dpath + settings['files']['poi']
+    poi_path = dpath + settings['files'][mode]['poi']
     poi = gp.read_file(
         poi_path)[['geometry', 'score',
                    'pid', 'disability']].to_crs(epsg='32637')
     poi['score'] = poi['score'].astype(float)
     logger.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
 
-    buff_path = dpath + settings['files']['buffers']
+    buff_path = dpath + settings['files'][mode]['buffers']
     buff = gp.read_file(buff_path).set_index(['type', 'office_id'])
     buff = buff.sort_index().to_crs(epsg='32637')
     buff['priority'] = None
     logger.info('loaded {n} BUFFs from {p}'.format(n=len(buff), p=buff_path))
 
-    reg_path = dpath + settings['files']['regions']
+    reg_path = dpath + settings['files'][mode]['regions']
     reg = gp.read_file(reg_path).to_crs(epsg='32637')
     reg['reg_area'] = reg.area
     reg['disabled'] = reg['disabled'].astype(float)
