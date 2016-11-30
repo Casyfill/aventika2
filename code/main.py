@@ -33,7 +33,7 @@ def data_preload(settings, logger):
     buff['priority'] = None
     logger.info('loaded {n} BUFFs from {p}'.format(n=len(buff), p=buff_path))
 
-    reg_path = './data/intersected_regions.geojson'
+    reg_path = dpath + settings['files']['regions']
     reg = gp.read_file(reg_path).drop('id', axis=1).to_crs(epsg='32637')
     logger.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
 

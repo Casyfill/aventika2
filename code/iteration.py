@@ -60,8 +60,8 @@ def iterate(buff, poi, reg, filename, settings):
     return None
 
 
-def iteration(i, buff, poi=None, reg=None, reg_centroids=None,
-              COVERED={}, settings=settings):
+def iteration(i, buff, poi, reg, reg_centroids,
+              COVERED, settings):
     '''iteration step.
     As a result, next prioritized bank office is selected,
     prioritization is added to the buff priority column.
