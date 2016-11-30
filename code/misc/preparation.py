@@ -3,11 +3,12 @@
 # from buffers import selfSubstract
 
 
-def prepare(buff, poi, reg):
+def prepare(buff, poi, reg, settings):
     '''optimize geometry for the iteration'''
 
+    n_pois = len(poi)
     poi = poi[poi.intersects(buff.unary_union)]
-    reg_centroids = reg.centroid
-    reg.loc[reg.type == 'foot', 'score'] *= .8
+    settings['logger'].info(
+        'Dropped {} pois, as they are out of borders'.format(len(poi) - n_pois))
 
-    return buff, poi, reg, reg_centroids
+    return buff, poi, reg

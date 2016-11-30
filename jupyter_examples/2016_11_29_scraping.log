@@ -202,3 +202,7 @@
 2016-11-30 10:38:39,643 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
 2016-11-30 10:38:39,660 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
 2016-11-30 10:38:39,665 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 10:57:11,427 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 10:57:11,429 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 10:57:11,433 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 10:57:11,436 - code.misc.logger - INFO - []: koefficient 0.1 applied
