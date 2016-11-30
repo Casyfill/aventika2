@@ -34,3 +34,117 @@
 2016-11-30 11:02:48,609 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
 2016-11-30 11:02:56,354 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
 2016-11-30 11:03:06,694 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:04:48,901 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:04:48,973 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:04:48,976 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:04:49,995 - code.misc.logger - INFO - [2, 4, 3]: koefficient 0.8 applied
+2016-11-30 11:04:49,997 - code.misc.logger - INFO - [5, 1]: koefficient 1.0 applied
+2016-11-30 11:04:50,001 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:04:50,006 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:04:50,970 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:04:50,975 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:04:50,980 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:04:50,985 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:04:51,946 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:04:51,951 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:04:51,957 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:04:51,965 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:04:55,764 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:04:55,766 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:04:55,768 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:04:55,771 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:05:23,839 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:05:23,856 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:05:23,860 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:05:31,691 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:05:31,710 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:05:31,717 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:05:57,864 - code.misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 11:06:02,851 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:06:02,853 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:06:02,855 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:06:02,860 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:06:03,134 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:06:03,136 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:06:03,138 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:06:03,139 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:06:18,997 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:06:19,000 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:06:19,002 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:06:19,005 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:06:19,322 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:06:19,324 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:06:19,326 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:06:19,327 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:09:03,612 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:09:03,723 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:09:03,728 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:09:12,739 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:09:12,742 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:09:12,745 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:09:12,748 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:09:12,999 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:09:13,001 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:09:13,003 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:09:13,004 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:09:13,009 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:09:39,992 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:09:40,036 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:09:40,097 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:09:57,178 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:09:57,180 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:09:57,183 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:09:57,186 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:09:57,541 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:09:57,543 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:09:57,547 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:09:57,549 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:09:57,552 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:10:37,582 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:10:37,628 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:10:37,641 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:10:42,771 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:10:42,773 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:10:42,775 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:10:42,777 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:10:43,084 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:10:43,086 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:10:43,089 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:10:43,091 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:10:43,094 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4242.0
+2016-11-30 11:12:16,152 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:12:16,275 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:12:16,386 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:12:22,535 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:12:22,537 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:12:22,541 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:12:22,543 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:14:38,208 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:14:38,237 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:14:38,251 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:14:43,329 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:14:43,332 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:14:43,335 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:14:43,338 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:15:16,631 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:15:16,722 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:15:16,729 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:15:23,355 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:15:23,358 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:15:23,361 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:15:23,365 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:15:23,678 - code.misc.logger - INFO - [3, 1, 2, 3, 1, 2, 1, 2, 3, 3]: koefficient 0.8 applied
+2016-11-30 11:15:23,680 - code.misc.logger - INFO - [2, 1, 2, 1, 3]: koefficient 1.0 applied
+2016-11-30 11:15:23,683 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:15:23,684 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:20:40,048 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
+2016-11-30 11:20:40,105 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson
+2016-11-30 11:20:40,109 - code.misc.logger - INFO - loaded 3 REGIONSs from ../data/test/at_regions.geojson
+2016-11-30 11:20:43,302 - code.misc.logger - INFO - [2, 4, 3]: koefficient 0.8 applied
+2016-11-30 11:20:43,307 - code.misc.logger - INFO - [5, 1]: koefficient 1.0 applied
+2016-11-30 11:20:43,309 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:20:43,313 - code.misc.logger - INFO - []: koefficient 0.1 applied
+2016-11-30 11:20:46,534 - code.misc.logger - INFO - [3, 3, 5, 5, 5, 2, 2, 4, 1]: koefficient 0.8 applied
+2016-11-30 11:20:46,537 - code.misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-11-30 11:20:46,539 - code.misc.logger - INFO - []: koefficient 0.2 applied
+2016-11-30 11:20:46,542 - code.misc.logger - INFO - []: koefficient 0.1 applied

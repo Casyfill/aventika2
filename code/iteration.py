@@ -100,17 +100,17 @@ def iteration(i, buff, poi, reg, settings):
         return None, None, None, None
 
     foot_pois = poi_counted.loc[bid, 'foot_poi']
+    if type(foot_pois) != list:
+        foot_pois = []
+
     stepless_pois = poi_counted.loc[bid, 'stepless_poi']
+    if type(stepless_pois) != list:
+        stepless_pois = []
 
-    print reg_score, bid
-    try:
-        reg_score.iloc[bid]  # get reg_score for chosen object
+    r_score = reg_score.loc[bid]  # get reg_score for chosen object
 
-        logger.info(priority_string.format(i, bid, score))
-
-        return bid, score, r_score, foot_pois, stepless_pois
-    except:
-        return reg_score, bid
+    logger.info(priority_string.format(i, bid, score))
+    return bid, score, r_score, foot_pois, stepless_pois
 
 
 # Aggregation
