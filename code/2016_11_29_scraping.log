@@ -1,4 +1,0 @@
-2016-11-29 20:25:38,123 - misc.logger - INFO - 2016_11_29: start logging
-2016-11-29 20:28:57,446 - misc.logger - INFO - 2016_11_29: start logging
-2016-11-29 20:28:57,462 - misc.logger - INFO - loaded 5 POIs from ../data/test/at_poi.geojson
-2016-11-29 20:28:57,488 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/at_buffers.geojson

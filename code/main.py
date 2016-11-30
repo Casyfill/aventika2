@@ -25,7 +25,7 @@ def data_preload(settings):
     poi = gp.read_file(
         poi_path)[['geometry', 'score',
                    'pid', 'disability']].to_crs(epsg='32637')
-    poi['score'] = poi['score'].astype(int)
+    poi['score'] = poi['score'].astype(float)
     logger.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
 
     buff_path = dpath + settings['files']['buffers']
@@ -37,7 +37,7 @@ def data_preload(settings):
     reg_path = dpath + settings['files']['regions']
     reg = gp.read_file(reg_path).to_crs(epsg='32637')
     reg['reg_area'] = reg.area
-    reg['score'] = reg['score'].astype(int)
+    reg['disabled'] = reg['disabled'].astype(float)
     logger.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
 
     return poi, buff, reg

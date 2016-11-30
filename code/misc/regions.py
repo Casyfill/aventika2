@@ -24,6 +24,13 @@ def getReg(buff, reg):
     return result
 
 
+def getReg_overlayed(buffs, reg_overlayed):
+    result = sjoin(buff.reset_index(),
+                   regs_overlayed,
+                   how='left', op='contains')
+    return result
+
+
 def getRegScore(buffs, reg, settings):
     '''calculate adjusted POI score for each bank
 
@@ -35,7 +42,7 @@ def getRegScore(buffs, reg, settings):
         regions split with score for each bank office
     '''
 
-    x = getReg(buffs, reg)
+    x = getReg_overlayed(buffs, reg)
     x = adjustScore(x, settings, mode='reg')
 
     x['score'] = x['score'].astype(int)

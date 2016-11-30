@@ -12,7 +12,7 @@ def getLogger():
     logger.setLevel(logging.INFO)
 
     date = datetime.datetime.now().strftime('%Y_%m_%d')
-    handler = logging.FileHandler('%s_scraping.log' % date)
+    handler = logging.FileHandler('../logs/%s_scraping.log' % date)
     handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter(
