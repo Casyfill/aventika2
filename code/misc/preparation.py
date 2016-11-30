@@ -36,6 +36,8 @@ def prepare(buff, poi, reg, settings):
 
     reg['geometry'] = reg.buffer(0)
     buff['geometry'] = buff.buffer(0)
+    settings['logger'].info('geometry bufferized')
+
     regs_overlayed = get_overlay(buff, reg)
     settings['logger'].info(
         'Created region overlay'.format(n_pois - len(poi)))
