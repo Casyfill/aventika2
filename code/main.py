@@ -34,20 +34,27 @@ def data_preload(settings, logger):
     logger.info('loaded {n} BUFFs from {p}'.format(n=len(buff), p=buff_path))
 
     reg_path = dpath + settings['files']['regions']
-    reg = gp.read_file(reg_path).drop('id', axis=1).to_crs(epsg='32637')
+    reg = gp.read_file(reg_path).to_crs(epsg='32637')
+    reg['reg_area'] = reg.area
     logger.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
 
     return poi, buff, reg
 
 
-if __name__ == '__main__':
-
+def getSettings():
     try:
         with open('../settings.json') as f:
             settings = json.load(f)
     except Exception as inst:
         print 'Failed to read settings, check the file'
         raise Exception(inst)
+
+    return settings
+
+
+if __name__ == '__main__':
+
+    settings = getSettings()
 
     start = datetime.now()  # start of the calculations
 

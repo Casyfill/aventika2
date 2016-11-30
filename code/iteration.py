@@ -35,10 +35,11 @@ def iterate(buff, poi, reg, filename, settings):
 
         logger.info(log_pois_string.format(i=cntr, n=len(poi)))
 
-        buff, bid, score, reg_score, pois, COVERED = iteration(
-            cntr, buff, poi, reg, reg_centroids, COVERED)
+        bid, score, reg_score, pois = iteration(cntr, buff, poi,
+                                                reg, settings)
 
-        poi = gp.GeoDataFrame(poi[~poi['pid'].isin(pois)])  # remove used POIs
+        # update information
+        buff, poi, region, COVERED = update_data(buff, poi, region, bid, pois, COVERED)
 
         logger.info(
             '{i}: After iteration, pois: {n}'.format(i=cntr, n=len(poi)))
@@ -60,8 +61,7 @@ def iterate(buff, poi, reg, filename, settings):
     return None
 
 
-def iteration(i, buff, poi, reg, reg_centroids,
-              COVERED, settings):
+def iteration(i, buff, poi, reg, settings):
     '''iteration step.
     As a result, next prioritized bank office is selected,
     prioritization is added to the buff priority column.
@@ -86,11 +86,9 @@ def iteration(i, buff, poi, reg, reg_centroids,
         logger.info('none unassigned banks, Iteration complete')
         return None, None, None, None
 
-    poi_score, poi_counted = getPoiScore(buff, poi)
-
-    reg_score = None  # getRegScore2(COVERED, reg, reg_centroids)
-
-    # print '    agg Scores'
+    # get Scores
+    poi_score, poi_counted = getPoiScore(buff, poi, settings)
+    reg_score = getRegScore(buff, reg, settings)
 
     bid, score = agg_results(poi_score, reg_score, get_max=True)
 
@@ -98,28 +96,12 @@ def iteration(i, buff, poi, reg, reg_centroids,
         logger.info('Iteration complete, none unassigned banks')
         return None, None, None, None
 
-    pois = poi_counted.loc[bid, 'pid']  # .tolist()[0]
-
-    try:
-        r_score = reg_score.iloc[bid]  # get reg_score for chosen object
-    except:
-        r_score = None
+    pois = poi_counted.loc[bid, 'pid']
+    reg_score.iloc[bid]  # get reg_score for chosen object
 
     logger.info(priority_string.format(i, bid, score))
 
-    for t in COVERED.keys():
-        if COVERED[t] is None:
-            COVERED[t] = buff.loc[idx[t, bid], 'geometry']
-        else:
-            try:
-                # add a new buffer to that
-                COVERED[t] = cascaded_union(
-                    [COVERED[t], buff.loc[idx[t, bid], 'geometry']])
-            except:
-                pass
-
-    new_buff = u.ix[u.index.get_level_values(1) != bid, :]
-    return new_buff, bid, score, r_score, pois, COVERED
+    return bid, score, r_score, pois
 
 
 # Aggregation
@@ -138,6 +120,28 @@ def agg_results(p=None, r=None, get_max=True):
         return None, None
 
     return result['score'].argmax(), result['score'].max()
+
+
+def update_data(buff, poi, region, bid, pois, COVERED):
+    '''update dataset with regard to the newly chosen office
+    '''
+    selected_buff = buff[buff['office_id'] == bid]
+    buff = buff[buff['office_id'] != bid]
+
+
+    poi = gp.GeoDataFrame(poi[~poi['pid'].isin(pois)])  # remove used POIs
+        
+
+        for t in COVERED.keys():
+            if COVERED[t] is None:
+                COVERED[t] = buff.loc[idx[t, bid], 'geometry']
+            else:
+                try:
+                    # add a new buffer to that
+                    COVERED[t] = cascaded_union(
+                        [COVERED[t], buff.loc[idx[t, bid], 'geometry']])
+                except:
+                    pass
 
 
 def writerow(row, filename, header):

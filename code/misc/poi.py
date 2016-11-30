@@ -1,42 +1,46 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import geopandas as gp
+# import geopandas as gp
 import pandas as pd
 import multiprocessing as mp
 from functools import partial
 from misc import chunker_eq
 from geopandas.tools import sjoin
-# from mpconfig import MP, WORKERS, POOL
-MP = True
-WORKERS = 8
+
+idx = pd.IndexSlice
 POOL = None
 
 
-def joiner(x, z):
-    return sjoin(z, x, how='inner', op='contains')
+def joiner(poi, buff):
+    return sjoin(buff, poi, how='inner', op='contains')
 
-#####################################################   POI
-def getPOI(u, poi):
-    '''for each buffer, get points within'''
-    u.crs = poi.crs  # seriously?
-    u = u.reset_index()
-    
 
-    global joiner
-    partial_joiner = partial(joiner, z=u)
-    
-    global MP, WORKERS, POOL
-    if MP:
+def getPOI(buff, poi, settings):
+    '''returns  all points within
+    the corresponding buffer for each office,
+    with the type of the buffer
+
+    Args:
+        buff: buffers
+        poi: pois
+        settings(dict): settings
+    return:
+        pd.Dataframe
+    '''
+    WORKERS = settings['mp_settings']['WORKERS']
+    global POOL  # global pull of processes
+    buff = buff.reset_index()
+
+    partial_joiner = partial(joiner, buff=buff)
+
+    if WORKERS > 1:
         try:
             if POOL is None:
-                POOL = mp.Pool(processes = WORKERS)
-                print 'Now I have a Pool with {} workers'.format(WORKERS)
-            
+                POOL = mp.Pool(processes=WORKERS)
+                settings['logger'].info('   Pool:{} workers'.format(WORKERS))
+
             poi_chunks = chunker_eq(poi, WORKERS)
-            #zs = [z for x in xrange(WORKERS)]
-            #print len(zs)
-            print len(poi)
-        
+
             results = POOL.map(partial_joiner, poi_chunks)
             x = pd.concat(results)
 
@@ -44,50 +48,50 @@ def getPOI(u, poi):
             POOL.close()
             POOL.join()
             raise Exception(inst)
-    
 
-        
     else:
-        x = joiner(poi, z)
-          
-    
-    result = x.loc[pd.notnull(x['score']),['office_id','score','disability','pid', 'type']]
-    
-    return result
+        x = joiner(poi, buff)
+
+    return x[pd.notnull(x['score'])]
 
 
+def adjustScore(poi, settings, mode='poi'):
+    '''multiply point score by
+    correspoinding buffers type coeff
 
-def adjustScore(poi, kf={'stepless':1, 'foot':0.8, 'car':0.1}):
-    '''multiply point score by 
-    correspoinding buffers coeff
-    
-    return 
-        summary result and PIDS per office
+    Return:
+        adjusted poi results
     '''
-    
-    idx = pd.IndexSlice  
-    
+    key = {'poi':'pid', 'reg':'reg_id'}[mode]
+    log_string = '{p}: koefficient {k} applied'
+    kf = settings['koefficients']
+    poic = poi.copy()  # just in case
+
     for tp in kf.keys():
-        poi.loc[poi['type']==tp,'score'] *= kf[tp]
+        poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
+        pois = poic.loc[poi['type'] == tp, key].tolist()
 
-    # drop foot_acc for DISABLED to car (9 times)
-    # poi.loc[(poi['disability']==u'опорники')&(poi['type']=='foot'), 'score'] *= kf['car']/kf['foot'] 
+        settings['logger'].info(log_string.format(p=pois, k=kf[tp]))
 
-    return poi
+    return poic
 
 
-def getPoiScore(u, poi):
-    '''calculate adjusted POI score for each bank'''
-    
-    x = getPOI(u, poi)
-    x = adjustScore(x)
-    
-    
-    result_score = x.groupby('office_id').agg({'score':'sum'}) #.sort_values('SCORE', ascending=False)
-    result_poi = x.groupby('office_id').agg({'pid': lambda x: list(x) })
+def getPoiScore(buff, poi, settings):
+    '''calculate adjusted POI score for each bank
+    and returns both total POI score and POIS corresponding to each bank
+
+    Args:
+        buff: buffers
+        poi: pois
+        settings(dict): settings dict
+    Returns:
+        tuple: result_score pd.Series, result_poi pd.Series
+    '''
+
+    x = getPOI(buff, poi, settings)
+    x = adjustScore(x, settings, mode='poi')
+
+    # .sort_values('SCORE', ascending=False)
+    result_score = x.groupby('office_id').agg({'score': 'sum'})
+    result_poi = x.groupby('office_id').agg({'pid': lambda x: list(x)})
     return result_score, result_poi
-
-
-       
-    
-

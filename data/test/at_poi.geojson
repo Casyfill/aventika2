@@ -1,1 +1,85 @@
-{"type": "FeatureCollection", "features": [{"type":"Feature","geometry":{"type":"Point","coordinates":[36.195402,55.70782]},"properties":{"cartodb_id":2,"name":"2","score":"400","type":null}},{"type":"Feature","geometry":{"type":"Point","coordinates":[36.194115,55.714299]},"properties":{"cartodb_id":4,"name":"4","score":"800","type":null}},{"type":"Feature","geometry":{"type":"Point","coordinates":[36.184158,55.712414]},"properties":{"cartodb_id":3,"name":"3","score":"100","type":"disabled"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[36.191883,55.706176]},"properties":{"cartodb_id":5,"name":"5","score":"1500","type":"disabled"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[36.184158,55.70429]},"properties":{"cartodb_id":1,"name":"1","score":"1000","type":"dusabled"}}]}
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.195402,
+                    55.70782
+                ]
+            },
+            "properties": {
+                "pid": 2,
+                "name": "2",
+                "score": 400,
+                "disability": "blind"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.194115,
+                    55.714299
+                ]
+            },
+            "properties": {
+                "pid": 4,
+                "name": "4",
+                "score": 800,
+                "disability": "deaf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.184158,
+                    55.712414
+                ]
+            },
+            "properties": {
+                "pid": 3,
+                "name": "3",
+                "score": 100,
+                "disability": "disabled"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.191883,
+                    55.706176
+                ]
+            },
+            "properties": {
+                "pid": 5,
+                "name": "5",
+                "score": 1500,
+                "disability": "disabled"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    36.184158,
+                    55.70429
+                ]
+            },
+            "properties": {
+                "pid": 1,
+                "name": "1",
+                "score": 1000,
+                "disability": "dusabled"
+            }
+        }
+    ]
+}
