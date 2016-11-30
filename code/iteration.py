@@ -127,26 +127,18 @@ def agg_results(p=None, r=None, get_max=True):
     return result['score'].argmax(), result['score'].max()
 
 
-def update_data(buff, poi, region, bid, pois, COVERED):
+def update_data(buff, poi, bid, s_pois):
     '''update dataset with regard to the newly chosen office
+
+    Args:
+        buff: current set of buffers
+        poi: current set of points
+        bid: selected office's office_id
+        s_pois: selected pois
     '''
-    selected_buff = buff[buff['office_id'] == bid]
-    buff = buff[buff['office_id'] != bid]
+    buff = update_buff(buff, bid)
 
-
-    # poi = gp.GeoDataFrame(poi[~poi['pid'].isin(pois)])  # remove used POIs
-        
-
-    #     for t in COVERED.keys():
-    #         if COVERED[t] is None:
-    #             COVERED[t] = buff.loc[idx[t, bid], 'geometry']
-    #         else:
-    #             try:
-    #                 # add a new buffer to that
-    #                 COVERED[t] = cascaded_union(
-    #                     [COVERED[t], buff.loc[idx[t, bid], 'geometry']])
-    #             except:
-    #                 pass
+    poi = poi[~poi['pid'].isin(s_pois)]  # remove stepless pois
 
 
 def writerow(row, filename, header):
