@@ -647,3 +647,7 @@
 2016-11-30 12:38:38,161 - misc.logger - INFO - Unary_union created
 2016-11-30 12:45:35,624 - misc.logger - INFO - Dropped -4026 pois, as they are out of borders
 2016-11-30 12:45:40,222 - misc.logger - INFO - Unary_union created
+2016-11-30 12:50:32,800 - misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-11-30 12:50:32,801 - misc.logger - INFO - Started iteration
+2016-11-30 12:50:32,801 - misc.logger - INFO - 1: Pois at the start of the loop: 7844
+2016-11-30 12:50:32,834 - misc.logger - INFO -    Pool:4 workers
