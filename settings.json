@@ -1,11 +1,18 @@
 {
-  "results": "data/results/%Y_%m_%d_%H:%M:%S_results.csv",
-  "data_path": "../data/test/",
+  "results": "../data/results/%Y_%m_%d_%H:%M:%S_results.csv",
+  "data_path": "../data/real/",
   "files": {
-    "regions": "at_regions.geojson",
-    "poi": "at_poi.geojson",
-    "buffers": "at_buffers.geojson",
-    "banks": "at_banks.geojson"
+    "raw": {
+      "regions": "regions.geojson",
+      "poi": "poi.geojson",
+      "buffers": "circles_simple.geojson",
+      "banks": "banks.geojson"
+    },
+    "refined": {
+      "poi": "refined/poi.geojson",
+      "regions": "refined/regions.geojson",
+      "buffers": "refined/buffers.geojson"
+    }
   },
   "mp_settings": {
     "WORKERS": 2
