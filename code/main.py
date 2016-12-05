@@ -7,7 +7,7 @@ from misc.preparation import prepare
 
 __appname__ = "AVENTIKA_PRIORITY"
 __author__ = "Phipipp Kats (casyfill)"
-__version__ = "0.9.6.01 testing"
+__version__ = "0.9.7.01 testing"
 
 LIMIT = None  # manual execution bound
 

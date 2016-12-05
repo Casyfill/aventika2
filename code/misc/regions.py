@@ -2,6 +2,7 @@ from poi import adjustScore
 # from shapely.ops import unary_union
 # from shapely.ops import cascaded_union
 import geopandas as gp
+from geopandas.tools import sjoin
 import pandas as pd
 
 
@@ -25,8 +26,9 @@ def getReg(buff, reg):
 
 
 def getReg_overlayed(buffs, reg_overlayed):
-    result = sjoin(buff.reset_index(),
-                   regs_overlayed,
+    '''calculate overlay joint'''
+    result = sjoin(buffs.reset_index(),
+                   reg_overlayed,
                    how='left', op='contains')
     return result
 
