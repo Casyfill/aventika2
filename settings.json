@@ -5,7 +5,7 @@
     "raw": {
       "regions": "regions.geojson",
       "poi": "poi.geojson",
-      "buffers": "circles_simple.geojson",
+      "buffers": "buffers.geojson",
       "banks": "banks.geojson"
     },
     "refined": {
@@ -15,7 +15,7 @@
     }
   },
   "mp_settings": {
-    "WORKERS": 2
+    "WORKERS": 6
   },
   "koefficients": {
     "stepless": 1.0,

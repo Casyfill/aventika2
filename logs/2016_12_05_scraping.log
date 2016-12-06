@@ -1,0 +1,11 @@
+2016-12-05 10:20:33,689 - misc.logger - INFO - 2016_12_05: start logging
+2016-12-05 10:21:48,066 - misc.logger - INFO - 2016_12_05: start logging
+2016-12-05 21:35:32,864 - misc.logger - INFO - 2016_12_05: start logging
+2016-12-05 21:35:34,207 - misc.logger - INFO - loaded 8836 POIs from ../data/real/refined/poi.geojson
+2016-12-05 21:37:40,492 - misc.logger - INFO - 2016_12_05: start logging
+2016-12-05 21:37:41,728 - misc.logger - INFO - loaded 8836 POIs from ../data/real/refined/poi.geojson
+2016-12-05 21:40:21,164 - misc.logger - INFO - 2016_12_05: start logging: PREPARATION
+2016-12-05 21:40:25,562 - misc.logger - INFO - loaded 11870 POIs from ../data/real/poi.geojson
+2016-12-05 21:40:27,988 - misc.logger - INFO - loaded 4779 BUFFs from ../data/real/buffers.geojson
+2016-12-05 21:40:28,610 - misc.logger - INFO - loaded 125 REGIONSs from ../data/real/regions.geojson
+2016-12-05 21:40:30,761 - misc.logger - INFO - Unary_union created

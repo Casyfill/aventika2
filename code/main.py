@@ -18,28 +18,33 @@ def data_preload(settings, mode='refined'):
     logger = settings['logger']
     dpath = settings['data_path']
     # banks_path = dpath + settings['files']['banks']
-    # banks = gp.read_file(banks_path).to_crs(epsg='32637')
+    # banks = gp.read_file(banks_path).to_crs(epsg=32637)
     # logger.info('loaded {n} banks'.format(n=len(banks), p=banks_path))
 
     poi_path = dpath + settings['files'][mode]['poi']
     poi = gp.read_file(
         poi_path)[['geometry', 'score',
-                   'pid', 'disability']].to_crs(epsg='32637')
+                   'pid', 'disability']].to_crs(epsg=32637)
     poi['score'] = poi['score'].astype(float)
     logger.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
 
     buff_path = dpath + settings['files'][mode]['buffers']
     buff = gp.read_file(buff_path).set_index(['type', 'office_id'])
-    buff = buff.sort_index().to_crs(epsg='32637')
+    buff = buff.sort_index().to_crs(epsg=32637)
     buff['priority'] = None
     logger.info('loaded {n} BUFFs from {p}'.format(n=len(buff), p=buff_path))
 
     reg_path = dpath + settings['files'][mode]['regions']
-    reg = gp.read_file(reg_path).to_crs(epsg='32637')
+    reg = gp.read_file(reg_path).to_crs(epsg=32637)
     reg['reg_area'] = reg.area
     reg['disabled'] = reg['disabled'].astype(float)
     logger.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
 
+    #d =  {'init': 'epsg:32637', 'no_defs': True}
+    #poi.crs = d
+    #buff.crs = d
+    #reg.crs = d
+    #print "remember_ CRS pervertion!"
     return poi, buff, reg
 
 
