@@ -22,17 +22,17 @@ def main():
 
     poi = drop_poi(buff, poi, settings)
     with open(r_poi_path, 'w') as f:
-        f.write(poi.to_crs(espg=4326).to_json())
+        f.write(poi.to_crs(epsg=4326).to_json())
 
     buff = _bufferize(buff)
     reg = _bufferize(reg)
 
     with open(r_buff_path, 'w') as f:
-        f.write(buff.to_crs(espg=4326).reset_index().to_json())
+        f.write(buff.to_crs(epsg=4326).reset_index().to_json())
 
     reg_overlay = get_overlay(buff, reg)
     with open(r_reg_path, 'w') as f:
-        f.write(reg_overlay.to_crs(espg=4326).to_json())
+        f.write(reg_overlay.to_crs(epsg=4326).to_json())
 
     print'Done'
 
