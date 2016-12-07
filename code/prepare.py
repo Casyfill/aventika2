@@ -24,8 +24,8 @@ def main():
     with open(r_poi_path, 'w') as f:
         f.write(poi.to_crs(epsg=4326).to_json())
 
-    buff = _bufferize(buff)
-    reg = _bufferize(reg)
+    buff = _bufferize(buff).head(10)
+    reg = _bufferize(reg).head(10)
 
     with open(r_buff_path, 'w') as f:
         f.write(buff.to_crs(epsg=4326).reset_index().to_json())
