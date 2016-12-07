@@ -31,6 +31,7 @@ def main():
         f.write(buff.to_crs(epsg=4326).reset_index().to_json())
 
     reg_overlay = get_overlay(buff, reg)
+    reg_overlay.crs = buff.crs
     with open(r_reg_path, 'w') as f:
         f.write(reg_overlay.to_crs(epsg=4326).to_json())
 
