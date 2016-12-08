@@ -54,7 +54,8 @@ def iterate(buff, poi, reg, filename, settings):
 
             try:
                 buff, poi = update_data(buff, poi, bid, s_pois)
-            except:
+            except Exception as inst:
+                print inst
                 break
 
     return None
