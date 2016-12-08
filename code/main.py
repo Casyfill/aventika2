@@ -36,8 +36,8 @@ def data_preload(settings, mode='refined'):
 
     reg_path = dpath + settings['files'][mode]['regions']
     reg = gp.read_file(reg_path).to_crs(epsg=32637)
-    reg['reg_area'] = reg.area
-    reg['disabled'] = reg['disabled'].astype(float)
+    # reg['reg_area'] = reg.area
+    # reg['disabled'] = reg['disabled'].astype(float)
     logger.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
 
     #d =  {'init': 'epsg:32637', 'no_defs': True}
