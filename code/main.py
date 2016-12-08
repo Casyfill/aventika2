@@ -72,7 +72,7 @@ if __name__ == '__main__':
     settings['logger'].info('{ts}: start logging'.format(ts=timestamp))
 
     poi, buff, reg = data_preload(settings)
-    buff, poi, reg = prepare(buff, poi, reg, settings)
+    # buff, poi, reg = prepare(buff, poi, reg, settings)
 
     iterate(buff, poi, reg,
             filename=result_path,
