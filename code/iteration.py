@@ -87,7 +87,7 @@ def iteration(i, buff, poi, reg, settings):
 
     # get Scores
     poi_score, poi_counted = getPoiScore(buff, poi, settings)
-    reg_score = getRegScore(buff, reg, settings)
+    reg_score = getReg_overlayed(buff, reg, settings)
 
     bid, score = agg_results(poi_score, reg_score, get_max=True)
     print 'BID:', bid

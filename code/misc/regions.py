@@ -25,7 +25,7 @@ def getReg(buff, reg):
     return result
 
 
-def getReg_overlayed(buffs, reg_overlayed):
+def getReg_overlayed(buffs, reg_overlayed, settings):
     '''calculate overlay joint'''
     result = sjoin(buffs.reset_index(),
                    reg_overlayed,
