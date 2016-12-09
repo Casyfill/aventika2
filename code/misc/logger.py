@@ -3,6 +3,7 @@
 
 import logging
 import datetime
+import sys
 # from glob import glob
 # import os
 
@@ -26,6 +27,11 @@ def getLogger():
     console.setFormatter(formatter)
     logger.addHandler(console)
 
+    def exception_handler(type, value, tb):
+    	logger.exception("Uncaught exception: {0}".format(str(value)))
+
+    sys.excepthook = exception_handler
+    
     return logger
 
 

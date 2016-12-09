@@ -1,0 +1,6 @@
+2016-12-06 10:06:44,182 - misc.logger - INFO - 2016_12_06: start logging: PREPARATION
+2016-12-06 10:06:47,927 - misc.logger - INFO - loaded 11870 POIs from ../data/real/poi.geojson
+2016-12-06 10:06:50,172 - misc.logger - INFO - loaded 4779 BUFFs from ../data/real/buffers.geojson
+2016-12-06 10:06:50,729 - misc.logger - INFO - loaded 125 REGIONSs from ../data/real/regions.geojson
+2016-12-06 10:06:52,654 - misc.logger - INFO - Unary_union created
+2016-12-06 10:13:16,034 - misc.logger - INFO - Dropped 3034 pois, as they are out of borders

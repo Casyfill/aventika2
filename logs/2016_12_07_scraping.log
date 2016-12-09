@@ -1,0 +1,13 @@
+2016-12-07 10:25:21,913 - misc.logger - INFO - 2016_12_07: start logging: PREPARATION
+2016-12-07 10:26:45,949 - misc.logger - INFO - 2016_12_07: start logging: PREPARATION
+2016-12-07 10:26:50,184 - misc.logger - INFO - loaded 11870 POIs from ../data/real/poi.geojson
+2016-12-07 10:26:53,511 - misc.logger - INFO - loaded 4779 BUFFs from ../data/real/buffers.geojson
+2016-12-07 10:26:54,400 - misc.logger - INFO - loaded 125 REGIONSs from ../data/real/regions.geojson
+2016-12-07 10:26:57,096 - misc.logger - INFO - Unary_union created
+2016-12-07 10:35:20,480 - misc.logger - INFO - Dropped 3034 pois, as they are out of borders
+2016-12-07 10:51:45,613 - misc.logger - INFO - 2016_12_07: start logging: PREPARATION
+2016-12-07 10:51:50,338 - misc.logger - INFO - loaded 11870 POIs from ../data/real/poi.geojson
+2016-12-07 10:51:53,806 - misc.logger - INFO - loaded 4779 BUFFs from ../data/real/buffers.geojson
+2016-12-07 10:51:54,695 - misc.logger - INFO - loaded 125 REGIONSs from ../data/real/regions.geojson
+2016-12-07 10:51:57,524 - misc.logger - INFO - Unary_union created
+2016-12-07 10:59:08,217 - misc.logger - INFO - Dropped 3034 pois, as they are out of borders

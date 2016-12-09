@@ -1,4 +1,4 @@
-# import geopandas as gp
+import geopandas as gp
 import pandas as pd
 
 idx = pd.IndexSlice

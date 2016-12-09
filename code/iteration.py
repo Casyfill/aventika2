@@ -52,11 +52,9 @@ def iterate(buff, poi, reg, filename, settings):
                 i=cntr, bid=row['office_id'], s=row['score']))
             cntr += 1
 
-            try:
-                buff, poi = update_data(buff, poi, bid, s_pois)
-            except Exception as inst:
-                print inst
-                break
+          
+            buff, poi = update_data(buff, poi, bid, s_pois)
+
 
     return None
 
