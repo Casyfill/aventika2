@@ -15,12 +15,11 @@
     }
   },
   "mp_settings": {
-    "WORKERS": 6
+    "WORKERS": 2
   },
   "koefficients": {
     "stepless": 1.0,
     "foot": 0.8,
-    "car": 0.1,
     "foot_to_step": 0.2
   }
 }
