@@ -38,12 +38,17 @@ def update_buff(buff, bid):
     with open('buff_log.geojson', 'w') as f:
 	   f.write(buff.reset_index(drop=False).to_json())
 
-    slctd_foot = buff.loc[idx['foot', bid], 'geometry']
-    slctd_step = buff.loc[idx['stepless', bid], 'geometry']
+    slct = buff.loc[idx[:,bid],:] # selected Office
     buff = buff[buff.index.get_level_values(1) != bid]
+   
+    if 'foot' in slct.index.get_level_values(0):
+	slctd_foot = buff.loc[idx['foot', bid], 'geometry']
+    
+    if 'stepless' in slct.index.get_level_values(0):
+    	slctd_step = buff.loc[idx['stepless', bid], 'geometry']
 
     # normal reduction
-    if 'foot' in buff.index.get_level_values(0):
+    if 'foot' in buff.index.get_level_values(0) :
         tmp = buff.loc[
             idx['foot', :], 'geometry'].difference(slctd_foot).difference(slctd_step)
 
