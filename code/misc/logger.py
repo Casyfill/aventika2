@@ -30,7 +30,7 @@ def getLogger():
     def exception_handler(type, value, tb):
     	logger.exception("Uncaught exception: {0}".format(str(value)))
 
-    sys.excepthook = exception_handler
+#    sys.excepthook = exception_handler
     
     return logger
 

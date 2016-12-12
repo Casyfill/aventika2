@@ -40,6 +40,9 @@ def update_buff(buff, bid):
     slctd_step = buff.loc[idx['stepless', bid], 'geometry']
     buff = buff[buff.index.get_level_values(1) != bid]
 
+    with open('buffer_log.geojson', 'w') as f:
+        f.write(buff.to_json())
+
     # normal reduction
     if 'foot' in buff.index.get_level_values(0):
         buff.loc[idx['foot', :], 'geometry'] = buff.loc[
@@ -50,11 +53,12 @@ def update_buff(buff, bid):
     if 'stepless' in buff.index.get_level_values(0):
         buff.loc[idx['stepless', :], 'geometry'] = buff.loc[
             idx['stepless', :], 'geometry'].difference(slctd_step)
-
+    
+  
     if 'foot_to_step' in buff.index.get_level_values(0):
         buff.loc[idx['foot_to_step', :], 'geometry'] = buff.loc[
             idx['foot_to_step', :], 'geometry'].difference(slctd_step)
-
+ 
     buff = buff[~buff['geometry'].is_empty]
     buff2 = get_fc(buff, slctd_foot)
 
