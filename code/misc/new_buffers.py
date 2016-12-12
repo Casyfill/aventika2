@@ -35,9 +35,8 @@ def update_buff(buff, bid):
         buff: buffers
         bid(int): id of chosen office
     '''
-    with open('buffer_log.geojson', 'w') as f:
-        f.write(buff.to_json())
-    
+    print buff.head(2)
+
     slctd_foot = buff.loc[idx['foot', bid], 'geometry']
     slctd_step = buff.loc[idx['stepless', bid], 'geometry']
     buff = buff[buff.index.get_level_values(1) != bid]
