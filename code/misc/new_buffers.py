@@ -14,7 +14,7 @@ def get_fc(buff, slctd_foot):
         buff: current buffs
         slctd_step: stepless buffer for selected office
     Returns:
-        buff: buff with new buffers adder
+        buff: buff with new buPffers adder
     '''
     fs = buff.loc[idx['stepless', :], :].copy()
 
@@ -36,36 +36,30 @@ def update_buff(buff, bid):
         bid(int): id of chosen office
     '''
     with open('buff_log.geojson', 'w') as f:
-	   f.write(buff.reset_index(drop=False).to_json())
+        f.write(buff.reset_index(drop=False).to_json())
 
-    slct = buff.loc[idx[:,bid],:] # selected Office
+    slct = buff.loc[idx[:, bid], :]  # selected Office
     buff = buff[buff.index.get_level_values(1) != bid]
-   
-    if 'foot' in slct.index.get_level_values(0):
-	slctd_foot = buff.loc[idx['foot', bid], 'geometry']
-    
-    if 'stepless' in slct.index.get_level_values(0):
-    	slctd_step = buff.loc[idx['stepless', bid], 'geometry']
 
-    # normal reduction
-    if 'foot' in buff.index.get_level_values(0) :
+    if 'foot' in slct.index.get_level_values(0):
+        slctd_foot = buff.loc[idx['foot', bid], 'geometry']
+
         tmp = buff.loc[
             idx['foot', :], 'geometry'].difference(slctd_foot).difference(slctd_step)
 
         buff.loc[idx['foot', :], 'geometry'] = tmp[~tmp.is_empty]
-            
 
-    if 'stepless' in buff.index.get_level_values(0):
-        tmp =  buff.loc[ idx['stepless', :], 'geometry'].difference(slctd_step)
+    if 'stepless' in slct.index.get_level_values(0):
+        slctd_step = buff.loc[idx['stepless', bid], 'geometry']
+        tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
         buff.loc[idx['stepless', :], 'geometry'] = tmp[~tmp.is_empty]
-    
-  
+
     if 'foot_to_step' in buff.index.get_level_values(0):
         tmp = buff.loc[
             idx['foot_to_step', :], 'geometry'].difference(slctd_step)
 
         buff.loc[idx['foot_to_step', :], 'geometry'] = tmp[~tmp.is_empty]
- 
+
     buff = buff[~buff['geometry'].is_empty]
     buff2 = get_fc(buff, slctd_foot)
 
