@@ -64,6 +64,6 @@ def update_buff(buff, bid):
 
     buff = buff[~buff['geometry'].is_empty]
     if slctd_foot:
-    buff = get_fc(buff, slctd_foot)
+        buff = get_fc(buff, slctd_foot)
 
     return buff
