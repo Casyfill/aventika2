@@ -16,14 +16,17 @@ def get_fc(buff, slctd_foot):
     Returns:
         buff: buff with new buPffers adder
     '''
-    fs = buff.loc[idx['stepless', :], :].copy()
+    if slctd_foot is not None:
+        fs = buff.loc[idx['stepless', :], :].copy()
 
-    fs.loc[:, 'geometry'] = fs.loc[:, 'geometry'].intersection(slctd_foot)
-    fs.index = pd.MultiIndex.from_tuples(
-        [('foot_to_step', i) for _, i in fs.index.tolist()])
-    fs = fs[~fs['geometry'].is_empty]
+        fs.loc[:, 'geometry'] = fs.loc[:, 'geometry'].intersection(slctd_foot)
+        fs.index = pd.MultiIndex.from_tuples(
+            [('foot_to_step', i) for _, i in fs.index.tolist()])
+        fs = fs[~fs['geometry'].is_empty]
 
-    return pd.concat([buff, fs]).sort_index()
+        return pd.concat([buff, fs]).sort_index()
+    else:
+        return buff
 
 
 def update_buff(buff, bid):
