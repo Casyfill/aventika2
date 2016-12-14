@@ -16,17 +16,16 @@ def get_fc(buff, slctd_foot):
     Returns:
         buff: buff with new buPffers adder
     '''
-    if slctd_foot is not None:
-        fs = buff.loc[idx['stepless', :], :].copy()
 
-        fs.loc[:, 'geometry'] = fs.loc[:, 'geometry'].intersection(slctd_foot)
-        fs.index = pd.MultiIndex.from_tuples(
-            [('foot_to_step', i) for _, i in fs.index.tolist()])
-        fs = fs[~fs['geometry'].is_empty]
+    fs = buff.loc[idx['stepless', :], :].copy()
+    fs = fs[pd.notnull(fs['geometry'])]
 
-        return pd.concat([buff, fs]).sort_index()
-    else:
-        return buff
+    fs.loc[:, 'geometry'] = fs.loc[:, 'geometry'].intersection(slctd_foot)
+    fs.index = pd.MultiIndex.from_tuples(
+        [('foot_to_step', i) for _, i in fs.index.tolist()])
+    fs = fs[~fs['geometry'].is_empty]
+
+    return pd.concat([buff, fs]).sort_index()
 
 
 def update_buff(buff, bid):
@@ -64,6 +63,7 @@ def update_buff(buff, bid):
         buff.loc[idx['foot_to_step', :], 'geometry'] = tmp[~tmp.is_empty]
 
     buff = buff[~buff['geometry'].is_empty]
-    buff2 = get_fc(buff, slctd_foot)
+    if slctd_foot:
+    buff = get_fc(buff, slctd_foot)
 
-    return buff2
+    return buff
