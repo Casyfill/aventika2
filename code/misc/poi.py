@@ -42,6 +42,8 @@ def getPOI(buff, poi, settings):
             poi_chunks = chunker_eq(poi, WORKERS)
             print 'lalala2'
             results = POOL.map(partial_joiner, poi_chunks)
+            print 'lalala3'
+            print results
             x = pd.concat(results)
 
         except Exception as inst:
