@@ -30,7 +30,8 @@ def getPOI(buff, poi, settings):
     WORKERS = settings['mp_settings']['WORKERS']
     global POOL  # global pull of processes
     buff = buff.reset_index()
-
+    buff = buff[pd.notnull(buff['geometry'])]
+    buff = buff[~buff.geometry.is_empty]
     partial_joiner = partial(joiner, buff=buff)
 
     if WORKERS > 1:
@@ -42,8 +43,7 @@ def getPOI(buff, poi, settings):
             poi_chunks = chunker_eq(poi, WORKERS)
             print 'lalala2'
             results = POOL.map(partial_joiner, poi_chunks)
-            print 'lalala3'
-            print results
+
             x = pd.concat(results)
 
         except Exception as inst:
