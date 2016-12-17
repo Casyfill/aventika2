@@ -48,6 +48,7 @@ def getPOI(buff, poi, settings):
             x = pd.concat(results)
 
         except Exception as inst:
+            print buff
             POOL.close()
             POOL.join()
             raise Exception(inst)
