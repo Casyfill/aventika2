@@ -32,6 +32,7 @@ def getPOI(buff, poi, settings):
     buff = buff.reset_index()
     buff = buff[pd.notnull(buff['geometry'])]
     buff = buff[~buff.geometry.is_empty]
+    poi = poi[pd.notnull(poi['geometry'])]
     partial_joiner = partial(joiner, buff=buff)
 
     if WORKERS > 1:

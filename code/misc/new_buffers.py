@@ -19,7 +19,6 @@ def get_fc(buff, slctd_foot):
 
     fs = buff.loc[idx['stepless', :], :].copy()
     fs = fs[pd.notnull(fs['geometry'])]
-    poi = poi[pd.notnull(poi['geometry'])]
 
     fs.loc[:, 'geometry'] = fs.loc[:, 'geometry'].intersection(slctd_foot)
     fs.index = pd.MultiIndex.from_tuples(
