@@ -12,6 +12,8 @@ POOL = None
 
 
 def joiner(poi, buff):
+    buff = buff[pd.notnull(buff['geometry'])]
+    buff = buff[~buff.geometry.is_empty]
     return sjoin(buff, poi, how='inner', op='contains')
 
 
@@ -30,9 +32,7 @@ def getPOI(buff, poi, settings):
     WORKERS = settings['mp_settings']['WORKERS']
     global POOL  # global pull of processes
     buff = buff.reset_index()
-    buff = buff[pd.notnull(buff['geometry'])]
-    buff = buff[~buff.geometry.is_empty]
-    poi = poi[pd.notnull(poi['geometry'])]
+    
     partial_joiner = partial(joiner, buff=buff)
 
     if WORKERS > 1:
