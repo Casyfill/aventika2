@@ -37,9 +37,8 @@ def getPOI(buff, poi, settings):
             if POOL is None:
                 POOL = mp.Pool(processes=WORKERS)
                 settings['logger'].info('   Pool:{} workers'.format(WORKERS))
-            print 'lalala1'
+            
             poi_chunks = chunker_eq(poi, WORKERS)
-            print 'lalala2'
             results = POOL.map(partial_joiner, poi_chunks)
 
             x = pd.concat(results)

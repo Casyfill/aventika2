@@ -37,8 +37,8 @@ def update_buff(buff, bid):
         buff: buffers
         bid(int): id of chosen office
     '''
-    with open('buff_log.geojson', 'w') as f:
-        f.write(buff.reset_index(drop=False).to_json())
+    buff = buff[pd.notnull(buff['geometry'])]
+    buff = buff[~buff.geometry.is_empty]
 
     slct = buff.loc[idx[:, bid], :]  # selected Office
     buff = buff[buff.index.get_level_values(1) != bid]
