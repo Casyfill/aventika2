@@ -49,18 +49,18 @@ def update_buff(buff, bid):
         tmp = buff.loc[
             idx['foot', :], 'geometry'].difference(slctd_foot)
 
-        buff.loc[idx['foot', :], 'geometry'] = tmp[~tmp.is_empty]
+        buff.loc[idx['foot', :], 'geometry'] = tmp
 
     if 'stepless' in slct.index.get_level_values(0):
         slctd_step = slct.loc[idx['stepless', bid], 'geometry']
         tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
-        buff.loc[idx['stepless', :], 'geometry'] = tmp[~tmp.is_empty]
+        buff.loc[idx['stepless', :], 'geometry'] = tmp
 
     if 'foot_to_step' in buff.index.get_level_values(0) and slctd_step:
         tmp = buff.loc[
             idx['foot_to_step', :], 'geometry'].difference(slctd_step)
 
-        buff.loc[idx['foot_to_step', :], 'geometry'] = tmp[~tmp.is_empty]
+        buff.loc[idx['foot_to_step', :], 'geometry'] = tmp
 
     buff = buff[~buff['geometry'].is_empty]
     if slctd_foot:
