@@ -6,14 +6,11 @@ import multiprocessing as mp
 from functools import partial
 from misc import chunker_eq
 from geopandas.tools import sjoin
-
 idx = pd.IndexSlice
 POOL = None
 
 
 def joiner(poi, buff):
-    buff = buff[pd.notnull(buff['geometry'])]
-    buff = buff[~buff.geometry.is_empty]
     return sjoin(buff, poi, how='inner', op='contains')
 
 

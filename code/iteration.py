@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pandas as pd
+import cPickle
 # import geopandas as gp
 import math
 # from shapely.ops import cascaded_union
@@ -52,8 +53,11 @@ def iterate(buff, poi, reg, filename, settings):
                 i=cntr, bid=row['office_id'], s=row['score']))
             cntr += 1
 
-          
+           
             buff, poi = update_data(buff, poi, bid, s_pois)
+            with open('../data/dumps/dump.pkl', 'wb') as f:
+                cPickle.dump({'buff':buff, 'poi':poi}, f)
+
 
 
     return None
@@ -85,6 +89,9 @@ def iteration(i, buff, poi, reg, settings):
         return None, None, None, [], []
 
     # get Scores
+    buff = buff[pd.notnull(buff['geometry'])]
+    buff = buff[~buff.geometry.is_empty]
+
     poi_score, poi_counted = getPoiScore(buff, poi, settings)
     reg_score = getReg_overlayed(buff, reg, settings)
 
