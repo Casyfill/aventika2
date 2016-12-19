@@ -46,7 +46,7 @@ def update_buff(buff, bid):
     if 'foot' in slct.index.get_level_values(0):
         slctd_foot = slct.loc[idx['foot', bid], 'geometry']
         print type(slctd_foot)
-        if type(slctd_foot) == 'pd.Series':
+        if not isinstance(slctd_foot, shapely.geometry.polygon.Polygon):
             slctd_foot = slctd_foot.iloc[0]
         tmp = buff.loc[
             idx['foot', :], 'geometry'].difference(slctd_foot)
@@ -56,7 +56,7 @@ def update_buff(buff, bid):
     if 'stepless' in slct.index.get_level_values(0):
         slctd_step = slct.loc[idx['stepless', bid], 'geometry']
         print type(slctd_step)
-        if type(slctd_step) == 'pd.Series':
+        if not isinstance(slctd_step, shapely.geometry.polygon.Polygon):
             slctd_step = slctd_step.iloc[0]
         tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
         buff.loc[idx['stepless', :], 'geometry'] = tmp
