@@ -2,7 +2,7 @@ import geopandas as gp
 import pandas as pd
 
 idx = pd.IndexSlice
-from shapely.geometry.polygon import Polygon
+# from shapely.geometry.polygon import Polygon
 
 def get_fc(buff, slctd_foot):
     '''adds a third type of buffer
@@ -46,7 +46,7 @@ def update_buff(buff, bid):
     if 'foot' in slct.index.get_level_values(0):
         slctd_foot = slct.loc[idx['foot', bid], 'geometry']
         # print type(slctd_foot)
-        if not isinstance(slctd_foot, Polygon):
+        if isinstance(slctd_foot, gp.geoseries.GeoSeries):
             slctd_foot = slctd_foot.iloc[0]
         tmp = buff.loc[
             idx['foot', :], 'geometry'].difference(slctd_foot)
@@ -56,7 +56,7 @@ def update_buff(buff, bid):
     if 'stepless' in slct.index.get_level_values(0):
         slctd_step = slct.loc[idx['stepless', bid], 'geometry']
         # print type(slctd_step)
-        if not isinstance(slctd_step, Polygon):
+        if isinstance(slctd_step, gp.geoseries.GeoSeries):
             slctd_step = slctd_step.iloc[0]
         tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
         buff.loc[idx['stepless', :], 'geometry'] = tmp
