@@ -44,7 +44,7 @@ def update_buff(buff, bid):
     buff = buff[buff.index.get_level_values(1) != bid]
 
     if 'foot' in slct.index.get_level_values(0):
-        slctd_foot = slct.loc[idx['foot', bid], 'geometry'].iloc[0]
+        slctd_foot = slct.loc[idx['foot', bid], 'geometry']
         print type(slctd_foot)
         if type(slctd_foot) == 'pd.Series':
             slctd_foot = slctd_foot.iloc[0]
