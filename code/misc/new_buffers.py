@@ -45,14 +45,19 @@ def update_buff(buff, bid):
 
     if 'foot' in slct.index.get_level_values(0):
         slctd_foot = slct.loc[idx['foot', bid], 'geometry'].iloc[0]
-
+        print type(slctd_foot)
+        if type(slctd_foot) == 'pd.Series':
+            slctd_foot = slctd_foot.iloc[0]
         tmp = buff.loc[
             idx['foot', :], 'geometry'].difference(slctd_foot)
 
         buff.loc[idx['foot', :], 'geometry'] = tmp
 
     if 'stepless' in slct.index.get_level_values(0):
-        slctd_step = slct.loc[idx['stepless', bid], 'geometry'].iloc[0]
+        slctd_step = slct.loc[idx['stepless', bid], 'geometry']
+        print type(slctd_step)
+        if type(slctd_step) == 'pd.Series':
+            slctd_step = slctd_step.iloc[0]
         tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
         buff.loc[idx['stepless', :], 'geometry'] = tmp
 
