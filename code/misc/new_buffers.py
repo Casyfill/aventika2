@@ -4,6 +4,14 @@ import pandas as pd
 idx = pd.IndexSlice
 # from shapely.geometry.polygon import Polygon
 
+def shyReduction(x, y):
+    '''tryies to substract, drop if failed'''
+    try:
+        return unary_union(x['geometry']).difference(unary_union(y))
+    except Exception as inst:
+        logger.info('buffer {bid}: Dropped because of error: {inst}'.format(bid=x.name[1], inst=inst))
+        return None
+
 def get_fc(buff, slctd_foot):
     '''adds a third type of buffer
     one where foot distance is already covered,
@@ -39,7 +47,7 @@ def update_buff(buff, bid):
     '''
     buff = buff[pd.notnull(buff['geometry'])]
     buff = buff[~buff.geometry.is_empty]
-    buff = buff[buff.area >= 1800] ## remove bad ones
+    buff = buff[buff.area >= 5000] ## remove small ones
 
     slct = buff.loc[idx[:, bid], :]  # selected Office
     buff = buff[buff.index.get_level_values(1) != bid]

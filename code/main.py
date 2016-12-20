@@ -4,7 +4,7 @@ from datetime import datetime
 import json
 from misc.logger import getLogger
 from misc.preparation import prepare
-
+import sys
 __appname__ = "AVENTIKA_PRIORITY"
 __author__ = "Phipipp Kats (casyfill)"
 __version__ = "0.9.7.01 testing"
@@ -12,7 +12,7 @@ __version__ = "0.9.7.01 testing"
 LIMIT = None  # manual execution bound
 
 
-def data_preload(settings, mode='refined'):
+def data_preload(settings, mode='refined', flag=False):
     '''data preloader
     '''
     logger = settings['logger']
@@ -20,6 +20,16 @@ def data_preload(settings, mode='refined'):
     # banks_path = dpath + settings['files']['banks']
     # banks = gp.read_file(banks_path).to_crs(epsg=32637)
     # logger.info('loaded {n} banks'.format(n=len(banks), p=banks_path))
+    if flag:
+        with open('../data/dumps/dumpq.pkl', 'r') as f:
+            datum = cPickle.load(f)
+        poi = datum['poi']
+        buff = datum['buff']
+
+        reg_path = dpath + settings['files'][mode]['regions']
+        reg = gp.read_file(reg_path).to_crs(epsg=32637)
+        logger.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
+        return poi, buff, reg
 
     poi_path = dpath + settings['files'][mode]['poi']
     poi = gp.read_file(
@@ -60,9 +70,10 @@ def getSettings():
 
 
 if __name__ == '__main__':
-
+    flag = sys.argv[1] == 'pkl' # if get data from pickle
     settings = getSettings()
     start = datetime.now()  # start of the calculations
+
 
     settings['limit'] = LIMIT
     settings['logger'] = getLogger()
@@ -71,7 +82,7 @@ if __name__ == '__main__':
     timestamp = start.strftime('%Y_%m_%d')
     settings['logger'].info('{ts}: start logging'.format(ts=timestamp))
 
-    poi, buff, reg = data_preload(settings)
+    poi, buff, reg = data_preload(settings, flag)
     # buff, poi, reg = prepare(buff, poi, reg, settings)
 
     iterate(buff, poi, reg,
