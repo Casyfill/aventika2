@@ -53,12 +53,13 @@ def iterate(buff, poi, reg, filename, settings):
                 i=cntr, bid=row['office_id'], s=row['score']))
             cntr += 1
 
-           
             buff, poi = update_data(buff, poi, bid, s_pois)
-            with open('../data/dumps/dump.pkl', 'wb') as f:
-                cPickle.dump({'buff':buff, 'poi':poi}, f)
 
-
+            try:
+                with open('../data/dumps/dump.pkl', 'wb') as f:
+                    cPickle.dump({'buff': buff, 'poi': poi}, f)
+            except Exception as inst:
+                logger.info(inst)
 
     return None
 
@@ -125,7 +126,6 @@ def iteration(i, buff, poi, reg, settings):
         r_score = None
 
     logger.info(priority_string.format(i, bid, score))
-
 
     return bid, score, r_score, foot_pois, stepless_pois
 
