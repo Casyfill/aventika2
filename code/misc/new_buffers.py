@@ -45,6 +45,9 @@ def update_buff(buff, bid):
         buff: buffers
         bid(int): id of chosen office
     '''
+    slctd_step = None
+    slctd_foot = None
+
     buff = buff[pd.notnull(buff['geometry'])]
     buff = buff[~buff.geometry.is_empty]
     buff = buff[buff.area >= 5000] ## remove small ones
