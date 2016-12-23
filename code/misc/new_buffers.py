@@ -70,7 +70,7 @@ def update_buff(buff, bid):
         tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
         buff.loc[idx['stepless', :], 'geometry'] = tmp
 
-    if all([x in buff.index.get_level_values(0) for x in ('foot_to_step', 'stepless')]):
+    if all([x in buff.index.get_level_values(0) for x in ('foot_to_step', 'stepless')]) and slctd_step:
         tmp = buff.loc[
             idx['foot_to_step', :], 'geometry'].difference(slctd_step)
 
