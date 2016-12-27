@@ -40,6 +40,7 @@ def iterate(buff, poi, reg, filename, settings):
                                                           reg, settings)
 
         # update information
+<<<<<<< HEAD
         
         row = {'priority': cntr,
                'office_id': bid,
@@ -129,7 +130,6 @@ def iteration(i, buff, poi, reg, settings):
         r_score = None
 
     LOGGER.info(priority_string.format(i, bid, score))
-
 
     return bid, score, r_score, foot_pois, stepless_pois
 
