@@ -75,7 +75,8 @@ if __name__ == '__main__':
 
     settings['limit'] = LIMIT
     
-    result_path = datetime.now().strftime(start.strftime(settings['results']))
+    path = os.getcwd().replace('/code' , '') + settings['results']
+    result_path = datetime.now().strftime(start.strftime(path))
 
     timestamp = start.strftime('%Y_%m_%d')
     LOGGER.info('{ts}: start logging'.format(ts=timestamp))
