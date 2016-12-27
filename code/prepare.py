@@ -2,16 +2,17 @@ from main import data_preload, getSettings
 from misc.preparation import drop_poi, _bufferize, get_overlay
 from misc.logger import getLogger
 from datetime import datetime
+import logging
+LOGGER = logging.getLogger('root')
 
 
 def main():
     settings = getSettings()
     start = datetime.now()  # start of the calculations
 
-    settings['logger'] = getLogger()
 
     timestamp = start.strftime('%Y_%m_%d')
-    settings['logger'].info(
+    LOGGER.info(
         '{ts}: start logging: PREPARATION'.format(ts=timestamp))
 
     r_poi_path = settings['data_path'] + settings['files']['refined']['poi']

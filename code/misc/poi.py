@@ -6,8 +6,10 @@ import multiprocessing as mp
 from functools import partial
 from misc import chunker_eq
 from geopandas.tools import sjoin
+import logging
 idx = pd.IndexSlice
 POOL = None
+LOGGER = logging.getLogger('root')
 
 
 def joiner(poi, buff):
@@ -36,7 +38,7 @@ def getPOI(buff, poi, settings):
         try:
             if POOL is None:
                 POOL = mp.Pool(processes=WORKERS)
-                settings['logger'].info('   Pool:{} workers'.format(WORKERS))
+                LOGGER.info('   Pool:{} workers'.format(WORKERS))
             
             poi_chunks = chunker_eq(poi, WORKERS)
             results = POOL.map(partial_joiner, poi_chunks)
@@ -52,7 +54,7 @@ def getPOI(buff, poi, settings):
     else:
         x = joiner(poi, buff)
 
-    return x[pd.notnull(x['score'])]
+    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid']]
 
 
 def adjustScore(poi, settings, mode='poi'):
@@ -62,6 +64,7 @@ def adjustScore(poi, settings, mode='poi'):
     Return:
         adjusted poi results
     '''
+
     key = {'poi':'pid', 'reg':'reg_id'}[mode]
     log_string = '{p}: koefficient {k} applied'
     kf = settings['koefficients']
@@ -70,7 +73,7 @@ def adjustScore(poi, settings, mode='poi'):
     for tp in kf.keys():
         poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
         pois = poic.loc[poi['type'] == tp, key].tolist()
-        settings['logger'].info(log_string.format(p=pois, k=kf[tp]))
+        LOGGER.info(log_string.format(p=pois, k=kf[tp]))
 
     return poic
 

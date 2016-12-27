@@ -4,6 +4,8 @@ from poi import adjustScore
 import geopandas as gp
 from geopandas.tools import sjoin
 import pandas as pd
+import logging
+LOGGER = logging.getLogger('root')
 
 
 def getReg(buff, reg):

@@ -1,5 +1,7 @@
 import geopandas as gp
 import pandas as pd
+import logging
+LOGGER = logging.getLogger('root')
 
 idx = pd.IndexSlice
 # from shapely.geometry.polygon import Polygon
@@ -9,11 +11,11 @@ def shyReduction(x, y):
     try:
         return unary_union(x['geometry']).difference(unary_union(y))
     except Exception as inst:
-        logger.info('buffer {bid}: Dropped because of error: {inst}'.format(bid=x.name[1], inst=inst))
+        LOGGER.info('buffer {bid}: Dropped because of error: {inst}'.format(bid=x.name[1], inst=inst))
         return None
 
 
-def get_fc(buff, slctd_foot, logger):
+def get_fc(buff, slctd_foot):
     '''adds a third type of buffer
     one where foot distance is already covered,
     but stepless is not. pois and regions here
@@ -35,7 +37,7 @@ def get_fc(buff, slctd_foot, logger):
             [('foot_to_step', i) for _, i in fs.index.tolist()])
         fs = fs[~fs['geometry'].is_empty]
         if not fs.empty:
-            logger.info('defined foot-too-step')
+            LOGGER.info('defined foot-too-step')
             return pd.concat([buff, fs]).sort_index()
     return buff
 

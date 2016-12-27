@@ -17,7 +17,7 @@ class TestAggregateMethods(unittest.TestCase):
         r = None
         self.assertEqual(agg_results(p, r), (3,4))
 
-    def test_aggregate3_pNone(self):
+    def test_aggregate_pNone(self):
         from code.iteration import agg_results
 
         p = None

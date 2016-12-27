@@ -10,3 +10,91 @@
 2016-12-27 12:07:00,640 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
 2016-12-27 12:07:00,704 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
 2016-12-27 12:07:00,739 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:24:27,880 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 13:24:27,922 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 13:24:27,935 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:25:10,580 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-27 13:26:31,747 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:27:43,305 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:29:52,122 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:29:52,143 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 13:29:52,164 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 13:29:52,173 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:29:52,173 - misc.logger - INFO - Started iteration
+2016-12-27 13:29:52,174 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-27 13:29:52,200 - misc.logger - INFO -    Pool:2 workers
+2016-12-27 13:30:42,098 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:30:42,106 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 13:30:42,129 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 13:30:42,144 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:30:42,145 - misc.logger - INFO - Started iteration
+2016-12-27 13:30:42,145 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-27 13:30:42,164 - misc.logger - INFO -    Pool:2 workers
+2016-12-27 13:30:50,611 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:30:50,621 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 13:30:50,643 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 13:30:50,654 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:30:50,654 - misc.logger - INFO - Started iteration
+2016-12-27 13:30:50,654 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-27 13:30:50,670 - misc.logger - INFO -    Pool:2 workers
+2016-12-27 13:30:50,748 - misc.logger - INFO - [3, 3, 2, 2, 4, 5, 5, 5, 1]: koefficient 0.8 applied
+2016-12-27 13:30:50,752 - misc.logger - INFO - [1]: koefficient 1.0 applied
+2016-12-27 13:30:50,757 - misc.logger - INFO - []: koefficient 0.2 applied
+2016-12-27 13:30:50,825 - misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-27 13:30:50,826 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 4481.94655969
+2016-12-27 13:37:44,534 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:38:12,498 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:38:49,885 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:39:44,293 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:41:42,093 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:42:01,656 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:42:36,346 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:43:06,064 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:43:21,051 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:45:03,425 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:46:38,442 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:47:16,627 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:47:53,380 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:48:23,160 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:49:16,715 - misc.logger - INFO - 2016_12_27: start logging
+2016-12-27 13:51:08,405 - root - INFO - 2016_12_27: start logging
+2016-12-27 13:51:08,468 - root - INFO - Started iteration
+2016-12-27 13:51:08,468 - root - INFO - 1: Pois at the start of the loop: 5
+2016-12-27 13:51:08,488 - root - INFO -    Pool:2 workers
+2016-12-27 13:51:08,570 - root - INFO - [3, 3, 2, 2, 4, 5, 5, 5, 1]: koefficient 0.8 applied
+2016-12-27 13:51:08,575 - root - INFO - [1]: koefficient 1.0 applied
+2016-12-27 13:51:08,578 - root - INFO - []: koefficient 0.2 applied
+2016-12-27 13:51:08,667 - root - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-27 13:51:08,668 - root - INFO - 1: row stored, results: office_id:3 |score: 4481.94655969
+2016-12-27 13:51:08,756 - root - INFO - defined foot-too-step
+2016-12-27 13:51:08,765 - root - INFO - 2: Pois at the start of the loop: 5
+2016-12-27 13:51:08,813 - root - INFO - []: koefficient 0.8 applied
+2016-12-27 13:51:08,818 - root - INFO - [1]: koefficient 1.0 applied
+2016-12-27 13:51:08,822 - root - INFO - [1]: koefficient 0.2 applied
+2016-12-27 13:51:08,874 - root - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-27 13:51:08,875 - root - INFO - 2: row stored, results: office_id:1 |score: 2553.44381969
+2016-12-27 13:51:08,934 - root - INFO - 3: Pois at the start of the loop: 4
+2016-12-27 13:51:08,974 - root - INFO - []: koefficient 0.8 applied
+2016-12-27 13:51:08,977 - root - INFO - []: koefficient 1.0 applied
+2016-12-27 13:51:08,982 - root - INFO - []: koefficient 0.2 applied
+2016-12-27 13:51:09,034 - root - INFO - Priority 3: bank office 2, score: 1846.18145847
+2016-12-27 13:51:09,035 - root - INFO - 3: row stored, results: office_id:2 |score: 1846.18145847
+2016-12-27 13:52:32,362 - root - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 13:52:32,362 - root - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 13:52:32,393 - root - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 13:52:32,393 - root - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 13:52:32,410 - root - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:52:32,410 - root - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:52:32,540 - root - INFO -    Pool:2 workers
+2016-12-27 13:52:32,540 - root - INFO -    Pool:2 workers
+2016-12-27 13:52:47,319 - root - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 13:52:47,319 - root - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 13:52:47,413 - root - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 13:52:47,413 - root - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 13:52:47,435 - root - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:52:47,435 - root - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 13:53:07,471 - root - INFO -    Pool:2 workers
+2016-12-27 13:55:56,990 - root - INFO -    Pool:2 workers
+2016-12-27 13:56:07,722 - root - INFO - [3, 3, 2, 2, 4, 5, 5, 5, 1]: koefficient 0.8 applied
+2016-12-27 13:56:07,729 - root - INFO - [1]: koefficient 1.0 applied
+2016-12-27 13:56:07,734 - root - INFO - []: koefficient 0.2 applied

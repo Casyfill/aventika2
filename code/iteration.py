@@ -8,6 +8,8 @@ import math
 import csv
 from misc import *
 from misc.logger import log_row_string, log_pois_string
+import logging
+LOGGER = logging.getLogger('root')
 
 idx = pd.IndexSlice
 BANKS = []
@@ -20,18 +22,19 @@ def iterate(buff, poi, reg, filename, settings):
     '''traverse through banks
     '''
     cntr = 1  # iteration counter
+    global LOGGER
 
     # buffers of newly adopted offices will be added here iteratively
     bound = settings['limit']
-    logger = settings['logger']
-    logger.info('Started iteration')
+    
+    LOGGER.info('Started iteration')
 
     while True:
         if bound is not None:  # check if we're over the LIMIT
             if cntr > bound:
                 break
 
-        logger.info(log_pois_string.format(i=cntr, n=len(poi)))
+        LOGGER.info(log_pois_string.format(i=cntr, n=len(poi)))
 
         bid, score, reg_score, f_pois, s_pois = iteration(cntr, buff, poi,
                                                           reg, settings)
@@ -47,7 +50,7 @@ def iterate(buff, poi, reg, filename, settings):
                }
 
         writerow(row, filename, cntr < 2)
-        logger.info(log_row_string.format(
+        LOGGER.info(log_row_string.format(
             i=cntr, bid=row['office_id'], s=row['score']))
         cntr += 1
         
@@ -83,10 +86,10 @@ def iteration(i, buff, poi, reg, settings):
     # print 'Iteration N{}. banks left:{}'.format(i,
     # sum(pd.isnull(buff['priority']))/3)
 
-    logger = settings['logger']
+    
 
     if sum(pd.isnull(buff['priority'])) == 0:
-        logger.info('none unassigned banks, Iteration complete')
+        LOGGER.info('none unassigned banks, Iteration complete')
         return None, None, None, [], []
 
     # get Scores
@@ -96,13 +99,13 @@ def iteration(i, buff, poi, reg, settings):
     poi_score, poi_counted = getPoiScore(buff, poi, settings)
     reg_score = getReg_overlayed(buff, reg, settings)
     # print reg_score
-    bid, score = agg_results(poi_score, reg_score, logger, get_max=True)
+    bid, score = agg_results(poi_score, reg_score, get_max=True)
     # print 'BID:', bid
     if bid is None or math.isnan(bid):
         if len(buff.index.get_level_values(1).unique()) == 1:
             return buff.index.get_level_values(1).tolist()[0], None, None, [], []
         else:
-            logger.info('Iteration complete, none unassigned banks')
+            LOGGER.info('Iteration complete, none unassigned banks')
             return None, None, None, [], []
 
     try:
@@ -125,29 +128,27 @@ def iteration(i, buff, poi, reg, settings):
     except:
         r_score = None
 
-    logger.info(priority_string.format(i, bid, score))
+    LOGGER.info(priority_string.format(i, bid, score))
 
 
     return bid, score, r_score, foot_pois, stepless_pois
 
 
 # Aggregation
-def agg_results(p=None, r=None, logger=None, get_max=True):
+def agg_results(p=None, r=None, get_max=True):
     '''summs results from POI and regions'''
     if (p is None and r is None):
         raise IOError('No information at all')
     if p is None :
-        if logger:
-            logger.info('no poi score')
+        LOGGER.info('no poi score')
         result = r
     elif r is None:
-        if logger:
-            logger.info('no regions score')
+        LOGGER.info('no regions score')
         result = p
     else:
         tmp = pd.DataFrame({'reg_score':r['score'],
                             'poi_score':p['score']})
-        
+
         if tmp.empty:
             raise IOError('No information at all')
         tmp['score'] = tmp.sum(1)
