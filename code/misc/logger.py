@@ -16,10 +16,11 @@ def getLogger():
     logger.setLevel(logging.INFO)
 
     path = os.getcwd()
-    path = path.replace('code/', '')
+    
 
     date = datetime.datetime.now().strftime('%Y_%m_%d__%H:%M')
-    handler = logging.FileHandler(path + '/logs/%s_scraping.log' % date)
+    path = path.replace('/code', '/logs/%s_scraping.log' % date)
+    handler = logging.FileHandler(path)
     handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter(
