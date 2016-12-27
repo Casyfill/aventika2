@@ -25,6 +25,7 @@ def main():
         f.write(poi.to_crs(epsg=4326).to_json())
 
     buff = _bufferize(buff)
+    reg['reg_area']  = reg.area
     reg = _bufferize(reg)
 
     with open(r_buff_path, 'w') as f:

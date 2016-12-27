@@ -76,7 +76,7 @@ def adjustScore(poi, settings, mode='poi'):
     return poic
 
 
-def get_aqured_pois(pois):
+def get_aquired_pois(pois):
     '''gets two types of pois,
     depending of "aquisition" buffer'''
     stepless_poi = pois[pois['type'] == 'stepless'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
@@ -105,5 +105,5 @@ def getPoiScore(buff, poi, settings):
 
     # .sort_values('SCORE', ascending=False)
     result_score = x.groupby('office_id').agg({'score': 'sum'})
-    result_poi = get_aqured_pois(x)
+    result_poi = get_aquired_pois(x)
     return result_score, result_poi

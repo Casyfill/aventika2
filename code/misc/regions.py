@@ -30,7 +30,8 @@ def getReg_overlayed(buffs, reg_overlayed, settings):
     result = sjoin(buffs.reset_index(),
                    reg_overlayed,
                    how='left', op='contains')
-    return result
+
+    return result[['office_id', 'score']].groupby('office_id').sum()
 
 
 def getRegScore(buffs, reg, settings):

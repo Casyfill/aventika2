@@ -48,9 +48,9 @@ def data_preload(settings, mode='refined'):
     return poi, buff, reg
 
 
-def getSettings():
+def getSettings(path='../settings.json'):
     try:
-        with open('../settings.json') as f:
+        with open(path) as f:
             settings = json.load(f)
     except Exception as inst:
         print 'Failed to read settings, check the file'
@@ -78,3 +78,4 @@ if __name__ == '__main__':
     iterate(buff, poi, reg,
             filename=result_path,
             settings=settings)
+    print 'Done!'

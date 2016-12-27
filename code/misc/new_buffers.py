@@ -45,15 +45,19 @@ def update_buff(buff, bid):
         buff: buffers
         bid(int): id of chosen office
     '''
+    # print buff, bid?
     slctd_step = None
     slctd_foot = None
 
     buff = buff[pd.notnull(buff['geometry'])]
     buff = buff[~buff.geometry.is_empty]
-    buff = buff[buff.area >= 5000] ## remove small ones
+    # buff = buff[buff.area >= 5000] ## remove small ones
 
     slct = buff.loc[idx[:, bid], :]  # selected Office
     buff = buff[buff.index.get_level_values(1) != bid]
+
+    if buff.empty:
+        return None
 
     if 'foot' in slct.index.get_level_values(0):
         slctd_foot = slct.loc[idx['foot', bid], 'geometry']
