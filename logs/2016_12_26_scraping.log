@@ -1,0 +1,501 @@
+2016-12-26 21:21:47,418 - misc.logger - INFO - 2016_12_26: start logging: PREPARATION
+2016-12-26 21:22:39,377 - misc.logger - INFO - 2016_12_26: start logging: PREPARATION
+2016-12-26 21:22:39,429 - misc.logger - INFO - loaded 5 POIs from ../data/test/raw/poi.geojson
+2016-12-26 21:22:39,460 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/raw/buffers.geojson
+2016-12-26 21:22:39,463 - misc.logger - INFO - loaded 3 REGIONSs from ../data/test/raw/regions.geojson
+2016-12-26 21:22:39,475 - misc.logger - INFO - Unary_union created
+2016-12-26 21:22:39,478 - misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-12-26 21:26:47,953 - misc.logger - INFO - 2016_12_26: start logging: PREPARATION
+2016-12-26 21:26:47,965 - misc.logger - INFO - loaded 5 POIs from ../data/test/raw/poi.geojson
+2016-12-26 21:26:47,991 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/raw/buffers.geojson
+2016-12-26 21:26:48,002 - misc.logger - INFO - loaded 3 REGIONSs from ../data/test/raw/regions.geojson
+2016-12-26 21:26:48,016 - misc.logger - INFO - Unary_union created
+2016-12-26 21:26:48,019 - misc.logger - INFO - Dropped 0 pois, as they are out of borders
+2016-12-26 21:27:29,315 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:27:29,322 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:27:29,338 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:27:29,346 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:27:29,346 - misc.logger - INFO - Started iteration
+2016-12-26 21:27:29,346 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:27:29,364 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:27:29,473 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:27:29,481 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:27:29,571 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:27:29,670 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:27:29,672 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:27:29,725 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:27:29,811 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:34:28,095 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:34:28,104 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:34:28,123 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:34:28,136 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:34:28,136 - misc.logger - INFO - Started iteration
+2016-12-26 21:34:28,136 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:34:28,151 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:34:28,253 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:34:40,074 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:34:40,080 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:34:40,100 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:34:40,112 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:34:40,112 - misc.logger - INFO - Started iteration
+2016-12-26 21:34:40,112 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:34:40,129 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:34:40,239 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:36:00,073 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:36:00,088 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:36:00,129 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:36:00,156 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:36:00,156 - misc.logger - INFO - Started iteration
+2016-12-26 21:36:00,156 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:36:00,217 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:36:00,426 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:36:00,433 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:36:00,524 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:36:00,661 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:36:00,666 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:36:00,752 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:36:00,877 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:38:16,514 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:38:16,521 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:38:16,540 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:38:16,553 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:38:16,553 - misc.logger - INFO - Started iteration
+2016-12-26 21:38:16,554 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:38:16,570 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:38:16,687 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:38:16,692 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:38:16,762 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:38:16,848 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:38:16,850 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:38:16,920 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:38:16,996 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:39:21,247 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:39:21,254 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:39:21,273 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:39:21,288 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:39:21,288 - misc.logger - INFO - Started iteration
+2016-12-26 21:39:21,289 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:39:21,310 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:39:21,423 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:39:21,427 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:39:21,502 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:39:21,587 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:39:21,590 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:39:21,660 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:39:21,741 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:41:54,807 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:41:54,817 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:41:54,836 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:41:54,849 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:41:54,850 - misc.logger - INFO - Started iteration
+2016-12-26 21:41:54,850 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:41:54,864 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:41:54,977 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:41:54,982 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:41:55,052 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:41:55,132 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:41:55,135 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:41:55,190 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:41:55,269 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:42:32,807 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:42:32,814 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:42:32,839 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:42:32,849 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:42:32,849 - misc.logger - INFO - Started iteration
+2016-12-26 21:42:32,849 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:42:32,863 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:42:32,959 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:42:32,963 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:42:33,041 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:42:33,136 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:42:33,139 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:42:33,199 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:42:33,276 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:43:50,694 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:43:50,705 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:43:50,736 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:43:50,749 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:43:50,750 - misc.logger - INFO - Started iteration
+2016-12-26 21:43:50,750 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:43:50,770 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:43:50,879 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:43:50,885 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:43:50,961 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:43:51,050 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:43:51,053 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:43:51,108 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:43:51,171 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:44:21,545 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:44:21,556 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:44:21,575 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:44:21,589 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:44:21,589 - misc.logger - INFO - Started iteration
+2016-12-26 21:44:21,589 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:44:21,604 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:44:21,702 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:44:21,707 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:44:21,777 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:44:21,865 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:44:21,868 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:44:21,918 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:44:21,988 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:44:41,394 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:44:41,401 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:44:41,418 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:44:41,426 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:44:41,427 - misc.logger - INFO - Started iteration
+2016-12-26 21:44:41,427 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:44:41,439 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:44:41,532 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:44:41,536 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:44:41,609 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:44:41,684 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:44:41,686 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:44:41,734 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:44:41,809 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:45:06,875 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:45:06,884 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:45:06,900 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:45:06,908 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:45:06,909 - misc.logger - INFO - Started iteration
+2016-12-26 21:45:06,909 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:45:06,928 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:45:07,028 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:45:07,033 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:45:07,100 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:45:07,179 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:45:07,182 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:45:07,236 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:45:07,308 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:45:29,636 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:45:29,643 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:45:29,661 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:45:29,670 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:45:29,671 - misc.logger - INFO - Started iteration
+2016-12-26 21:45:29,671 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:45:29,687 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:45:29,782 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:45:29,787 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:45:29,854 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:45:29,925 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:45:29,927 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:45:29,979 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:45:30,052 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:46:18,440 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:46:18,450 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:46:18,468 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:46:18,482 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:46:18,482 - misc.logger - INFO - Started iteration
+2016-12-26 21:46:18,483 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:46:18,499 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:46:18,615 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:46:18,619 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:46:18,704 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:46:18,801 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:46:18,803 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:46:18,857 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:46:18,928 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:47:14,132 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:47:14,139 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:47:14,159 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:47:14,170 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:47:14,170 - misc.logger - INFO - Started iteration
+2016-12-26 21:47:14,170 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:47:14,186 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:47:14,374 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:47:14,378 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:47:14,446 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:47:14,583 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:47:14,586 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:47:14,637 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:47:14,720 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:49:27,932 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:49:27,941 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:49:27,965 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:49:27,980 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:49:27,980 - misc.logger - INFO - Started iteration
+2016-12-26 21:49:27,980 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:49:27,997 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:49:28,185 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:49:28,189 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:49:28,257 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:49:28,377 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:49:28,379 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:49:28,429 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:49:28,513 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:49:40,353 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:49:40,361 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:49:40,383 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:49:40,400 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:49:40,400 - misc.logger - INFO - Started iteration
+2016-12-26 21:49:40,401 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:49:40,418 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:49:40,522 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:49:40,528 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:49:40,597 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:49:40,674 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:49:40,676 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:49:40,730 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:49:40,800 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:50:13,005 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:50:13,011 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:50:13,030 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:50:13,041 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:50:13,041 - misc.logger - INFO - Started iteration
+2016-12-26 21:50:13,042 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:50:13,060 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:50:13,185 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:50:13,189 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:50:13,279 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:50:13,361 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:50:13,363 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:50:13,419 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:50:13,483 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:50:41,390 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:50:41,397 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:50:41,417 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:50:41,428 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:50:41,428 - misc.logger - INFO - Started iteration
+2016-12-26 21:50:41,429 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:50:41,444 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:50:41,575 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:50:41,581 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:50:41,658 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:50:41,751 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:50:41,753 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:50:41,806 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:50:41,877 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:51:03,530 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:51:03,539 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:51:03,571 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:51:03,591 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:51:03,591 - misc.logger - INFO - Started iteration
+2016-12-26 21:51:03,591 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:51:03,616 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:51:03,834 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:51:03,838 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:51:03,914 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:51:04,036 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:51:04,038 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:51:04,094 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:51:04,187 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: None
+2016-12-26 21:52:17,183 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:52:17,191 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:52:17,209 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:52:17,216 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:52:17,216 - misc.logger - INFO - Started iteration
+2016-12-26 21:52:17,217 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:52:17,230 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:52:17,329 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:52:17,336 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:52:17,445 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:52:17,630 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:52:17,635 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:52:17,735 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:53:53,990 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:53:53,997 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:53:54,021 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:53:54,038 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:53:54,038 - misc.logger - INFO - Started iteration
+2016-12-26 21:53:54,038 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:53:54,055 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:53:54,172 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:53:54,177 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:53:54,261 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:53:54,356 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:53:54,358 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:53:54,415 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:53:54,477 - misc.logger - INFO - no poi score
+2016-12-26 21:53:54,479 - misc.logger - INFO - Priority 3: bank office 0, score: 970.751470941
+2016-12-26 21:53:54,481 - misc.logger - INFO - 3: row stored, results: office_id:0 |score: 970.751470941
+2016-12-26 21:55:50,432 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:55:50,442 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:55:50,466 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:55:50,479 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:55:50,480 - misc.logger - INFO - Started iteration
+2016-12-26 21:55:50,480 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:55:50,496 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:55:50,624 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:55:50,630 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:55:50,713 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:55:50,790 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:55:50,793 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:55:50,850 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:55:50,910 - misc.logger - INFO - no poi score
+2016-12-26 21:55:50,912 - misc.logger - INFO - Priority 3: bank office 0, score: 970.751470941
+2016-12-26 21:55:50,914 - misc.logger - INFO - 3: row stored, results: office_id:0 |score: 970.751470941
+2016-12-26 21:58:24,165 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:58:24,173 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:58:24,191 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:58:24,203 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:58:24,203 - misc.logger - INFO - Started iteration
+2016-12-26 21:58:24,204 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:58:24,223 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:58:24,369 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:58:24,373 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:58:24,454 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:58:24,563 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:58:24,566 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:58:24,623 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:58:24,681 - misc.logger - INFO - no poi score
+2016-12-26 21:58:24,700 - misc.logger - INFO - Priority 3: bank office 0, score: 970.751470941
+2016-12-26 21:58:24,702 - misc.logger - INFO - 3: row stored, results: office_id:0 |score: 970.751470941
+2016-12-26 21:58:38,856 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 21:58:38,863 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 21:58:38,883 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 21:58:38,893 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 21:58:38,893 - misc.logger - INFO - Started iteration
+2016-12-26 21:58:38,893 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 21:58:38,914 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 21:58:39,079 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 21:58:39,083 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 21:58:39,161 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 21:58:39,253 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 21:58:39,256 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 21:58:39,322 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 21:58:39,390 - misc.logger - INFO - no poi score
+2016-12-26 21:58:39,406 - misc.logger - INFO - Priority 3: bank office 0, score: 970.751470941
+2016-12-26 21:58:39,409 - misc.logger - INFO - 3: row stored, results: office_id:0 |score: 970.751470941
+2016-12-26 22:00:08,623 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 22:00:08,632 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:00:08,661 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:00:08,675 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:00:08,675 - misc.logger - INFO - Started iteration
+2016-12-26 22:00:08,675 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 22:00:08,692 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:00:08,831 - misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 22:00:08,836 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 3412.13977127
+2016-12-26 22:00:08,912 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 22:00:09,018 - misc.logger - INFO - Priority 2: bank office 1, score: 2170.75147094
+2016-12-26 22:00:09,021 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2170.75147094
+2016-12-26 22:00:09,073 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 22:00:09,128 - misc.logger - INFO - no poi score
+2016-12-26 22:00:09,147 - misc.logger - INFO - Priority 3: bank office 0, score: 970.751470941
+2016-12-26 22:00:09,149 - misc.logger - INFO - 3: row stored, results: office_id:0 |score: 970.751470941
+2016-12-26 22:06:27,983 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:06:28,040 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:06:28,053 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:07:36,723 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:08:18,957 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:08:19,117 - code.misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 22:12:49,218 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:12:49,275 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:12:49,309 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:12:50,550 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:12:51,337 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:12:51,500 - code.misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 22:17:55,399 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:17:55,399 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:17:55,449 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:17:55,449 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:17:55,465 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:17:55,465 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:18:20,708 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:18:20,708 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:18:20,708 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:18:20,750 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:18:20,750 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:18:20,750 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:18:20,774 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:18:20,774 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:18:20,774 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:18:40,083 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:18:40,106 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:18:40,120 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:18:41,528 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:18:42,352 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:18:42,481 - code.misc.logger - INFO - Priority 1: bank office 3, score: 3412.13977127
+2016-12-26 22:20:33,254 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:20:33,303 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:20:33,359 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:20:34,612 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:20:35,718 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:20:35,857 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:21:13,075 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 22:21:13,093 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:21:13,112 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:21:13,120 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:21:13,120 - misc.logger - INFO - Started iteration
+2016-12-26 22:21:13,120 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 22:21:13,138 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:21:13,232 - misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:21:13,235 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 4481.94655969
+2016-12-26 22:21:13,323 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 22:21:13,412 - misc.logger - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-26 22:21:13,412 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2553.44381969
+2016-12-26 22:21:13,472 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 22:21:13,534 - misc.logger - INFO - no poi score
+2016-12-26 22:21:13,536 - misc.logger - INFO - Priority 3: bank office 2, score: 1846.18145847
+2016-12-26 22:21:13,537 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: 1846.18145847
+2016-12-26 22:22:15,549 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:24:21,335 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:24:21,373 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:24:21,391 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:24:23,105 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:24:23,635 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:24:28,943 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:24:38,539 - code.misc.logger - INFO - Priority 1: bank office 1, score: 2553.44381969
+2016-12-26 22:24:57,080 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:24:57,114 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:24:57,133 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:24:59,916 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:25:01,938 - code.misc.logger - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-26 22:25:14,429 - code.misc.logger - INFO - no poi score
+2016-12-26 22:25:14,438 - code.misc.logger - INFO - Priority 3: bank office 2, score: 1846.18145847
+2016-12-26 22:27:11,293 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:27:11,334 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:27:11,360 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:27:11,381 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:27:11,592 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:27:11,782 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:27:16,273 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:27:29,340 - code.misc.logger - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-26 22:28:52,395 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:28:52,468 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:28:52,479 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:28:52,649 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:28:53,732 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:36:04,334 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:36:04,377 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:36:04,396 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:36:05,072 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:36:05,632 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:36:47,699 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:36:47,743 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:36:47,760 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:36:48,524 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:36:49,095 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:38:22,160 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:38:22,349 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:38:22,365 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:38:23,277 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:38:24,445 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:38:24,604 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:38:39,104 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:38:51,233 - code.misc.logger - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-26 22:40:45,900 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:40:45,964 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:40:45,984 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:40:47,662 - code.misc.logger - INFO - Started iteration
+2016-12-26 22:40:48,206 - code.misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:40:48,377 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:40:55,024 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:41:03,423 - code.misc.logger - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-26 22:41:10,453 - code.misc.logger - INFO - no poi score
+2016-12-26 22:41:10,461 - code.misc.logger - INFO - Priority 3: bank office 2, score: 1846.18145847
+2016-12-26 22:47:53,177 - misc.logger - INFO - 2016_12_26: start logging
+2016-12-26 22:47:53,196 - misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-26 22:47:53,229 - misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-26 22:47:53,242 - misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-26 22:47:53,243 - misc.logger - INFO - Started iteration
+2016-12-26 22:47:53,243 - misc.logger - INFO - 1: Pois at the start of the loop: 5
+2016-12-26 22:47:53,274 - misc.logger - INFO -    Pool:2 workers
+2016-12-26 22:47:53,411 - misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-26 22:47:53,412 - misc.logger - INFO - 1: row stored, results: office_id:3 |score: 4481.94655969
+2016-12-26 22:47:53,489 - misc.logger - INFO - 2: Pois at the start of the loop: 5
+2016-12-26 22:47:53,585 - misc.logger - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-26 22:47:53,586 - misc.logger - INFO - 2: row stored, results: office_id:1 |score: 2553.44381969
+2016-12-26 22:47:53,643 - misc.logger - INFO - 3: Pois at the start of the loop: 4
+2016-12-26 22:47:53,697 - misc.logger - INFO - no poi score
+2016-12-26 22:47:53,704 - misc.logger - INFO - Priority 3: bank office 2, score: 1846.18145847
+2016-12-26 22:47:53,705 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: 1846.18145847

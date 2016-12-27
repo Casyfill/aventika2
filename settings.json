@@ -1,13 +1,14 @@
 {
   "results": "../data/results/%Y_%m_%d_%H:%M:%S_results.csv",
-  "data_path": "../data/real/",
+  "data_path": "../data/test/",
   "files": {
     "raw": {
-      "regions": "regions.geojson",
-      "poi": "poi.geojson",
-      "buffers": "buffers.geojson",
-      "banks": "banks.geojson"
+      "regions": "raw/regions.geojson",
+      "poi": "raw/poi.geojson",
+      "buffers": "raw/buffers.geojson",
+      "banks": "raw/banks.geojson"
     },
+
     "refined": {
       "poi": "refined/poi.geojson",
       "regions": "refined/regions.geojson",
