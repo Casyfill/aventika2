@@ -2,3 +2,4 @@ settings.json
 data/real/*
 data/results/*
 *.pyc
+**.log
