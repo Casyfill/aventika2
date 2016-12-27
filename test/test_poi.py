@@ -15,7 +15,7 @@ class TestPoiMethods(unittest.TestCase):
         self.settings = getSettings(path='settings.json')
         
         self.poi, self.buff, self.reg = data_preload(self.settings, source='data_path')
-        logging.disable(logging.INFO)
+        logging.disable(logging.CRITICAL)
 
     def test_preload(self):
         self.assertTrue(isinstance(self.poi, pd.DataFrame))
@@ -31,12 +31,12 @@ class TestPoiMethods(unittest.TestCase):
     	new_poi = getPOI(self.buff, self.poi, self.settings)
     	self.assertTrue(len(new_poi[new_poi['type']=='stepless'])==1)
 
-    def test_poi_aquisition2(self):
+    def test_poi_coefficients(self):
     	from code.misc.poi import getPOI, adjustScore
     	new_poi = getPOI(self.buff, self.poi, self.settings)
     	new_poi_adj = adjustScore(new_poi, self.settings)
 
-    	foot_r = new_poi.loc[new_poi['type']=='foot', 'score'] == .8 * new_poi_adj.loc[new_poi_adj['type']=='foot', 'score']
+    	foot_r = .8 * new_poi.loc[new_poi['type']=='foot', 'score'] == new_poi_adj.loc[new_poi_adj['type']=='foot', 'score']
 
     	
     	self.assertTrue(foot_r.all())

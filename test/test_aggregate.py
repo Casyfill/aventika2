@@ -1,7 +1,12 @@
 import unittest
 import pandas as pd
+import logging
 
 class TestAggregateMethods(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(self):
+        logging.disable(logging.CRITICAL)
 
     def test_aggregate_assim(self):
         from code.iteration import agg_results
