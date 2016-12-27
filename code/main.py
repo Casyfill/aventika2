@@ -20,7 +20,7 @@ def data_preload(settings, source='data_path', mode='refined'):
     
 
     path = os.getcwd()
-    path = path.replace('code/', '')
+    path = path.replace('/code', '')
     dpath = path + settings[source]
     # banks_path = dpath + settings['files']['banks']
     # banks = gp.read_file(banks_path).to_crs(epsg=32637)

@@ -73,7 +73,7 @@ def adjustScore(poi, settings, mode='poi'):
     for tp in kf.keys():
         poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
         pois = poic.loc[poi['type'] == tp, key].tolist()
-        LOGGER.info(log_string.format(p=pois, k=kf[tp]))
+        LOGGER.info(log_string.format(p=pois[:5], k=kf[tp]))
 
     return poic
 

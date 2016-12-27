@@ -16,7 +16,7 @@ def getLogger():
     logger.setLevel(logging.INFO)
 
     path = os.getcwd()
-    path = path.replace('code/', '')
+    path = path.replace('/code', '')
 
     date = datetime.datetime.now().strftime('%Y_%m_%d__%H:%M')
     handler = logging.FileHandler(path + '/logs/%s_scraping.log' % date)
