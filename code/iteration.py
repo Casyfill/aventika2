@@ -40,8 +40,6 @@ def iterate(buff, poi, reg, filename, settings):
                                                           reg, settings)
 
         # update information
-<<<<<<< HEAD
-        
         row = {'priority': cntr,
                'office_id': bid,
                'score': score,
