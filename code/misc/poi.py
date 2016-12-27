@@ -70,20 +70,23 @@ def adjustScore(poi, settings, mode='poi'):
     for tp in kf.keys():
         poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
         pois = poic.loc[poi['type'] == tp, key].tolist()
-
-        #settings['logger'].info(log_string.format(p=pois, k=kf[tp]))
+        settings['logger'].info(log_string.format(p=pois, k=kf[tp]))
 
     return poic
 
 
 def get_aquired_pois(pois):
-    '''gets two types of pois,
+    '''gets three types of pois,
     depending of "aquisition" buffer'''
     stepless_poi = pois[pois['type'] == 'stepless'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
     foot_poi = pois[pois['type'] == 'foot'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
 
+    fc_poi = pois[pois['type'] == 'foot_to_step'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
+
     pois = pd.DataFrame({'stepless_poi': stepless_poi,
-                         'foot_poi': foot_poi})
+                         'foot_poi': foot_poi,
+                         'foot_to_step': fc_poi})
+
     pois.index = pois.index.get_level_values(1)
     return pois
 

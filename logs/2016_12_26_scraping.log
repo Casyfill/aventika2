@@ -499,3 +499,18 @@
 2016-12-26 22:47:53,697 - misc.logger - INFO - no poi score
 2016-12-26 22:47:53,704 - misc.logger - INFO - Priority 3: bank office 2, score: 1846.18145847
 2016-12-26 22:47:53,705 - misc.logger - INFO - 3: row stored, results: office_id:2 |score: 1846.18145847
+2016-12-27 11:07:02,565 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 11:07:02,624 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 11:07:02,637 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 11:08:18,698 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-27 11:08:27,020 - code.misc.logger - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-27 11:14:50,169 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 11:14:50,190 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 11:14:50,212 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 11:38:04,398 - code.misc.logger - INFO - loaded 5 POIs from ../data/test/refined/poi.geojson
+2016-12-27 11:38:04,425 - code.misc.logger - INFO - loaded 6 BUFFs from ../data/test/refined/buffers.geojson
+2016-12-27 11:38:04,448 - code.misc.logger - INFO - loaded 35 REGIONSs from ../data/test/refined/regions.geojson
+2016-12-27 11:38:09,278 - code.misc.logger - INFO - Priority 1: bank office 3, score: 4481.94655969
+2016-12-27 11:38:11,797 - code.misc.logger - INFO - Priority 2: bank office 1, score: 2553.44381969
+2016-12-27 11:38:19,732 - code.misc.logger - INFO - no poi score
+2016-12-27 11:38:19,740 - code.misc.logger - INFO - Priority 3: bank office 2, score: 1846.18145847

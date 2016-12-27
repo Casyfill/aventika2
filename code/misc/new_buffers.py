@@ -12,7 +12,8 @@ def shyReduction(x, y):
         logger.info('buffer {bid}: Dropped because of error: {inst}'.format(bid=x.name[1], inst=inst))
         return None
 
-def get_fc(buff, slctd_foot):
+
+def get_fc(buff, slctd_foot, logger):
     '''adds a third type of buffer
     one where foot distance is already covered,
     but stepless is not. pois and regions here
@@ -28,12 +29,15 @@ def get_fc(buff, slctd_foot):
     fs = buff.loc[idx['stepless', :], :].copy()
     fs = fs[pd.notnull(fs['geometry'])]
 
-    fs.loc[:, 'geometry'] = fs.loc[:, 'geometry'].intersection(slctd_foot)
-    fs.index = pd.MultiIndex.from_tuples(
-        [('foot_to_step', i) for _, i in fs.index.tolist()])
-    fs = fs[~fs['geometry'].is_empty]
-
-    return pd.concat([buff, fs]).sort_index()
+    if fs.loc[:, 'geometry'].intersects(slctd_foot).any():
+        fs.loc[:, 'geometry'] = fs.loc[:, 'geometry'].intersection(slctd_foot)
+        fs.index = pd.MultiIndex.from_tuples(
+            [('foot_to_step', i) for _, i in fs.index.tolist()])
+        fs = fs[~fs['geometry'].is_empty]
+        if not fs.empty:
+            logger.info('defined foot-too-step')
+            return pd.concat([buff, fs]).sort_index()
+    return buff
 
 
 def update_buff(buff, bid):
@@ -77,7 +81,8 @@ def update_buff(buff, bid):
         tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
         buff.loc[idx['stepless', :], 'geometry'] = tmp
 
-    if all([x in buff.index.get_level_values(0) for x in ('foot_to_step', 'stepless')]) and slctd_step:
+    # foot to step
+    if 'foot_to_step' in buff.index.get_level_values(0) and slctd_step:
         tmp = buff.loc[
             idx['foot_to_step', :], 'geometry'].difference(slctd_step)
 

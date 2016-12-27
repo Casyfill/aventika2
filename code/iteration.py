@@ -55,7 +55,7 @@ def iterate(buff, poi, reg, filename, settings):
             buff, poi = update_data(buff, poi, bid, s_pois)
             if buff is None:
                 return None
-                
+
             with open('../data/dumps/dump.pkl', 'wb') as f:
                 cPickle.dump({'buff':buff, 'poi':poi}, f)
         else:
@@ -134,26 +134,28 @@ def iteration(i, buff, poi, reg, settings):
 # Aggregation
 def agg_results(p=None, r=None, logger=None, get_max=True):
     '''summs results from POI and regions'''
-    if any( [(p is None and r is None),(p.empty and r.empty)]):
+    if (p is None and r is None):
         raise IOError('No information at all')
-    elif p is None or p.empty:
-        
-        logger.info('no poi score')
+    if p is None :
+        if logger:
+            logger.info('no poi score')
         result = r
-    elif r is None or r.empty:
-        
-        logger.info('no regions score')
+    elif r is None:
+        if logger:
+            logger.info('no regions score')
         result = p
     else:
         tmp = pd.DataFrame({'reg_score':r['score'],
                             'poi_score':p['score']})
         
+        if tmp.empty:
+            raise IOError('No information at all')
         tmp['score'] = tmp.sum(1)
         result = tmp[['score']]
 
     if len(result['score']) == 0:
         return None, None
-    print 'result:', p, r, result
+    
     return result['score'].argmax(), result['score'].max()
 
 
