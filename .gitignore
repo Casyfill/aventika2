@@ -3,3 +3,4 @@ data/real/*
 data/results/*
 *.pyc
 **.log
+jupyter_examples/*
