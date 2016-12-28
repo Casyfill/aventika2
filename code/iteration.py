@@ -49,6 +49,7 @@ def iterate(buff, poi, reg, filename, settings):
                }
 
         writerow(row, filename, cntr < 2)
+        
         LOGGER.info(log_row_string.format(
             i=cntr, bid=row['office_id'], s=row['score']))
         cntr += 1
