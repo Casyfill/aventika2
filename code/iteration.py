@@ -36,7 +36,7 @@ def iterate(buff, poi, reg, filename, settings):
 
         LOGGER.info(log_pois_string.format(i=cntr, n=len(poi)))
 
-        bid, score, reg_score, f_pois, s_pois = iteration(cntr, buff, poi,
+        bid, score, reg_score, f_pois, s_pois, s_regs = iteration(cntr, buff, poi,
                                                           reg, settings)
 
         # update information
@@ -54,7 +54,7 @@ def iterate(buff, poi, reg, filename, settings):
         cntr += 1
         
         if score and score > 0:
-            buff, poi = update_data(buff, poi, bid, s_pois)
+            buff, poi, reg = update_data(buff, poi, reg, bid, s_pois, s_regs)
             if buff is None:
                 return None
 
@@ -96,7 +96,7 @@ def iteration(i, buff, poi, reg, settings):
     buff = buff[~buff.geometry.is_empty]
 
     poi_score, poi_counted = getPoiScore(buff, poi, settings)
-    reg_score = getReg_overlayed(buff, reg, settings)
+    reg_score, reg_counted = getRegScore(buff, reg, settings)
     # print reg_score
     bid, score = agg_results(poi_score, reg_score, get_max=True)
     # print 'BID:', bid
@@ -127,9 +127,16 @@ def iteration(i, buff, poi, reg, settings):
     except:
         r_score = None
 
+    try:
+        stepless_regs = regs_counted.loc[bid, 'stepless_reg']
+        if type(stepless_regs) != list:
+            stepless_regs = []
+    except:
+        stepless_regs = []
+
     LOGGER.info(priority_string.format(i, bid, score))
 
-    return bid, score, r_score, foot_pois, stepless_pois
+    return bid, score, r_score, foot_pois, stepless_pois, stepless_regs
 
 
 # Aggregation
@@ -158,7 +165,7 @@ def agg_results(p=None, r=None, get_max=True):
     return result['score'].argmax(), result['score'].max()
 
 
-def update_data(buff, poi, bid, s_pois):
+def update_data(buff, poi, reg, bid, s_pois, s_regs):
     '''update dataset with regard to the newly chosen office
 
     Args:
@@ -170,8 +177,9 @@ def update_data(buff, poi, bid, s_pois):
     buff = update_buff(buff, bid)
 
     poi = poi[~poi['pid'].isin(s_pois)]  # remove stepless pois
+    reg = reg[~reg['reg_id'].isin(s_regs)]
 
-    return buff, poi
+    return buff, poi, reg
 
 
 def writerow(row, filename, header):

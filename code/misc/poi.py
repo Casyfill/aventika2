@@ -8,7 +8,6 @@ from misc import chunker_eq
 from geopandas.tools import sjoin
 import logging
 idx = pd.IndexSlice
-POOL = None
 LOGGER = logging.getLogger('root')
 
 
@@ -29,26 +28,27 @@ def getPOI(buff, poi, settings):
         pd.Dataframe
     '''
     WORKERS = settings['mp_settings']['WORKERS']
-    global POOL  # global pull of processes
+    pool = settings.get('POOL', None)  # global pull of processes
     buff = buff.reset_index()
     
     partial_joiner = partial(joiner, buff=buff)
 
     if WORKERS > 1:
         try:
-            if POOL is None:
-                POOL = mp.Pool(processes=WORKERS)
+            if pool is None:
+                pool = mp.Pool(processes=WORKERS)
+                settings['POOL'] = pool
                 LOGGER.info('   Pool:{} workers'.format(WORKERS))
             
             poi_chunks = chunker_eq(poi, WORKERS)
-            results = POOL.map(partial_joiner, poi_chunks)
+            results = pool.map(partial_joiner, poi_chunks)
 
             x = pd.concat(results)
 
         except Exception as inst:
             print buff
-            POOL.close()
-            POOL.join()
+            pool.close()
+            pool.join()
             raise Exception(inst)
 
     else:

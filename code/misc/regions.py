@@ -1,12 +1,28 @@
 from poi import adjustScore
 # from shapely.ops import unary_union
 # from shapely.ops import cascaded_union
+from functools import partial
 import geopandas as gp
 from geopandas.tools import sjoin
 import pandas as pd
 import logging
+from misc import chunker_eq
 LOGGER = logging.getLogger('root')
 
+def get_aquired_regs(pois):
+    '''gets three types of pois,
+    depending of "aquisition" buffer'''
+    stepless_poi = pois[pois['type'] == 'stepless'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+    foot_poi = pois[pois['type'] == 'foot'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+
+    fc_poi = pois[pois['type'] == 'foot_to_step'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+
+    pois = pd.DataFrame({'stepless_poi': stepless_poi,
+                         'foot_poi': foot_poi,
+                         'foot_to_step': fc_poi})
+
+    pois.index = pois.index.get_level_values(1)
+    return pois
 
 def getReg(buff, reg):
     '''calculate adjusted Reg score for each bank
@@ -54,31 +70,33 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
         pd.Dataframe
     '''
     WORKERS = settings['mp_settings']['WORKERS']
-    global POOL  # global pull of processes
+    pool = settings.get('POOL', None)  # global pull of processes
     
     partial_joiner = partial(joiner, buff=buff.reset_index())
 
     if WORKERS > 1:
         try:
-            if POOL is None:
-                POOL = mp.Pool(processes=WORKERS)
+            if pool is None:
+                pool = mp.Pool(processes=WORKERS)
                 LOGGER.info('   Pool:{} workers'.format(WORKERS))
+                settings['POOL'] = pool
             
             reg_chunks = chunker_eq(reg_overlayed, WORKERS)
-            results = POOL.map(partial_joiner, reg_chunks)
+            results = pool.map(partial_joiner, reg_chunks)
 
             x = pd.concat(results)
 
         except Exception as inst:
             print buff
-            POOL.close()
-            POOL.join()
+            pool.close()
+            pool.join()
             raise Exception(inst)
 
     else:
         x = joiner(poi, buff)
 
-    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score']]
+    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'reg_id']]
+
 
 def getRegScore(buffs, reg, settings):
     '''calculate adjusted POI score for each bank
@@ -95,4 +113,8 @@ def getRegScore(buffs, reg, settings):
     x = adjustScore(x, settings, mode='reg')
 
     x['score'] = x['score'].astype(int)
-    return x.groupby('office_id').agg({'score': 'sum'})
+    
+    scores = x.groupby('office_id').agg({'score': 'sum'})
+    aq_regs = get_aquired_regs(x)
+
+    return scores, aq_regs
