@@ -36,6 +36,50 @@ def getReg_overlayed(buffs, reg_overlayed, settings):
     return result[['office_id', 'score']].groupby('office_id').sum()
 
 
+
+def joiner(reg, buff):
+    return sjoin(buff, reg, how='inner', op='contains')
+
+
+def getReg_overlayed_mp(buff, reg_overlayed, settings):
+    '''returns  all points within
+    the corresponding buffer for each office,
+    with the type of the buffer
+
+    Args:
+        buff: buffers
+        poi: pois
+        settings(dict): settings
+    return:
+        pd.Dataframe
+    '''
+    WORKERS = settings['mp_settings']['WORKERS']
+    global POOL  # global pull of processes
+    
+    partial_joiner = partial(joiner, buff=buff.reset_index())
+
+    if WORKERS > 1:
+        try:
+            if POOL is None:
+                POOL = mp.Pool(processes=WORKERS)
+                LOGGER.info('   Pool:{} workers'.format(WORKERS))
+            
+            reg_chunks = chunker_eq(reg_overlayed, WORKERS)
+            results = POOL.map(partial_joiner, reg_chunks)
+
+            x = pd.concat(results)
+
+        except Exception as inst:
+            print buff
+            POOL.close()
+            POOL.join()
+            raise Exception(inst)
+
+    else:
+        x = joiner(poi, buff)
+
+    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score']]
+
 def getRegScore(buffs, reg, settings):
     '''calculate adjusted POI score for each bank
 
@@ -47,7 +91,7 @@ def getRegScore(buffs, reg, settings):
         regions split with score for each bank office
     '''
 
-    x = getReg_overlayed(buffs, reg)
+    x = getReg_overlayed_mp(buffs, reg, settings)
     x = adjustScore(x, settings, mode='reg')
 
     x['score'] = x['score'].astype(int)

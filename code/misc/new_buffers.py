@@ -57,7 +57,7 @@ def update_buff(buff, bid):
 
     buff = buff[pd.notnull(buff['geometry'])]
     buff = buff[~buff.geometry.is_empty]
-    # buff = buff[buff.area >= 5000] ## remove small ones
+    buff = buff[buff.area >= 4000] ## remove small ones
 
     slct = buff.loc[idx[:, bid], :]  # selected Office
     buff = buff[buff.index.get_level_values(1) != bid]
