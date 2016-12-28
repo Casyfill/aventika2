@@ -165,7 +165,7 @@ def agg_results(p=None, r=None, get_max=True):
     return result['score'].argmax(), result['score'].max()
 
 
-def update_data(buff, poi, reg, bid, s_pois, s_regs):
+def update_data(buff, poi, reg, bid, s_pois, s_regs, logger):
     '''update dataset with regard to the newly chosen office
 
     Args:
@@ -176,9 +176,12 @@ def update_data(buff, poi, reg, bid, s_pois, s_regs):
     '''
     buff = update_buff(buff, bid)
 
+    lp = len(poi)
+    lr = len(reg)
     poi = poi[~poi['pid'].isin(s_pois)]  # remove stepless pois
     reg = reg[~reg['reg_id'].isin(s_regs)]
 
+    logger.info('Removed {0} poi, {1} regions'.format(lp - len(poi), lr - len(reg)))
     return buff, poi, reg
 
 
