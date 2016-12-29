@@ -1,5 +1,6 @@
 **settings.json
 data/real/*
+data/*.geojson
 *.pyc
 **.log
 jupyter_examples
