@@ -1,6 +1,6 @@
 {
   "results": "/data/results/%Y_%m_%d_%H:%M:%S_results.csv",
-  "data_path": "/data/test/",
+  "data_path": "/data/real/",
   "test_path": "/data/test/",
 
   "files": {
