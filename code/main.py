@@ -22,10 +22,7 @@ def data_preload(settings, source='data_path', mode='refined'):
     path = os.getcwd()
     path = path.replace('/code', '')
     dpath = path + settings[source]
-    # banks_path = dpath + settings['files']['banks']
-    # banks = gp.read_file(banks_path).to_crs(epsg=32637)
-    # logger.info('loaded {n} banks'.format(n=len(banks), p=banks_path))
-
+    
     poi_path = dpath + settings['files'][mode]['poi']
     poi = gp.read_file(
         poi_path)[['geometry', 'score',
@@ -36,6 +33,12 @@ def data_preload(settings, source='data_path', mode='refined'):
 
     buff_path = dpath + settings['files'][mode]['buffers']
     buff = gp.read_file(buff_path).set_index(['type', 'office_id'])
+
+    banks = gp.read_file('../data/real/raw/banks.geojson')
+    bankomat_oids = banks.loc[banks['type']==u'Банкомат', 'office_id'].tolist()
+    buff = buff[buff['office_id'].isin(bankomat_oids)]
+    print 'Bankomat buffs: {}'.format(len(buff))
+
     buff = buff.sort_index().to_crs(epsg=32637)
     buff['priority'] = None
     if logger:
