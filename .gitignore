@@ -1,4 +1,5 @@
-settings.json
+**settings.json
 data/real/*
 *.pyc
 **.log
+jupyter_examples

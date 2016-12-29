@@ -3,6 +3,7 @@ from misc.preparation import drop_poi, _bufferize, get_overlay
 from misc.logger import getLogger
 from datetime import datetime
 import logging
+import os
 LOGGER = logging.getLogger('root')
 
 
@@ -15,13 +16,18 @@ def main():
     LOGGER.info(
         '{ts}: start logging: PREPARATION'.format(ts=timestamp))
 
-    r_poi_path = settings['data_path'] + settings['files']['refined']['poi']
-    r_reg_path = settings['data_path'] + settings['files']['refined']['regions']
-    r_buff_path = settings['data_path'] + settings['files']['refined']['buffers']
+    path = os.getcwd()
+    path = path.replace('/code', '')
+    r_poi_path = path + settings['data_path'] + settings['files']['refined']['poi']
+    r_reg_path = path + settings['data_path'] + settings['files']['refined']['regions']
+    r_buff_path = path +  settings['data_path'] + settings['files']['refined']['buffers']
 
     poi, buff, reg = data_preload(settings, mode='raw')
 
     poi = drop_poi(buff, poi, settings)
+    
+    
+    
     with open(r_poi_path, 'w') as f:
         f.write(poi.to_crs(epsg=4326).to_json())
 
