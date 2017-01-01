@@ -54,7 +54,7 @@ def getPOI(buff, poi, settings):
     else:
         x = joiner(poi, buff)
 
-    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid']]
+    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
 
 
 def adjustScore(poi, settings, mode='poi'):
@@ -68,10 +68,12 @@ def adjustScore(poi, settings, mode='poi'):
     key = {'poi':'pid', 'reg':'reg_id'}[mode]
     log_string = '{p}: koefficient {k} applied'
     kf = settings['koefficients']
-    poic = poi.copy()  # just in case
+    print poi.columns
+    poic = poi[~((poi['fs']) & (poi['type']=='foot'))]  # drop foot-fc
 
     for tp in kf.keys():
         poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
+
         pois = poic.loc[poi['type'] == tp, key].tolist()
         # LOGGER.info(log_string.format(p=pois[:5], k=kf[tp]))
 

@@ -57,41 +57,41 @@ def update_buff(buff, bid):
 
     buff = buff[pd.notnull(buff['geometry'])]
     buff = buff[~buff.geometry.is_empty]
-    buff = buff[buff.area >= 4000] ## remove small ones
+    # buff = buff[buff.area >= 4000] ## remove small ones
 
     slct = buff.loc[idx[:, bid], :]  # selected Office
     buff = buff[buff.index.get_level_values(1) != bid]
 
-    if buff.empty:
-        return None
+    # if buff.empty:
+    #     return None
 
-    if 'foot' in slct.index.get_level_values(0):
-        slctd_foot = slct.loc[idx['foot', bid], 'geometry']
-        # print type(slctd_foot)
-        if isinstance(slctd_foot, gp.geoseries.GeoSeries):
-            slctd_foot = slctd_foot.iloc[0]
-        tmp = buff.loc[
-            idx['foot', :], 'geometry'].difference(slctd_foot)
+    # if 'foot' in slct.index.get_level_values(0):
+    #     slctd_foot = slct.loc[idx['foot', bid], 'geometry']
+    #     # print type(slctd_foot)
+    #     if isinstance(slctd_foot, gp.geoseries.GeoSeries):
+    #         slctd_foot = slctd_foot.iloc[0]
+    #     tmp = buff.loc[
+    #         idx['foot', :], 'geometry'].difference(slctd_foot)
 
-        buff.loc[idx['foot', :], 'geometry'] = tmp
+    #     buff.loc[idx['foot', :], 'geometry'] = tmp
 
-    if 'stepless' in slct.index.get_level_values(0):
-        slctd_step = slct.loc[idx['stepless', bid], 'geometry']
-        # print type(slctd_step)
-        if isinstance(slctd_step, gp.geoseries.GeoSeries):
-            slctd_step = slctd_step.iloc[0]
-        tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
-        buff.loc[idx['stepless', :], 'geometry'] = tmp
+    # if 'stepless' in slct.index.get_level_values(0):
+    #     slctd_step = slct.loc[idx['stepless', bid], 'geometry']
+    #     # print type(slctd_step)
+    #     if isinstance(slctd_step, gp.geoseries.GeoSeries):
+    #         slctd_step = slctd_step.iloc[0]
+    #     tmp = buff.loc[idx['stepless', :], 'geometry'].difference(slctd_step)
+    #     buff.loc[idx['stepless', :], 'geometry'] = tmp
 
-    # foot to step
-    if 'foot_to_step' in buff.index.get_level_values(0) and slctd_step:
-        tmp = buff.loc[
-            idx['foot_to_step', :], 'geometry'].difference(slctd_step)
+    # # foot to step
+    # if 'foot_to_step' in buff.index.get_level_values(0) and slctd_step:
+    #     tmp = buff.loc[
+    #         idx['foot_to_step', :], 'geometry'].difference(slctd_step)
 
-        buff.loc[idx['foot_to_step', :], 'geometry'] = tmp
+    #     buff.loc[idx['foot_to_step', :], 'geometry'] = tmp
 
-    buff = buff[~buff['geometry'].is_empty]
-    if slctd_foot:
-        buff = get_fc(buff, slctd_foot)
+    # buff = buff[~buff['geometry'].is_empty]
+    # if slctd_foot:
+    #     buff = get_fc(buff, slctd_foot)
 
     return buff

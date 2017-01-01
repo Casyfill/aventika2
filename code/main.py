@@ -16,28 +16,33 @@ LOGGER = getLogger()
 def data_preload(settings, source='data_path', mode='refined'):
     '''data preloader
     '''
+    print source
     logger = settings.get('logger', None)
+
+    modetypes = ('atm', 'office')
+    if settings['bank_mode'] not in modetypes:
+        raise IOError('Mode should be in {0}, instead got {1}'.format(modetypes, mode))
     
 
     path = os.getcwd()
     path = path.replace('/code', '')
     dpath = path + settings[source]
+
     
     poi_path = dpath + settings['files'][mode]['poi']
     poi = gp.read_file(
         poi_path)[['geometry', 'score',
                    'pid', 'disability']].to_crs(epsg=32637)
     poi['score'] = poi['score'].astype(float)
+    poi['fc'] = False
+
     if logger:
         logger.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
 
-    buff_path = dpath + settings['files'][mode]['buffers']
-    buff = gp.read_file(buff_path).set_index(['type', 'office_id'])
 
-    banks = gp.read_file('../data/real/raw/banks.geojson')
-    bankomat_oids = banks.loc[banks['type']==u'Банкомат', 'office_id'].tolist()
-    buff = buff[buff['office_id'].isin(bankomat_oids)]
-    print 'Bankomat buffs: {}'.format(len(buff))
+    buff_path = dpath + settings['files'][mode]['buffers']
+    buff = gp.read_file(buff_path)
+    buff = buff[buff['bank_type']==settings['bank_mode']].set_index(['type', 'office_id'])
 
     buff = buff.sort_index().to_crs(epsg=32637)
     buff['priority'] = None
@@ -46,6 +51,7 @@ def data_preload(settings, source='data_path', mode='refined'):
 
     reg_path = dpath + settings['files'][mode]['regions']
     reg = gp.read_file(reg_path).to_crs(epsg=32637)
+    reg['fc'] = False
     # reg['reg_area'] = reg.area
     # reg['disabled'] = reg['disabled'].astype(float)
     if logger:

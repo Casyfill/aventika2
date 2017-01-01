@@ -44,7 +44,7 @@ def drop_poi(buff, poi, settings):
 
 
 def _bufferize(geoDF):
-    geoDF['geometry'] = geoDF.buffer(0)
+    geoDF['geometry'] = geoDF.buffer(0.01)
     return geoDF
 
 

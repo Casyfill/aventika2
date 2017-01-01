@@ -13,6 +13,7 @@ import geopandas as gp
 from geopandas.tools import sjoin
 from datetime  import datetime
 from pandas.util.testing import isiterable
+import random
 
 
 banks_path = '../data/preprocessed/banks.geojson'
@@ -153,6 +154,7 @@ def main():
 			
 			b['properties']["disability"] = d
 
+
 			if score >= blabels['hight']:
 				b['properties']['idxColor'] = 'hight'
 			elif score >= blabels['above-average']:
@@ -162,9 +164,11 @@ def main():
 			else:
 				b['properties']['idxColor'] = 'low'
 
+
+
 		else:
 			b['properties']['score'] = 0
-			b['properties']['idxColor'] = 'low'
+			b['properties']['idxColor'] = random.choice(('below-average', 'low'))
 			b['properties']['priority'] = -1
 
 	with codecs.open('../data/zipped_banks.geojson', 'w', encoding="utf-8") as f:

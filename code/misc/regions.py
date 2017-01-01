@@ -95,7 +95,7 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
     else:
         x = joiner(poi, buff)
 
-    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'reg_id']]
+    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'reg_id', 'fc']]
 
 
 def getRegScore(buffs, reg, settings):

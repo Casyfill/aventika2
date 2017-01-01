@@ -24,19 +24,17 @@ def main():
 
     poi, buff, reg = data_preload(settings, mode='raw')
 
-    poi = drop_poi(buff, poi, settings)
+    # poi = drop_poi(buff, poi, settings)
     
-    
-    
-    with open(r_poi_path, 'w') as f:
-        f.write(poi.to_crs(epsg=4326).to_json())
+    # with open(r_poi_path, 'w') as f:
+    #     f.write(poi.to_crs(epsg=4326).to_json())
 
     buff = _bufferize(buff)
     reg['reg_area']  = reg.area
     reg = _bufferize(reg)
 
-    with open(r_buff_path, 'w') as f:
-        f.write(buff.to_crs(epsg=4326).reset_index().to_json())
+    # with open(r_buff_path, 'w') as f:
+    #     f.write(buff.to_crs(epsg=4326).reset_index().to_json())
 
     reg_overlay = get_overlay(buff, reg)
     reg_overlay.crs = buff.crs
