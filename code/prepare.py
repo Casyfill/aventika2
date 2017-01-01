@@ -4,10 +4,12 @@ from misc.logger import getLogger
 from datetime import datetime
 import logging
 import os
+import sys
 LOGGER = logging.getLogger('root')
 
 
-def main():
+def main(pm):
+
     settings = getSettings()
     settings['bank_mode'] = None
 
@@ -19,11 +21,12 @@ def main():
 
     path = os.getcwd()
     path = path.replace('/code', '')
-    r_poi_path = path + settings['data_path'] + settings['files']['refined']['poi']
-    r_reg_path = path + settings['data_path'] + settings['files']['refined']['regions']
-    r_buff_path = path +  settings['data_path'] + settings['files']['refined']['buffers']
+    r_poi_path = path + settings[pm] + settings['files']['refined']['poi']
+    r_reg_path = path + settings[pm] + settings['files']['refined']['regions']
+    r_buff_path = path +  settings[pm] + settings['files']['refined']['buffers']
 
-    poi, buff, reg = data_preload(settings, mode='raw')
+
+    poi, buff, reg = data_preload(settings, source=pm, mode='raw')
 
     # poi = drop_poi(buff, poi, settings)
     
@@ -48,4 +51,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv)>1:
+        path = sys.argv[1]
+    else:
+        path = 'test_path'
+    main(path)

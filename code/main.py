@@ -37,7 +37,7 @@ def data_preload(settings, source='data_path', mode='refined'):
         poi_path)[['geometry', 'score',
                    'pid', 'disability']].to_crs(epsg=32637)
     poi['score'] = poi['score'].astype(float)
-    poi['fc'] = False
+    poi['fs'] = False
 
     if logger:
         logger.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
@@ -56,7 +56,7 @@ def data_preload(settings, source='data_path', mode='refined'):
 
     reg_path = dpath + settings['files'][mode]['regions']
     reg = gp.read_file(reg_path).to_crs(epsg=32637)
-    reg['fc'] = False
+    reg['fs'] = False
     # reg['reg_area'] = reg.area
     # reg['disabled'] = reg['disabled'].astype(float)
     if logger:

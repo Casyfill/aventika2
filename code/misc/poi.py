@@ -68,7 +68,7 @@ def adjustScore(poi, settings, mode='poi'):
     key = {'poi':'pid', 'reg':'reg_id'}[mode]
     log_string = '{p}: koefficient {k} applied'
     kf = settings['koefficients']
-    print poi.columns
+    
     poic = poi[~((poi['fs']) & (poi['type']=='foot'))]  # drop foot-fc
 
     for tp in kf.keys():
