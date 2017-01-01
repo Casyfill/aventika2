@@ -14,37 +14,28 @@ class TestPoiMethods(unittest.TestCase):
         from code.misc.logger import getLogger
         self.settings = getSettings(path='settings.json')
         
-        self.poi, self.buff, self.reg = data_preload(self.settings, source='data_path')
+        self.poi, self.buff, self.reg = data_preload(self.settings, source='test_path')
         logging.disable(logging.CRITICAL)
 
-    def test_preload(self):
-        self.assertTrue(isinstance(self.poi, pd.DataFrame))
-        self.assertTrue(isinstance(self.buff, pd.DataFrame))
-        self.assertTrue(isinstance(self.reg, pd.DataFrame))
+    # def test_poi_aquisition(self):
+    # 	from code.misc.poi import getPOI
+    # 	new_poi = getPOI(self.buff, self.poi, self.settings)
+    # 	self.assertTrue(len(new_poi[new_poi['type']=='stepless'])==1)
 
-    def test_data_quality(self):
-        self.assertTrue(isinstance(self.poi['score'], pd.Series))
-        self.assertTrue(isinstance(self.reg['score'], pd.Series))
+    # def test_poi_coefficients(self):
+    # 	from code.misc.poi import getPOI, adjustScore
+    # 	new_poi = getPOI(self.buff, self.poi, self.settings)
+    # 	new_poi_adj = adjustScore(new_poi, self.settings)
 
-    def test_poi_aquisition(self):
-    	from code.misc.poi import getPOI
-    	new_poi = getPOI(self.buff, self.poi, self.settings)
-    	self.assertTrue(len(new_poi[new_poi['type']=='stepless'])==1)
-
-    def test_poi_coefficients(self):
-    	from code.misc.poi import getPOI, adjustScore
-    	new_poi = getPOI(self.buff, self.poi, self.settings)
-    	new_poi_adj = adjustScore(new_poi, self.settings)
-
-    	foot_r = .8 * new_poi.loc[new_poi['type']=='foot', 'score'] == new_poi_adj.loc[new_poi_adj['type']=='foot', 'score']
+    # 	foot_r = .8 * new_poi.loc[new_poi['type']=='foot', 'score'] == new_poi_adj.loc[new_poi_adj['type']=='foot', 'score']
 
     	
-    	self.assertTrue(foot_r.all())
+    # 	self.assertTrue(foot_r.all())
 
-    	step_r = new_poi.loc[new_poi['type']=='stepless', 'score'] ==  new_poi_adj.loc[new_poi_adj['type']=='stepless', 'score']
+    # 	step_r = new_poi.loc[new_poi['type']=='stepless', 'score'] ==  new_poi_adj.loc[new_poi_adj['type']=='stepless', 'score']
 
-    	self.assertTrue(step_r.all())
+    # 	self.assertTrue(step_r.all())
 
 
-suite = unittest.TestLoader().loadTestsFromTestCase(TestPoiMethods)
-unittest.TextTestRunner(verbosity=2).run(suite)
+# suite = unittest.TestLoader().loadTestsFromTestCase(TestPoiMethods)
+# unittest.TextTestRunner(verbosity=2).run(suite)
