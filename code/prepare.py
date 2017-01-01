@@ -10,8 +10,8 @@ LOGGER = logging.getLogger('root')
 def main():
     settings = getSettings()
     settings['bank_mode'] = None
-    start = datetime.now()  # start of the calculations
 
+    start = datetime.now()  # start of the calculations
 
     timestamp = start.strftime('%Y_%m_%d')
     LOGGER.info(

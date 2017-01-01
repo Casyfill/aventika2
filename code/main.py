@@ -20,8 +20,11 @@ def data_preload(settings, source='data_path', mode='refined'):
     logger = settings.get('logger', None)
 
     modetypes = ('atm', 'office', None)
-    if settings.get('bank_mode', None) not in modetypes:
+
+    bank_mode = settings.get('bank_mode', None)
+    if bank_mode not in modetypes:
         raise IOError('Mode should be in {0}, instead got {1}'.format(modetypes, mode))
+
     
 
     path = os.getcwd()
