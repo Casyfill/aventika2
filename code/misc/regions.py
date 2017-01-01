@@ -114,7 +114,7 @@ def getRegScore(buffs, reg, settings):
 
     x['score'] = x['score'].astype(int)
     
-    scores = x.groupby('office_id').agg({'score': 'sum'})
+    scores = x.groupby('office_id').agg({'score': 'sum'}) * settings['koefficients']['region']
     aq_regs = get_aquired_regs(x)
 
     return scores, aq_regs
