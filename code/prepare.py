@@ -9,6 +9,7 @@ LOGGER = logging.getLogger('root')
 
 def main():
     settings = getSettings()
+    settings['bank_mode'] = None
     start = datetime.now()  # start of the calculations
 
 
@@ -30,6 +31,7 @@ def main():
     #     f.write(poi.to_crs(epsg=4326).to_json())
 
     buff = _bufferize(buff)
+
     reg['reg_id'] = reg.index + 1
     reg['reg_area']  = reg.area
     reg = _bufferize(reg)

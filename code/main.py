@@ -19,8 +19,8 @@ def data_preload(settings, source='data_path', mode='refined'):
     print source
     logger = settings.get('logger', None)
 
-    modetypes = ('atm', 'office')
-    if settings['bank_mode'] not in modetypes:
+    modetypes = ('atm', 'office', None)
+    if settings.get('bank_mode', None) not in modetypes:
         raise IOError('Mode should be in {0}, instead got {1}'.format(modetypes, mode))
     
 
@@ -42,7 +42,9 @@ def data_preload(settings, source='data_path', mode='refined'):
 
     buff_path = dpath + settings['files'][mode]['buffers']
     buff = gp.read_file(buff_path)
-    buff = buff[buff['bank_type']==settings['bank_mode']].set_index(['type', 'office_id'])
+
+    if bank_mode:
+        buff = buff[buff['bank_type']==bank_mode].set_index(['type', 'office_id'])
 
     buff = buff.sort_index().to_crs(epsg=32637)
     buff['priority'] = None
