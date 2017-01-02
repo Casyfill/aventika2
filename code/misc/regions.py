@@ -84,7 +84,7 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
             reg_chunks = chunker_eq(reg_overlayed, WORKERS)
             results = pool.map(partial_joiner, reg_chunks)
 
-            x = pd.concat(results)
+            x = pd.concat(results).reset_index(drop=True)
 
         except Exception as inst:
             print buff
