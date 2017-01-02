@@ -34,13 +34,16 @@ def main(pm):
     #     f.write(poi.to_crs(epsg=4326).to_json())
 
     buff = _bufferize(buff)
+    buff = buff[pd.notnull(buff['geometry'])]
+
     buff.geometry= buff.geometry.apply(lambda x: around(x,2))
+
 
     reg['reg_id'] = reg.index + 1
     reg['reg_area']  = reg.area
 
     reg = _bufferize(reg)
-    reg.geometry= reg.geometry.apply(lambda x: around(x,2))
+    reg.geometry = reg.geometry.apply(lambda x: around(x,2))
 
     # with open(r_buff_path, 'w') as f:
     #     f.write(buff.to_crs(epsg=4326).reset_index().to_json())

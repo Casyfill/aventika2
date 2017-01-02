@@ -3,9 +3,11 @@
 # from buffers import selfSubstract
 import geopandas as gp
 import pandas as pd
+import numpy as np
 import logging
 from shapely.geometry import shape, mapping
 LOGGER = logging.getLogger('root')
+
 
 def get_overlay(buff, reg):
     '''transforms regions into set of non-covered

@@ -35,7 +35,7 @@ def data_preload(settings, source='data_path', mode='refined'):
     poi_path = dpath + settings['files'][mode]['poi']
     poi = gp.read_file(
         poi_path)[['geometry', 'score',
-                   'pid', 'disability']].to_crs(epsg=32637)
+                   'pid', 'disability']].to_crs(epsg=32637) ## MOSCOW
     poi['score'] = poi['score'].astype(float)
     poi['fs'] = False
 
