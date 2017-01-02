@@ -50,7 +50,7 @@ def _bufferize(geoDF):
     return geoDF
 
 
- def around(geom,p):
+def around(geom,p):
     geojson = mapping(geom)
     geojson['coordinates'] = np.round(np.array(geojson['coordinates']),p)
     return  shape(geojson)
