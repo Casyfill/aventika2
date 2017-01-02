@@ -36,8 +36,7 @@ def iterate(buff, poi, reg, filename, settings):
 
         LOGGER.info(log_pois_string.format(i=cntr, n=len(poi)))
 
-        bid, score, reg_score, f_pois, s_pois, s_regs = iteration(cntr, buff, poi,
-                                                          reg, settings)
+        bid, score, reg_score, f_pois, s_pois, f_regs, s_regs = iteration(cntr, buff, poi, reg, settings)
 
         # update information
         row = {'priority': cntr,
