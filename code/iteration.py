@@ -190,7 +190,7 @@ def update_data(buff, poi, reg, bid, s_pois, s_regs, f_pois, f_regs):
     reg = reg[~reg['reg_id'].isin(s_regs)]
 
     poi.loc[poi['pid'].isin(f_pois), 'fs'] = True
-    reg.loc[reg['reg_id'].isin(f_reg), 'fs'] = True
+    reg.loc[reg['reg_id'].isin(f_regs), 'fs'] = True
 
     LOGGER.info('Removed {0} poi, {1} regions'.format(lp - len(poi), lr - len(reg)))
     return buff, poi, reg
