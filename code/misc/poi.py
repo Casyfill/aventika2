@@ -45,7 +45,7 @@ def getPOI(buff, poi, settings):
 
             if len(results)==0:
                 return None
-            elif all([x.is_empty for x in results]):
+            elif all([x.empty for x in results]):
                 return None
 
             x = pd.concat(results).reset_index(drop=True)
@@ -114,7 +114,7 @@ def getPoiScore(buff, poi, settings):
     '''
 
     x = getPOI(buff, poi, settings)
-    if x:
+    if not x is None:
         x = adjustScore(x, settings, mode='poi')
 
         # .sort_values('SCORE', ascending=False)

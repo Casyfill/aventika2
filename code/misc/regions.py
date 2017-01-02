@@ -86,7 +86,7 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
 
             if len(results)==0:
                 return None
-            elif all([x.is_empty for x in results]):
+            elif all([x.empty for x in results]):
                 return None
 
             x = pd.concat(results).reset_index(drop=True)
@@ -116,7 +116,7 @@ def getRegScore(buffs, reg, settings):
 
     x = getReg_overlayed_mp(buffs, reg, settings)
     
-    if x:
+    if not x is None:
         x = adjustScore(x, settings, mode='reg')
         x['score'] = x['score'].astype(int)
     
