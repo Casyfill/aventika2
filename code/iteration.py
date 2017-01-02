@@ -55,7 +55,7 @@ def iterate(buff, poi, reg, filename, settings):
         cntr += 1
         
         if score and score > 0:
-            buff, poi, reg = update_data(buff, poi, reg, bid, s_pois, s_regs)
+            buff, poi, reg = update_data(buff, poi, reg, bid, s_pois, s_regs, f_pois, f_regs)
             if buff is None:
                 return None
 
@@ -135,9 +135,16 @@ def iteration(i, buff, poi, reg, settings):
     except:
         stepless_regs = []
 
+    try:
+        foot_regs = regs_counted.loc[bid, 'foot_reg']
+        if type(foot_regs) != list:
+            foot_regs = []
+    except:
+        foot_regs = []
+
     LOGGER.info(priority_string.format(i, bid, score))
 
-    return bid, score, r_score, foot_pois, stepless_pois, stepless_regs
+    return bid, score, r_score, foot_pois, stepless_pois, foot_regs, stepless_regs
 
 
 # Aggregation

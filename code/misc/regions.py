@@ -9,20 +9,20 @@ import logging
 from misc import chunker_eq
 LOGGER = logging.getLogger('root')
 
-def get_aquired_regs(pois):
-    '''gets three types of pois,
+def get_aquired_regs(regs):
+    '''gets three types of regs,
     depending of "aquisition" buffer'''
-    stepless_poi = pois[pois['type'] == 'stepless'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
-    foot_poi = pois[pois['type'] == 'foot'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+    stepless_reg = regs[regs['type'] == 'stepless'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+    foot_reg = regs[regs['type'] == 'foot'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
 
-    fc_poi = pois[pois['type'] == 'foot_to_step'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+    fc_reg = regs[regs['type'] == 'foot_to_step'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
 
-    pois = pd.DataFrame({'stepless_poi': stepless_poi,
-                         'foot_poi': foot_poi,
-                         'foot_to_step': fc_poi})
+    regs = pd.DataFrame({'stepless_reg': stepless_reg,
+                         'foot_reg': foot_reg,
+                         'foot_to_step': fc_reg})
 
-    pois.index = pois.index.get_level_values(1)
-    return pois
+    regs.index = regs.index.get_level_values(1)
+    return regs
 
 def getReg(buff, reg):
     '''calculate adjusted Reg score for each bank
