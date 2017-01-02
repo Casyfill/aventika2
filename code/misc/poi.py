@@ -71,6 +71,8 @@ def adjustScore(poi, settings, mode='poi'):
     
     poic = poi[~((poi['fs']) & (poi['type']=='foot'))]  # drop foot-fc
 
+    print poic[poic.index.duplicated()]
+
     for tp in kf.keys():
         poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
 
