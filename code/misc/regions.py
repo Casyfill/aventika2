@@ -84,6 +84,11 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
             reg_chunks = chunker_eq(reg_overlayed, WORKERS)
             results = pool.map(partial_joiner, reg_chunks)
 
+            if len(results)==0:
+                return None
+            elif all([x.is_empty for x in results]):
+                return None
+
             x = pd.concat(results).reset_index(drop=True)
 
         except Exception as inst:
@@ -110,11 +115,14 @@ def getRegScore(buffs, reg, settings):
     '''
 
     x = getReg_overlayed_mp(buffs, reg, settings)
-    x = adjustScore(x, settings, mode='reg')
-
-    x['score'] = x['score'].astype(int)
     
-    scores = x.groupby('office_id').agg({'score': 'sum'}) * settings['koefficients']['region']
-    aq_regs = get_aquired_regs(x)
+    if x:
+        x = adjustScore(x, settings, mode='reg')
+        x['score'] = x['score'].astype(int)
+    
+        scores = x.groupby('office_id').agg({'score': 'sum'}) * settings['koefficients']['region']
+        aq_regs = get_aquired_regs(x)
 
-    return scores, aq_regs
+        return scores, aq_regs
+    else:
+        return None, None

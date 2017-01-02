@@ -43,6 +43,11 @@ def getPOI(buff, poi, settings):
             poi_chunks = chunker_eq(poi, WORKERS)
             results = pool.map(partial_joiner, poi_chunks)
 
+            if len(results)==0:
+                return None
+            elif all([x.is_empty for x in results]):
+                return None
+
             x = pd.concat(results).reset_index(drop=True)
 
         except Exception as inst:
@@ -70,8 +75,6 @@ def adjustScore(poi, settings, mode='poi'):
     kf = settings['koefficients']
     
     poic = poi[~((poi['fs']) & (poi['type']=='foot'))]  # drop foot-fc
-
-    print poic[poic.index.duplicated()]
 
     for tp in kf.keys():
         poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
@@ -111,9 +114,12 @@ def getPoiScore(buff, poi, settings):
     '''
 
     x = getPOI(buff, poi, settings)
-    x = adjustScore(x, settings, mode='poi')
+    if x:
+        x = adjustScore(x, settings, mode='poi')
 
-    # .sort_values('SCORE', ascending=False)
-    result_score = x.groupby('office_id').agg({'score': 'sum'})
-    result_poi = get_aquired_pois(x)
-    return result_score, result_poi
+        # .sort_values('SCORE', ascending=False)
+        result_score = x.groupby('office_id').agg({'score': 'sum'})
+        result_poi = get_aquired_pois(x)
+        return result_score, result_poi
+    else:
+        return None, None
