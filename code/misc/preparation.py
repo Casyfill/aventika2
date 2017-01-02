@@ -4,6 +4,7 @@
 import geopandas as gp
 import pandas as pd
 import logging
+from shapely.geometry import shape, mapping
 LOGGER = logging.getLogger('root')
 
 def get_overlay(buff, reg):
@@ -49,6 +50,12 @@ def _bufferize(geoDF):
     return geoDF
 
 
+ def around(geom,p):
+    geojson = mapping(geom)
+    geojson['coordinates'] = np.round(np.array(geojson['coordinates']),p)
+    return  shape(geojson)
+
+
 def prepare(buff, poi, reg, settings):
     '''optimize geometry for the iteration'''
     poi = drop_poi(buff, poi, settings)
@@ -61,3 +68,5 @@ def prepare(buff, poi, reg, settings):
     LOGGER.info('Created region overlay')
 
     return buff, poi, regs_overlayed
+
+

@@ -1,5 +1,5 @@
 from main import data_preload, getSettings
-from misc.preparation import drop_poi, _bufferize, get_overlay
+from misc.preparation import drop_poi, _bufferize, get_overlay, around
 from misc.logger import getLogger
 from datetime import datetime
 import logging
@@ -34,14 +34,17 @@ def main(pm):
     #     f.write(poi.to_crs(epsg=4326).to_json())
 
     buff = _bufferize(buff)
+    buff.geometry= buff.geometry.apply(lambda x: around(x,2))
 
     reg['reg_id'] = reg.index + 1
     reg['reg_area']  = reg.area
+
     reg = _bufferize(reg)
+    reg.geometry= reg.geometry.apply(lambda x: around(x,2))
 
     # with open(r_buff_path, 'w') as f:
     #     f.write(buff.to_crs(epsg=4326).reset_index().to_json())
-
+    LOGGER.info( '{ts}: AROUNDED BOTH, STARTING OVERLAY'.format(ts=timestamp))
     reg_overlay = get_overlay(buff, reg)
     reg_overlay.crs = buff.crs
     with open(r_reg_path, 'w') as f:
