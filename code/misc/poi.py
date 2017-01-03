@@ -43,7 +43,7 @@ def getPOI(buff, poi, settings):
             poi_chunks = chunker_eq(poi, WORKERS)
             results = pool.map(partial_joiner, poi_chunks)
 
-            if len(results)==0:
+            if not all([r is None for r in results]):
                 return None
             elif all([x.empty for x in results]):
                 return None
@@ -51,7 +51,7 @@ def getPOI(buff, poi, settings):
             x = pd.concat(results).reset_index(drop=True)
 
         except Exception as inst:
-            print buff
+            print results
             pool.close()
             pool.join()
             raise Exception(inst)
