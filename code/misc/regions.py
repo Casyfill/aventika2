@@ -84,7 +84,7 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
             reg_chunks = chunker_eq(reg_overlayed, WORKERS)
             results = pool.map(partial_joiner, reg_chunks)
 
-            if not all([r is None for r in results]):
+            if all([r is None for r in results]):
                 return None
             elif all([x.empty for x in results]):
                 return None

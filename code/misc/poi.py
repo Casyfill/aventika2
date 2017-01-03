@@ -43,7 +43,7 @@ def getPOI(buff, poi, settings):
             poi_chunks = chunker_eq(poi, WORKERS)
             results = pool.map(partial_joiner, poi_chunks)
 
-            if not all([r is None for r in results]):
+            if all([r is None for r in results]):
                 return None
             elif all([x.empty for x in results]):
                 return None
