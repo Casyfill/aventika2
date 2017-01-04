@@ -17,7 +17,7 @@ def data_preload(settings, source='data_path', mode='refined'):
     '''data preloader
     '''
     print source
-    logger = settings.get('logger', None)
+    
 
     modetypes = ('atm', 'office', None)
     bank_mode = settings.get('bank_mode', None)
@@ -37,8 +37,7 @@ def data_preload(settings, source='data_path', mode='refined'):
     poi['score'] = poi['score'].astype(float)
     poi['fs'] = False
 
-    if logger:
-        logger.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
+    LOGGER.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
 
 
     buff_path = dpath + settings['files'][mode]['buffers']
@@ -49,16 +48,14 @@ def data_preload(settings, source='data_path', mode='refined'):
 
     buff = buff.sort_index().to_crs(epsg=32637)
     buff['priority'] = None
-    if logger:
-        logger.info('loaded {n} BUFFs from {p}'.format(n=len(buff), p=buff_path))
+    LOGGER.info('loaded {n} BUFFs from {p}'.format(n=len(buff), p=buff_path))
 
     reg_path = dpath + settings['files'][mode]['regions']
     reg = gp.read_file(reg_path).to_crs(epsg=32637)
     reg['fs'] = False
     # reg['reg_area'] = reg.area
     # reg['disabled'] = reg['disabled'].astype(float)
-    if logger:
-        logger.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
+    LOGGER.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
 
 
     return poi, buff, reg
