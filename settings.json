@@ -1,5 +1,5 @@
 {
-  "results": "/data/results/%Y_%m_%d_%H:%M:%S_results.csv",
+  "results": "/data/results/%Y_%m_%d_%H:%M:%S_{bank_mode}_results.csv",
   "data_path": "/data/real/",
   "test_path": "/data/test/",
   "bank_mode": "office",

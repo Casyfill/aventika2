@@ -20,12 +20,10 @@ def data_preload(settings, source='data_path', mode='refined'):
     logger = settings.get('logger', None)
 
     modetypes = ('atm', 'office', None)
-
     bank_mode = settings.get('bank_mode', None)
+
     if bank_mode not in modetypes:
         raise IOError('Mode should be in {0}, instead got {1}'.format(modetypes, mode))
-
-    
 
     path = os.getcwd()
     path = path.replace('/code', '')
@@ -89,8 +87,8 @@ if __name__ == '__main__':
 
     settings['limit'] = LIMIT
     
-    path = os.getcwd().replace('/code' , '') + settings['results']
-    result_path = datetime.now().strftime(start.strftime(path))
+    path = os.getcwd().replace('/code' , '') + settings['results'].format(bank_mode=settings['bank_mode'])
+    result_path = start.strftime(path)
 
     timestamp = start.strftime('%Y_%m_%d')
     LOGGER.info('{ts}: start logging'.format(ts=timestamp))
