@@ -60,11 +60,7 @@ def data_preload(settings, source='data_path', mode='refined'):
     if logger:
         logger.info('loaded {n} REGIONSs from {p}'.format(n=len(reg), p=reg_path))
 
-    #d =  {'init': 'epsg:32637', 'no_defs': True}
-    #poi.crs = d
-    #buff.crs = d
-    #reg.crs = d
-    #print "remember_ CRS pervertion!"
+
     return poi, buff, reg
 
 
