@@ -12,7 +12,10 @@ LOGGER = logging.getLogger('root')
 
 
 def joiner(poi, buff):
-    return sjoin(buff, poi, how='inner', op='contains')
+    try:
+        return sjoin(buff, poi, how='inner', op='contains')
+    except ValueError:
+        return None
 
 
 def getPOI(buff, poi, settings):
@@ -45,10 +48,8 @@ def getPOI(buff, poi, settings):
 
             if all([r is None for r in results]):
                 return None
-            elif all([x.empty for x in results]):
-                return None
 
-            x = pd.concat(results).reset_index(drop=True)
+            x = pd.concat([r for r in results if not r is None]).reset_index(drop=True)
 
         except Exception as inst:
             pool.close()

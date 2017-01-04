@@ -10,7 +10,7 @@ from misc import *
 from misc.logger import log_row_string, log_pois_string
 import logging
 LOGGER = logging.getLogger('root')
-
+    
 idx = pd.IndexSlice
 BANKS = []
 
@@ -58,8 +58,8 @@ def iterate(buff, poi, reg, filename, settings):
             if buff is None:
                 return None
 
-            with open('../data/dumps/dump.pkl', 'wb') as f:
-                cPickle.dump({'buff':buff, 'poi':poi}, f)
+            # with open('../data/dumps/dump.pkl', 'wb') as f:
+            #     cPickle.dump({'buff':buff, 'poi':poi}, f)
         else:
             return None
 
