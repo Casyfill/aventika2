@@ -25,6 +25,6 @@
     "stepless": 1.0,
     "foot": 0.8,
     "foot_to_step": 0.2,
-    "region": 0.3
+    "region": 0.1
   }
 }

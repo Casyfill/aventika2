@@ -18,7 +18,8 @@ import random
 
 banks_path = '../data/preprocessed/banks.geojson'
 pois_path = '../data/preprocessed/poi.geojson'
-result_path = '../data/results/'
+result_atm_path = '../data/results/2017_01_03_21:42:32_office_results.csv'
+result_office_path = '../data/results/2017_01_04_18:27:08_atm_results.csv'
 
 def get_oldest_file(files, _invert=False):
     """ Find and return the oldest file of input file names.
@@ -43,6 +44,7 @@ def get_oldest_file(files, _invert=False):
     # Return just the name of oldest file.
     return oldest[0]
 
+
 def get_youngest_file(files):
     return get_oldest_file(files, _invert=True)
 
@@ -60,6 +62,7 @@ def _classify(results, banks, k=['low', 'below-average', 'above-average', 'high'
     labels =  classyfyer(banks['score'], k=len(k)).yb
     return classes[labels]
 
+
 def _classify2(scores, k=['low', 'below-average', 'above-average', 'high' ]):
 	m = scores.max()
 
@@ -74,11 +77,14 @@ def get_last_result():
 	'''return youngest calculated result
 	 as a dataframe
 	'''
-	files = glob.glob(result_path + '*.csv')
-	file = get_youngest_file(files)
+	# files = glob.glob(result_path + '*.csv')
+	# file = get_youngest_file(files)
 	
-	result = pd.read_csv(file)
+	result_atm = pd.read_csv(result_atm_path)
+	result_bank = pd.read_csv(result_office_path)
+	result = pd.concat([result_atm, result_bank])
 
+	result['raw_score'] = result['score']
 	result['score'] = (100 * result['score'] / result['score'].max()).round(2)
 
 	for col in ('s_pois', 'f_pois'):
@@ -139,6 +145,7 @@ def main():
 
 	blabels = _classify2(result['score'])
 
+	cntr = 0
 	for b in banks['features']:
 		bid = b['properties']['office_id'] # GET ID
 
@@ -147,6 +154,8 @@ def main():
 			score = result.loc[bid, 'score']
 
 			b['properties']['score'] = score
+			b['properties']['raw_score'] = result.loc[bid, 'raw_score']
+			b['properties']['reg_score'] = result.loc[bid, 'reg_score']
 			b['properties']['pois'] = result.loc[bid, 'pois']
 			b['properties']['priority'] = result.loc[bid, 'priority']
 
@@ -167,10 +176,13 @@ def main():
 
 
 		else:
+			print 'bid not found, inferring: ', bid 
+			cntr+=1
 			b['properties']['score'] = 0
 			b['properties']['idxColor'] = random.choice(('below-average', 'low'))
 			b['properties']['priority'] = -1
 
+	print 'Total inferred offices: {}'.format(cntr)
 	with codecs.open('../data/zipped_banks.geojson', 'w', encoding="utf-8") as f:
 		json.dump(banks, f, ensure_ascii=False)
 		print('Done! Stored')
