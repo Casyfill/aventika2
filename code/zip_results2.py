@@ -18,8 +18,9 @@ import random
 
 banks_path = '../data/preprocessed/banks.geojson'
 pois_path = '../data/preprocessed/poi.geojson'
-result_atm_path = '../data/results/2017_01_03_21:42:32_office_results.csv'
-result_office_path = '../data/results/2017_01_04_18:27:08_atm_results.csv'
+
+result_atm_path = '../data/results/reg005_atm_results.csv'
+result_office_path = '../data/results/reg005_office_results.csv'
 
 def get_oldest_file(files, _invert=False):
     """ Find and return the oldest file of input file names.
@@ -66,7 +67,7 @@ def _classify(results, banks, k=['low', 'below-average', 'above-average', 'high'
 def _classify2(scores, k=['low', 'below-average', 'above-average', 'high' ]):
 	m = scores.max()
 
-	return {'hight': .75 * m,
+	return {'high': .75 * m,
 	 		'above-average': .5 * m ,
 	 		'below-average': .25 * m,
 	 		'low': 0
@@ -84,8 +85,15 @@ def get_last_result():
 	result_bank = pd.read_csv(result_office_path)
 	result = pd.concat([result_atm, result_bank])
 
-	result['raw_score'] = result['score']
-	result['score'] = (100 * result['score'] / result['score'].max()).round(2)
+	result['reg_score'].fillna(0, inplace=1)
+	result['raw_score'] = result['score'].round(2)
+	
+	result['score'] = (100 * result['score'] / result['score'].max())
+	result.loc[(result['raw_score']!=0) & (result['score']==0),'score'] = 1
+	
+	result['score'] = result['score'].round(2)
+	result['reg_score'] = result['reg_score'].round(2)
+	# print result['reg_score'].head(3)
 
 	for col in ('s_pois', 'f_pois'):
 		result.loc[ pd.notnull(result[col]), col] = result.loc[ pd.notnull(result[col]), col].str.split('|').apply(lambda x: [int(i) for i in x])
@@ -153,9 +161,9 @@ def main():
 		if bid in result.index:
 			score = result.loc[bid, 'score']
 
-			b['properties']['score'] = score
-			b['properties']['raw_score'] = result.loc[bid, 'raw_score']
-			b['properties']['reg_score'] = result.loc[bid, 'reg_score']
+			b['properties']['score'] = float(str(score))
+			b['properties']['raw_score'] = float(str(result.loc[bid, 'raw_score']))
+			b['properties']['reg_score'] = float(str(result.loc[bid, 'reg_score']))
 			b['properties']['pois'] = result.loc[bid, 'pois']
 			b['properties']['priority'] = result.loc[bid, 'priority']
 
@@ -164,8 +172,8 @@ def main():
 			b['properties']["disability"] = d
 
 
-			if score >= blabels['hight']:
-				b['properties']['idxColor'] = 'hight'
+			if score >= blabels['high']:
+				b['properties']['idxColor'] = 'high'
 			elif score >= blabels['above-average']:
 				b['properties']['idxColor'] = 'above-average'
 			elif score >= blabels['below-average']:
