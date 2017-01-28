@@ -19,12 +19,12 @@
     }
   },
   "mp_settings": {
-    "WORKERS": 2
+    "WORKERS": 10
   },
   "koefficients": {
     "stepless": 1.0,
     "foot": 0.8,
     "foot_to_step": 0.2,
-    "region": 0.1
+    "region": 0.05
   }
 }
