@@ -114,9 +114,10 @@ def getPoiScore(buff, poi, settings):
     '''
 
     x = getPOI(buff, poi, settings)
+    print 'POIS:', len(x), len(x['pid'].unique())
     if not x is None:
         x = adjustScore(x, settings, mode='poi')
-
+        
         # .sort_values('SCORE', ascending=False)
         result_score = x.groupby('office_id').agg({'score': 'sum'})
         result_poi = get_aquired_pois(x)

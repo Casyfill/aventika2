@@ -74,7 +74,9 @@ def getSettings(path='../settings.json', mode='test'):
 
 
 if __name__ == '__main__':
-    # flag = sys.argv[1] == 'pkl' # if get data from pickle
+    if len(sys.argv) >2:
+        LIMIT = int(sys.argv[1]) # limit
+
     settings = getSettings()
     start = datetime.now()  # start of the calculations
 
