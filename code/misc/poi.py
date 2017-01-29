@@ -59,6 +59,16 @@ def getPOI(buff, poi, settings):
     else:
         x = joiner(poi, buff)
 
+   
+    
+    print 'Doubling l: {}'.format(len(x))
+    
+    x = x.sort_values('type') 
+    x.drop_duplicates(subset=['office_id','pid'], keep='last') 
+    # if Bank has poi both as foot and step element, keep only the former
+    
+    print 'Shorten l: {}'.format(len(x))
+    
     return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
 
 

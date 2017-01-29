@@ -76,6 +76,7 @@ def getSettings(path='../settings.json', mode='test'):
 if __name__ == '__main__':
     if len(sys.argv) >2:
         LIMIT = int(sys.argv[1]) # limit
+        print 'LIMIT: {}'.format(LIMIT)
 
     settings = getSettings()
     start = datetime.now()  # start of the calculations

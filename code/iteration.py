@@ -31,7 +31,9 @@ def iterate(buff, poi, reg, filename, settings):
 
     while True:
         if bound is not None:  # check if we're over the LIMIT
+	    print 'STEP:', cntr
             if cntr > bound:
+                print 'LIMIT achieved!!!'
                 break
 
         LOGGER.info(log_pois_string.format(i=cntr, n=len(poi)))
