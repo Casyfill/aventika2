@@ -12,7 +12,7 @@ import geopandas as gp
 from geopandas.tools import sjoin
 from datetime  import datetime
 
-PATH = '../data/clean_data/'
+PATH = '../data/{mode}/{p}/{f}'
 
 def _classify(results, banks, k=['low', 'below-average', 'above-average', 'high' ] ):
     '''generate fisher_jehks bins
@@ -49,7 +49,7 @@ def _drop_duplicates(pois):
 def _prepare_POI():
     '''read and process POI'''
     
-    pois = gp.read_file('{}poi.geojson'.format(PATH), encoding='utf8')
+    pois = gp.read_file('{}/out/poi.geojson'.format(PATH), encoding='utf8')
     try:
         pois.drop(['office_id','id', 'website'], axis=1, inplace=1)
     except Exception as inst:
@@ -67,13 +67,22 @@ def _prepare_POI():
         
     return _drop_dublicates(pois)
     
-def read_results():
-    results = pd.read_csv('{}results.csv'.format(PATH))
-    results.set_index('office_id', inplace=1)
-    results = results.drop_duplicates()
+def read_results(mode):
+
+    r = []
+    for name in ('1_atm_results.csv', '1_office_results.csv'):
+        results_path = PATH.format(mode=mode,
+                                   p='results',
+                                   f=name)
+        
+        r.append(pd.read_csv(results_path, index='office_id'))
+    
+    results.index = results.index.astype(int)
+    results = pd.DataFrame( r )
+    results.drop_duplicates(inplace=1)
     
     results = results[~results['pois'].str.contains('pois')] # DROP MIXED HEADERS
-    results.index = results.index.astype(int)
+    
     return results
     
     
@@ -121,23 +130,35 @@ def mainLoop(banks, b2, POI, results, buffers, gen_pois=True):
     return ubanks
 
     
-def main():
+def main(mode):
     '''xoxo'''
-    print('loading buffers')
-    buff = gp.read_file('{}buffers.geojson'.format(PATH), encoding='utf8')
+
+    buff_path = PATH.format(mode=mode, 
+                            p='out', 
+                            f='buffers.geojson')
+
+    print('loading buffers: {}'.format(buff_path))
+    buff = gp.read_file(buff_path, encoding='utf8')
     buffers = gp.GeoDataFrame(buff.groupby('office_id').agg({'geometry': lambda x: x.unary_union}).reset_index())
     
-    print('loading pois')
-    POI = gp.read_file('{}poi.geojson'.format(PATH))  #_prepare_POI()
+    poi_path = PATH.format(mode=mode, 
+                           p='out', 
+                           f='poi.geojson')
+    print('loading pois: {}'.format(poi_path))
+    POI = gp.read_file(poi_path)  #_prepare_POI()
     
-    print('loading banks')
-    with codecs.open('{}banks.geojson'.format(PATH), 'r', encoding='utf-8') as f:
+    bank_path = PATH.format(mode=mode, 
+                           p='out', 
+                           f='banks.geojson')
+
+    print('loading banks: {}'.format(bank_path))
+    with codecs.open(bank_path, 'r', encoding='utf-8') as f:
         banks = json.load(f)
 
-    b2 = gp.read_file('{}banks.geojson'.format(PATH))
+    b2 = gp.read_file(bank_path.format(PATH))
 
 
-    results = read_results()
+    results = read_results(mode)
     results['score_norm'] = (100.0 * results['score'] / results['score'].max()).round(2)
     # print 'First office:', results.loc[results.score_norm==100].index
     # b = pd.DataFrame([f['properties'] for f in banks['features']])
@@ -148,12 +169,19 @@ def main():
     print('starting the loop')
     ubanks = mainLoop(banks, b2, POI, results, buffers, gen_pois=True)
 
+    out_path = PATH.format(mode=mode,
+                           p='out',
+                           f='{ts}_banks_scored.json'.format(ts=datetime.now().strftime('%Y-%m-%d_%H:%M:%S')))
     
-    
-    with codecs.open('{path}/{ts}_banks_scored.json'.format(path=PATH, ts=datetime.now().strftime('%Y-%m-%d_%H:%M:%S')), 'w', encoding="utf-8") as f:
+    with codecs.open(out_path, 'w', encoding="utf-8") as f:
         json.dump(ubanks, f, ensure_ascii=False)
     print('Done! Stored in ')
 
 if __name__ == '__main__':
-    main()
+    if len(argv)>1:
+        mode = argv[1]
+    else:
+        mode = 'MSC'
+
+    main(mode)
     

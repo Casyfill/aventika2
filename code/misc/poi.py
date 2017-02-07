@@ -49,7 +49,7 @@ def getPOI(buff, poi, settings):
             if all([r is None for r in results]):
                 return None
 
-            x = pd.concat([r for r in results if not r is None]).reset_index(drop=True)
+            x = pd.concat([r for r in results if r is not None]).reset_index(drop=True)
 
         except Exception as inst:
             pool.close()
@@ -59,7 +59,10 @@ def getPOI(buff, poi, settings):
     else:
         x = joiner(poi, buff)
 
-    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
+    x = x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
+    print x
+    # x.sort_values('type').drop_dublicates(['pid'])
+    return x
 
 
 def adjustScore(poi, settings, mode='poi'):
@@ -114,7 +117,8 @@ def getPoiScore(buff, poi, settings):
     '''
 
     x = getPOI(buff, poi, settings)
-    if not x is None:
+    print 'Pois Got: ', len(x), len(x['pid'].unique())
+    if x is not None:
         x = adjustScore(x, settings, mode='poi')
 
         # .sort_values('SCORE', ascending=False)

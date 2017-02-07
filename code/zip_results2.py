@@ -13,74 +13,43 @@ import geopandas as gp
 from geopandas.tools import sjoin
 from datetime  import datetime
 from pandas.util.testing import isiterable
+from sys import argv
 import random
 
-
-banks_path = '../data/preprocessed/banks.geojson'
-pois_path = '../data/preprocessed/poi.geojson'
-
-result_atm_path = '../data/results/reg005_atm_results.csv'
-result_office_path = '../data/results/reg005_office_results.csv'
-
-def get_oldest_file(files, _invert=False):
-    """ Find and return the oldest file of input file names.
-    Only one wins tie. Values based on time distance from present.
-    Use of `_invert` inverts logic to make this a youngest routine,
-    to be used more clearly via `get_youngest_file`.
-    """
-    gt = operator.lt if _invert else operator.gt
-    # Check for empty list.
-    if not files:
-        return None
-    # Raw epoch distance.
-    now = time.time()
-    # Select first as arbitrary sentinel file, storing name and age.
-    oldest = files[0], now - os.path.getctime(files[0])
-    # Iterate over all remaining files.
-    for f in files[1:]:
-        age = now - os.path.getctime(f)
-        if gt(age, oldest[1]):
-            # Set new oldest.
-            oldest = f, age
-    # Return just the name of oldest file.
-    return oldest[0]
+PATH = '../data/{city}/{p}/{f}'
 
 
-def get_youngest_file(files):
-    return get_oldest_file(files, _invert=True)
-
-
-def _classify(results, banks, k=['low', 'below-average', 'above-average', 'high' ] ):
-    '''generate fisher_jehks bins
-    for specific range'''
-    
-    # from pysal.esda.mapclassify import Fisher_Jenks as classyfyer
-    from pysal.esda.mapclassify import Equal_Interval as classyfyer
-    classes = pd.np.array(k)
-
-    banks['score'] = results['score'].fillna(0)
-
-    labels =  classyfyer(banks['score'], k=len(k)).yb
-    return classes[labels]
-
-
-def _classify2(scores, k=['low', 'below-average', 'above-average', 'high' ]):
+def _classify2(scores):
 	m = scores.max()
 
-	return {'high': .75 * m,
+	d = {'high': .75 * m,
 	 		'above-average': .5 * m ,
 	 		'below-average': .25 * m,
 	 		'low': 0
 			}
 
+	print d
+	return  d
 
-def get_last_result():
+
+def get_last_result(city):
 	'''return youngest calculated result
 	 as a dataframe
 	'''
 	# files = glob.glob(result_path + '*.csv')
 	# file = get_youngest_file(files)
+	result_atm_path = PATH.format(city=city, 
+								  p='results',
+								  f='1_atm_results.csv')
+
+	result_office_path = PATH.format(city=city, 
+								  p='results',
+								  f='1_office_results.csv')
 	
+
+	print('loading atms: {}'.format(result_atm_path))
+	print('loading offices: {}'.format(result_office_path))
+
 	result_atm = pd.read_csv(result_atm_path)
 	result_bank = pd.read_csv(result_office_path)
 	result = pd.concat([result_atm, result_bank])
@@ -93,7 +62,9 @@ def get_last_result():
 	
 	result['score'] = result['score'].round(2)
 	result['reg_score'] = result['reg_score'].round(2)
-	# print result['reg_score'].head(3)
+
+	labels = ['low', 'below-average', 'above-average', 'high']
+	result['label'] = pd.cut(result['score'], bins=len(labels), labels = labels)
 
 	for col in ('s_pois', 'f_pois'):
 		result.loc[ pd.notnull(result[col]), col] = result.loc[ pd.notnull(result[col]), col].str.split('|').apply(lambda x: [int(i) for i in x])
@@ -103,28 +74,50 @@ def get_last_result():
 	
 	return result.set_index('office_id')
 
-def get_banks():
+def get_banks(city):
 	# banks = gp.read_file(banks_path)
 	# banks['score'] = 0
 	# return banks.set_index('office_id')
+
+	banks_path = PATH.format(city=city, 
+							 p='out',
+							 f='banks.geojson')
+
+	print('loading banks: {}'.format(banks_path))
+
+
 	with codecs.open(banks_path, 'r', encoding='utf-8') as f:
 		banks = json.load(f)
 		return banks
 
-def get_pois():
+
+def get_pois(city):
+
+	pois_path = PATH.format(city=city, 
+			                p='out',
+			                f='poi.geojson')
+
+	print('loading pois: {}'.format(pois_path))
 	r = gp.read_file(pois_path)
 	# print r['pid'].dtype
 	r['pid'] = r['pid'].astype(int)
 	return r.set_index('pid')
 
-def getLabels(result):
+
+def getLabels(city, result):
+	banks_path = PATH.format(city=city, 
+							 p='out',
+							 f='banks.geojson')
+
 	b2 = gp.read_file(banks_path).set_index('office_id')
 	b2["idxColor"] = _classify(result, b2)
 	return b2
 
+
 def uset(l):
 	if isiterable(l):
 		return list(set(l))
+
 
 
 def get_disabilities(pids, pois):
@@ -145,13 +138,13 @@ def get_disabilities(pids, pois):
 		print inst
 
 
-def main():
-	banks = get_banks()
-	result = get_last_result()
-	pois = get_pois()
+def main(city):
+	banks = get_banks(city)
+	result = get_last_result(city)
+	pois = get_pois(city)
 	print 'loaded everything'
 
-	blabels = _classify2(result['score'])
+	# blabels = _classify2(result['score'])
 
 	cntr = 0
 	for b in banks['features']:
@@ -164,41 +157,50 @@ def main():
 			b['properties']['score'] = float(str(score))
 			b['properties']['raw_score'] = float(str(result.loc[bid, 'raw_score']))
 			b['properties']['reg_score'] = float(str(result.loc[bid, 'reg_score']))
-			b['properties']['pois'] = result.loc[bid, 'pois']
+			b['properties']['pois'] = list(set(result.loc[bid, 'pois']))
 			b['properties']['priority'] = result.loc[bid, 'priority']
 
 			d = get_disabilities(result.loc[bid, 'pois'], pois)
 			
 			b['properties']["disability"] = d
-
-
-			if score >= blabels['high']:
-				b['properties']['idxColor'] = 'high'
-			elif score >= blabels['above-average']:
-				b['properties']['idxColor'] = 'above-average'
-			elif score >= blabels['below-average']:
-				b['properties']['idxColor'] = 'below-average'
-			else:
-				b['properties']['idxColor'] = 'low'
-
-
+			b['properties']['idxColor'] = result.loc[bid, 'label']
 
 		else:
 			print 'bid not found, inferring: ', bid 
 			cntr+=1
 			b['properties']['score'] = 0
-			b['properties']['idxColor'] = random.choice(('below-average', 'low'))
+			b['properties']['idxColor'] = 'low'
 			b['properties']['priority'] = -1
 
 	print 'Total inferred offices: {}'.format(cntr)
-	with codecs.open('../data/zipped_banks.geojson', 'w', encoding="utf-8") as f:
+
+	result_csv_path = PATH.format(city=city,
+							  p='out',
+							  f='scored_banks.xlsx')
+	
+
+	result_path = PATH.format(city=city,
+							  p='out',
+							  f='scored_banks.geojson')
+	print 'Storing at: {}'.format(result_path)
+
+	with codecs.open(result_path, 'w', encoding="utf-8") as f:
 		json.dump(banks, f, ensure_ascii=False)
-		print('Done! Stored')
+
+	gp.read_file(result_path).drop('geometry', axis=1).to_excel(result_csv_path)
+	print('Done! Stored')
+
+
 
 	
 
 
 
 if __name__ == '__main__':
-	main()
+	if len(argv)>1:
+		city = argv[1]
+	else:
+		city = 'MSC'
+
+	main(city)
 
