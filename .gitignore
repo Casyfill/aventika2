@@ -1,4 +1,6 @@
-
+**settings.json
 data/real/*
-data/results/*
-*.pyc
+data/*.geojson
+**.pyc
+**.log
+jupyter_examples

@@ -1,25 +1,31 @@
 {
-  "results": "../data/results/%Y_%m_%d_%H:%M:%S_results.csv",
-  "data_path": "../data/real/",
+  "results": "/data/results/%Y_%m_%d_%H:%M:%S_{bank_mode}_results.csv",
+  "data_path": "/data/{city}/",
+  "test_path": "/data/test/",
+  "bank_mode": "office",
+  "reg_mode": "no_geometry",
+
   "files": {
     "raw": {
-      "regions": "regions.geojson",
-      "poi": "poi.geojson",
-      "buffers": "buffers.geojson",
-      "banks": "banks.geojson"
+      "regions": "raw/regions.geojson",
+      "poi": "raw/poi.geojson",
+      "buffers": "raw/buffers.geojson",
+      "banks": "raw/banks.geojson"
     },
+
     "refined": {
-      "poi": "refined/poi.geojson",
-      "regions": "refined/regions.geojson",
-      "buffers": "refined/buffers.geojson"
+      "poi": "processed/poi.geojson",
+      "regions": "processed/regions.geojson",
+      "buffers": "processed/buffers_{mode}.geojson"
     }
   },
   "mp_settings": {
-    "WORKERS": 2
+    "WORKERS": 1
   },
   "koefficients": {
     "stepless": 1.0,
     "foot": 0.8,
-    "foot_to_step": 0.2
+    "foot_to_step": 0.2,
+    "region": 0.05
   }
 }

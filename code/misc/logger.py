@@ -4,16 +4,22 @@
 import logging
 import datetime
 import sys
+import os
 # from glob import glob
 # import os
 
 
 def getLogger():
-    logger = logging.getLogger(__name__)
+
+
+    logger = logging.getLogger('root')
     logger.setLevel(logging.INFO)
 
-    date = datetime.datetime.now().strftime('%Y_%m_%d')
-    handler = logging.FileHandler('../logs/%s_scraping.log' % date)
+    path = os.getcwd()
+    path = path.replace('/code', '')
+
+    date = datetime.datetime.now().strftime('%Y_%m_%d__%H:%M')
+    handler = logging.FileHandler(path + '/logs/%s_scraping.log' % date)
     handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter(

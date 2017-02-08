@@ -6,12 +6,16 @@ import multiprocessing as mp
 from functools import partial
 from misc import chunker_eq
 from geopandas.tools import sjoin
+import logging
 idx = pd.IndexSlice
-POOL = None
+LOGGER = logging.getLogger('root')
 
 
 def joiner(poi, buff):
-    return sjoin(buff, poi, how='inner', op='contains')
+    try:
+        return sjoin(buff, poi, how='inner', op='contains')
+    except ValueError:
+        return None
 
 
 def getPOI(buff, poi, settings):
@@ -27,32 +31,46 @@ def getPOI(buff, poi, settings):
         pd.Dataframe
     '''
     WORKERS = settings['mp_settings']['WORKERS']
-    global POOL  # global pull of processes
+    pool = settings.get('POOL', None)  # global pull of processes
     buff = buff.reset_index()
     
     partial_joiner = partial(joiner, buff=buff)
 
     if WORKERS > 1:
         try:
-            if POOL is None:
-                POOL = mp.Pool(processes=WORKERS)
-                settings['logger'].info('   Pool:{} workers'.format(WORKERS))
+            if pool is None:
+                pool = mp.Pool(processes=WORKERS)
+                settings['POOL'] = pool
+                LOGGER.info('   Pool:{} workers'.format(WORKERS))
             
             poi_chunks = chunker_eq(poi, WORKERS)
-            results = POOL.map(partial_joiner, poi_chunks)
+            results = pool.map(partial_joiner, poi_chunks)
 
-            x = pd.concat(results)
+            if all([r is None for r in results]):
+                return None
+
+            x = pd.concat([r for r in results if r is not None]).reset_index(drop=True)
 
         except Exception as inst:
-            print buff
-            POOL.close()
-            POOL.join()
+            pool.close()
+            pool.join()
             raise Exception(inst)
 
     else:
         x = joiner(poi, buff)
 
-    return x[pd.notnull(x['score'])]
+   
+    
+    print 'Doubling l: {}'.format(len(x))
+    
+    x = x.sort_values('type') 
+    x.drop_duplicates(subset=['office_id','pid'], keep='last') 
+    # if Bank has poi both as foot and step element, keep only the former
+    
+    print 'Shorten l: {}'.format(len(x))
+    
+    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
+
 
 
 def adjustScore(poi, settings, mode='poi'):
@@ -62,28 +80,34 @@ def adjustScore(poi, settings, mode='poi'):
     Return:
         adjusted poi results
     '''
+
     key = {'poi':'pid', 'reg':'reg_id'}[mode]
     log_string = '{p}: koefficient {k} applied'
     kf = settings['koefficients']
-    poic = poi.copy()  # just in case
+    
+    poic = poi[~((poi['fs']) & (poi['type']=='foot'))]  # drop foot-fc
 
     for tp in kf.keys():
         poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
-        pois = poic.loc[poi['type'] == tp, key].tolist()
 
-        #settings['logger'].info(log_string.format(p=pois, k=kf[tp]))
+        pois = poic.loc[poi['type'] == tp, key].tolist()
+        # LOGGER.info(log_string.format(p=pois[:5], k=kf[tp]))
 
     return poic
 
 
-def get_aqured_pois(pois):
-    '''gets two types of pois,
+def get_aquired_pois(pois):
+    '''gets three types of pois,
     depending of "aquisition" buffer'''
     stepless_poi = pois[pois['type'] == 'stepless'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
     foot_poi = pois[pois['type'] == 'foot'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
 
+    fc_poi = pois[pois['type'] == 'foot_to_step'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
+
     pois = pd.DataFrame({'stepless_poi': stepless_poi,
-                         'foot_poi': foot_poi})
+                         'foot_poi': foot_poi,
+                         'foot_to_step': fc_poi})
+
     pois.index = pois.index.get_level_values(1)
     return pois
 
@@ -101,9 +125,14 @@ def getPoiScore(buff, poi, settings):
     '''
 
     x = getPOI(buff, poi, settings)
-    x = adjustScore(x, settings, mode='poi')
 
-    # .sort_values('SCORE', ascending=False)
-    result_score = x.groupby('office_id').agg({'score': 'sum'})
-    result_poi = get_aqured_pois(x)
-    return result_score, result_poi
+    print 'POIS:', len(x), len(x['pid'].unique())
+    if not x is None:
+        x = adjustScore(x, settings, mode='poi')
+        
+        # .sort_values('SCORE', ascending=False)
+        result_score = x.groupby('office_id').agg({'score': 'sum'})
+        result_poi = get_aquired_pois(x)
+        return result_score, result_poi
+    else:
+        return None, None
