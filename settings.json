@@ -1,8 +1,9 @@
 {
   "results": "/data/results/%Y_%m_%d_%H:%M:%S_{bank_mode}_results.csv",
-  "data_path": "/data/real/",
+  "data_path": "/data/{city}/",
   "test_path": "/data/test/",
   "bank_mode": "office",
+  "reg_mode": "no_geometry",
 
   "files": {
     "raw": {
@@ -13,13 +14,13 @@
     },
 
     "refined": {
-      "poi": "refined/poi.geojson",
-      "regions": "refined/regions.geojson",
-      "buffers": "refined/buffers.geojson"
+      "poi": "processed/poi.geojson",
+      "regions": "processed/regions.geojson",
+      "buffers": "processed/buffers_{mode}.geojson"
     }
   },
   "mp_settings": {
-    "WORKERS": 10
+    "WORKERS": 1
   },
   "koefficients": {
     "stepless": 1.0,
