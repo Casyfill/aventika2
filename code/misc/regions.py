@@ -9,13 +9,17 @@ import logging
 from misc import chunker_eq
 LOGGER = logging.getLogger('root')
 
+
 def get_aquired_regs(regs):
     '''gets three types of regs,
     depending of "aquisition" buffer'''
-    stepless_reg = regs[regs['type'] == 'stepless'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
-    foot_reg = regs[regs['type'] == 'foot'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+    stepless_reg = regs[regs['type'] == 'stepless'].groupby(
+        'office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+    foot_reg = regs[regs['type'] == 'foot'].groupby(
+        'office_id').agg({'reg_id': lambda x: list(x)}).unstack()
 
-    fc_reg = regs[regs['type'] == 'foot_to_step'].groupby('office_id').agg({'reg_id': lambda x: list(x)}).unstack()
+    fc_reg = regs[regs['type'] == 'foot_to_step'].groupby(
+        'office_id').agg({'reg_id': lambda x: list(x)}).unstack()
 
     regs = pd.DataFrame({'stepless_reg': stepless_reg,
                          'foot_reg': foot_reg,
@@ -23,6 +27,7 @@ def get_aquired_regs(regs):
 
     regs.index = regs.index.get_level_values(1)
     return regs
+
 
 def getReg(buff, reg):
     '''calculate adjusted Reg score for each bank
@@ -52,7 +57,6 @@ def getReg_overlayed(buffs, reg_overlayed, settings):
     return result[['office_id', 'score']].groupby('office_id').sum()
 
 
-
 def joiner(reg, buff):
     try:
         return sjoin(buff, reg, how='inner', op='contains')
@@ -74,7 +78,7 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
     '''
     WORKERS = settings['mp_settings']['WORKERS']
     pool = settings.get('POOL', None)  # global pull of processes
-    
+
     partial_joiner = partial(joiner, buff=buff.reset_index())
 
     if WORKERS > 1:
@@ -83,14 +87,15 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
                 pool = mp.Pool(processes=WORKERS)
                 LOGGER.info('   Pool:{} workers'.format(WORKERS))
                 settings['POOL'] = pool
-            
+
             reg_chunks = chunker_eq(reg_overlayed, WORKERS)
             results = pool.map(partial_joiner, reg_chunks)
 
             if all([r is None for r in results]):
                 return None
 
-            x = pd.concat([r for r in results if not r is None]).reset_index(drop=True)
+            x = pd.concat(
+                [r for r in results if not r is None]).reset_index(drop=True)
 
         except Exception as inst:
             pool.close()
@@ -103,7 +108,26 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
     return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'reg_id', 'fs']]
 
 
-def getRegScore(buffs, reg, settings):
+def regScore_area(buff, settings):
+    '''calculate adj region score for each bank
+    using buffer area and overal density score
+
+    Args:
+        buffs: buffers
+        settings(dict): settings
+    Returns:
+        regions split with score for each bank office
+    '''
+    x = buff.copy()
+    koeff = settings['koefficients']['region_density'][settings["city"]]
+    x['score'] = x.area * koeff
+    for el in ("stepless", "foot", "foot_to_step"):
+        k = settings['koefficients'][el]
+        x.loc[x['type'] == el, 'score'] = x.loc[x['type'] == el, 'score'] * k
+    return x.groupby('office_id').agg({'score': 'sum'}), None
+
+
+def getRegScore_rayons(buffs, reg, settings):
     '''calculate adjusted POI score for each bank
 
     Args:
@@ -115,14 +139,23 @@ def getRegScore(buffs, reg, settings):
     '''
 
     x = getReg_overlayed_mp(buffs, reg, settings)
-    
-    if not x is None:
+
+    if x is not None:
         x = adjustScore(x, settings, mode='reg')
         x['score'] = x['score'].astype(int)
-    
-        scores = x.groupby('office_id').agg({'score': 'sum'}) * settings['koefficients']['region']
+
+        scores = x.groupby('office_id').agg(
+            {'score': 'sum'}) * settings['koefficients']['region']
         aq_regs = get_aquired_regs(x)
 
         return scores, aq_regs
     else:
         return None, None
+
+
+def getRegScore(buffs, reg, settings):
+    ''' switching the mode'''
+    if settings["reg_geom"]:
+        return getRegScore_rayons(buffs, reg, settings)
+    else:
+        return getRegScore_area(buffs, settings)

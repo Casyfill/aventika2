@@ -28,7 +28,8 @@ def get_overlay(buff, reg):
     z['score'] = z['disabled'] * z.area / z['reg_area']
     z['geometry'] = z.representative_point()
     z = z[z.intersects(buff.unary_union)]
-    z['reg_id'] = z['reg_id'].astype(int).astype(str) + '_' + z.index.astype(str)
+    z['reg_id'] = z['reg_id'].astype(int).astype(
+        str) + '_' + z.index.astype(str)
 
     return z[['reg_id', 'geometry', 'score']]
 
@@ -52,23 +53,25 @@ def _bufferize(geoDF):
     return geoDF
 
 
-def around(geom,p):
+def around(geom, p):
     geojson = mapping(geom)
-    geojson['coordinates'] = np.round(np.array(geojson['coordinates']),p)
-    return  shape(geojson)
+    geojson['coordinates'] = np.round(np.array(geojson['coordinates']), p)
+    return shape(geojson)
 
 
 def prepare(buff, poi, reg, settings):
     '''optimize geometry for the iteration'''
     poi = drop_poi(buff, poi, settings)
-    reg = _bufferize(reg)
+
+    if settings["reg_geom"]:
+        reg = _bufferize(reg)
+        regs_overlayed = get_overlay(buff, reg)
+        LOGGER.info('Created region overlay')
+    else:
+        regs_overlayed = None
+
     buff = _bufferize(buff)
     global LOGGER
     LOGGER.info('geometry bufferized')
 
-    regs_overlayed = get_overlay(buff, reg)
-    LOGGER.info('Created region overlay')
-
     return buff, poi, regs_overlayed
-
-
