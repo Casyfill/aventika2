@@ -59,10 +59,18 @@ def getPOI(buff, poi, settings):
     else:
         x = joiner(poi, buff)
 
-    x = x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
-    print x
-    # x.sort_values('type').drop_dublicates(['pid'])
-    return x
+   
+    
+    print 'Doubling l: {}'.format(len(x))
+    
+    x = x.sort_values('type') 
+    x.drop_duplicates(subset=['office_id','pid'], keep='last') 
+    # if Bank has poi both as foot and step element, keep only the former
+    
+    print 'Shorten l: {}'.format(len(x))
+    
+    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
+
 
 
 def adjustScore(poi, settings, mode='poi'):
@@ -117,10 +125,11 @@ def getPoiScore(buff, poi, settings):
     '''
 
     x = getPOI(buff, poi, settings)
-    print 'Pois Got: ', len(x), len(x['pid'].unique())
-    if x is not None:
-        x = adjustScore(x, settings, mode='poi')
 
+    print 'POIS:', len(x), len(x['pid'].unique())
+    if not x is None:
+        x = adjustScore(x, settings, mode='poi')
+        
         # .sort_values('SCORE', ascending=False)
         result_score = x.groupby('office_id').agg({'score': 'sum'})
         result_poi = get_aquired_pois(x)
