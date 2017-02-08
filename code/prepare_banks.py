@@ -39,7 +39,7 @@ def get_all_buffers(path, concat, city):
 
 	points = gp.read_file(path + 'processed/banksdummy.geojson')
 
-	for tp in ('office', 'atm'):
+	for tp in ('atm',):
 		b = get_buffers(points[points['type']==tp], concat, city)
 		with open(path + 'processed/buffers_{}.geojson'.format(tp), 'w') as f:
 			f.write(b.to_json())
