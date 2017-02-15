@@ -99,7 +99,7 @@ if __name__ == '__main__':
     poi, buff, reg = data_preload(settings, src='data_path', mode='refined')
     buff, poi, reg = prepare(buff, poi, reg, settings)
 
-    # iterate(buff, poi, reg,
-    #         filename=result_path,
-    #         settings=settings)
+    iterate(buff, poi, reg,
+            filename=result_path,
+            settings=settings)
     print 'Done!'

@@ -33,7 +33,7 @@ def getPOI(buff, poi, settings):
     WORKERS = settings['mp_settings']['WORKERS']
     pool = settings.get('POOL', None)  # global pull of processes
     buff = buff.reset_index()
-    
+
     partial_joiner = partial(joiner, buff=buff)
 
     if WORKERS > 1:
@@ -42,14 +42,15 @@ def getPOI(buff, poi, settings):
                 pool = mp.Pool(processes=WORKERS)
                 settings['POOL'] = pool
                 LOGGER.info('   Pool:{} workers'.format(WORKERS))
-            
+
             poi_chunks = chunker_eq(poi, WORKERS)
             results = pool.map(partial_joiner, poi_chunks)
 
             if all([r is None for r in results]):
                 return None
 
-            x = pd.concat([r for r in results if r is not None]).reset_index(drop=True)
+            x = pd.concat(
+                [r for r in results if r is not None]).reset_index(drop=True)
 
         except Exception as inst:
             pool.close()
@@ -59,18 +60,11 @@ def getPOI(buff, poi, settings):
     else:
         x = joiner(poi, buff)
 
-   
-    
-    print 'Doubling l: {}'.format(len(x))
-    
-    x = x.sort_values('type') 
-    x.drop_duplicates(subset=['office_id','pid'], keep='last') 
-    # if Bank has poi both as foot and step element, keep only the former
-    
-    print 'Shorten l: {}'.format(len(x))
-    
-    return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
-
+    if x is not None:
+        x.drop_duplicates(subset=['office_id', 'pid'], keep='last')
+        # if Bank has poi both as foot and step element, keep only the former
+        return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'pid', 'fs']]
+    return None
 
 
 def adjustScore(poi, settings, mode='poi'):
@@ -81,16 +75,16 @@ def adjustScore(poi, settings, mode='poi'):
         adjusted poi results
     '''
 
-    key = {'poi':'pid', 'reg':'reg_id'}[mode]
+    key = {'poi': 'pid', 'reg': 'reg_id'}[mode]
     log_string = '{p}: koefficient {k} applied'
     kf = settings['koefficients']
-    
-    poic = poi[~((poi['fs']) & (poi['type']=='foot'))]  # drop foot-fc
+
+    poic = poi[~((poi['fs']) & (poi['type'] == 'foot'))]  # drop foot-fc
 
     for tp in kf.keys():
-        poic.loc[poi['type'] == tp, 'score'] *= kf[tp]
+        poic.loc[poic['type'] == tp, 'score'] *= kf[tp]
 
-        pois = poic.loc[poi['type'] == tp, key].tolist()
+        pois = poic.loc[poic['type'] == tp, key].tolist()
         # LOGGER.info(log_string.format(p=pois[:5], k=kf[tp]))
 
     return poic
@@ -99,10 +93,13 @@ def adjustScore(poi, settings, mode='poi'):
 def get_aquired_pois(pois):
     '''gets three types of pois,
     depending of "aquisition" buffer'''
-    stepless_poi = pois[pois['type'] == 'stepless'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
-    foot_poi = pois[pois['type'] == 'foot'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
+    stepless_poi = pois[pois['type'] == 'stepless'].groupby(
+        'office_id').agg({'pid': lambda x: list(x)}).unstack()
+    foot_poi = pois[pois['type'] == 'foot'].groupby(
+        'office_id').agg({'pid': lambda x: list(x)}).unstack()
 
-    fc_poi = pois[pois['type'] == 'foot_to_step'].groupby('office_id').agg({'pid': lambda x: list(x)}).unstack()
+    fc_poi = pois[pois['type'] == 'foot_to_step'].groupby(
+        'office_id').agg({'pid': lambda x: list(x)}).unstack()
 
     pois = pd.DataFrame({'stepless_poi': stepless_poi,
                          'foot_poi': foot_poi,
@@ -129,7 +126,7 @@ def getPoiScore(buff, poi, settings):
     print 'POIS:', len(x), len(x['pid'].unique())
     if not x is None:
         x = adjustScore(x, settings, mode='poi')
-        
+
         # .sort_values('SCORE', ascending=False)
         result_score = x.groupby('office_id').agg({'score': 'sum'})
         result_poi = get_aquired_pois(x)

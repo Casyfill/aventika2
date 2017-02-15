@@ -10,7 +10,7 @@ from misc import *
 from misc.logger import log_row_string, log_pois_string
 import logging
 LOGGER = logging.getLogger('root')
-    
+
 idx = pd.IndexSlice
 BANKS = []
 
@@ -26,19 +26,20 @@ def iterate(buff, poi, reg, filename, settings):
 
     # buffers of newly adopted offices will be added here iteratively
     bound = settings['limit']
-    
+
     LOGGER.info('Started iteration')
 
     while True:
         if bound is not None:  # check if we're over the LIMIT
-	    print 'STEP:', cntr
+            print 'STEP:', cntr
             if cntr > bound:
                 print 'LIMIT achieved!!!'
                 break
 
         LOGGER.info(log_pois_string.format(i=cntr, n=len(poi)))
 
-        bid, score, reg_score, f_pois, s_pois, f_regs, s_regs = iteration(cntr, buff, poi, reg, settings)
+        bid, score, reg_score, f_pois, s_pois, f_regs, s_regs = iteration(
+            cntr, buff, poi, reg, settings)
 
         # update information
         row = {'priority': cntr,
@@ -50,13 +51,14 @@ def iterate(buff, poi, reg, filename, settings):
                }
 
         writerow(row, filename, cntr < 2)
-        
+
         LOGGER.info(log_row_string.format(
             i=cntr, bid=row['office_id'], s=row['score']))
         cntr += 1
-        
+
         if score and score > 0:
-            buff, poi, reg = update_data(buff, poi, reg, bid, s_pois, s_regs, f_pois, f_regs)
+            buff, poi, reg = update_data(
+                buff, poi, reg, bid, s_pois, s_regs, f_pois, f_regs)
             if buff is None:
                 return None
 
@@ -86,8 +88,6 @@ def iteration(i, buff, poi, reg, settings):
 
     # print 'Iteration N{}. banks left:{}'.format(i,
     # sum(pd.isnull(buff['priority']))/3)
-
-    
 
     if sum(pd.isnull(buff['priority'])) == 0:
         LOGGER.info('none unassigned banks, Iteration complete')
@@ -153,15 +153,15 @@ def agg_results(p=None, r=None, get_max=True):
     '''summs results from POI and regions'''
     if (p is None and r is None):
         raise IOError('No information at all')
-    if p is None :
+    if p is None:
         LOGGER.info('no poi score')
         result = r
     elif r is None:
         LOGGER.info('no regions score')
         result = p
     else:
-        tmp = pd.DataFrame({'reg_score':r['score'],
-                            'poi_score':p['score']})
+        tmp = pd.DataFrame({'reg_score': r['score'],
+                            'poi_score': p['score']})
 
         if tmp.empty:
             raise IOError('No information at all')
@@ -170,7 +170,7 @@ def agg_results(p=None, r=None, get_max=True):
 
     if len(result['score']) == 0:
         return None, None
-    
+
     return result['score'].argmax(), result['score'].max()
 
 
@@ -187,14 +187,19 @@ def update_data(buff, poi, reg, bid, s_pois, s_regs, f_pois, f_regs):
     buff = update_buff(buff, bid)
 
     lp = len(poi)
-    lr = len(reg)
     poi = poi[~poi['pid'].isin(s_pois)]  # remove stepless pois
-    reg = reg[~reg['reg_id'].isin(s_regs)]
-
     poi.loc[poi['pid'].isin(f_pois), 'fs'] = True
-    reg.loc[reg['reg_id'].isin(f_regs), 'fs'] = True
+    reduced_poi = lp - len(poi)
 
-    LOGGER.info('Removed {0} poi, {1} regions'.format(lp - len(poi), lr - len(reg)))
+    if reg is not None:
+        lr = len(reg)
+        reg = reg[~reg['reg_id'].isin(s_regs)]
+        reg.loc[reg['reg_id'].isin(f_regs), 'fs'] = True
+        reduced_reg = lr - len(reg)
+    else:
+        reduced_reg = 0
+
+    LOGGER.info('Removed {0} poi, {1} regions'.format(reduced_poi, reduced_reg ))
     return buff, poi, reg
 
 

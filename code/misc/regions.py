@@ -108,7 +108,7 @@ def getReg_overlayed_mp(buff, reg_overlayed, settings):
     return x.loc[pd.notnull(x['score']), ['type', 'office_id', 'score', 'reg_id', 'fs']]
 
 
-def regScore_area(buff, settings):
+def getRegScore_area(buff, settings):
     '''calculate adj region score for each bank
     using buffer area and overal density score
 
@@ -118,9 +118,11 @@ def regScore_area(buff, settings):
     Returns:
         regions split with score for each bank office
     '''
-    x = buff.copy()
+    x = buff.reset_index()
+    # print x.columns
     koeff = settings['koefficients']['region_density'][settings["city"]]
-    x['score'] = x.area * koeff
+    d_koeff = settings['koefficients']['region']
+    x['score'] = x.area * koeff * d_koeff
     for el in ("stepless", "foot", "foot_to_step"):
         k = settings['koefficients'][el]
         x.loc[x['type'] == el, 'score'] = x.loc[x['type'] == el, 'score'] * k
