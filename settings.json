@@ -1,9 +1,11 @@
 {
-  "results": "/data/results/%Y_%m_%d_%H:%M:%S_{bank_mode}_results.csv",
+  "city":"SPB",
+  "results": "/data/{city}/results/%Y_%m_%d_%H:%M:%S_{bank_mode}_results.csv",
   "data_path": "/data/{city}/",
   "test_path": "/data/test/",
   "bank_mode": "office",
-  "reg_mode": "no_geometry",
+  "reg_geom": false,
+  "limit": null,
 
   "files": {
     "raw": {
@@ -26,6 +28,7 @@
     "stepless": 1.0,
     "foot": 0.8,
     "foot_to_step": 0.2,
-    "region": 0.05
+    "region": 0.05,
+    "region_density": {"SPB":0.000}
   }
 }
