@@ -13,14 +13,14 @@ __author__ = "Phipipp Kats (casyfill)"
 __version__ = "0.9.7.01 testing"
 
 LIMIT = None  # manual execution bound
-LOGGER = getLogger()
+LOGGER = getLogger('MSC')
 
 
 def data_preload(settings, src='data_path', mode='refined'):
     '''data preloader
     '''
     source = settings[src].format(city=settings[u'city'])
-    print source
+    print(source)
 
     modetypes = ('atm', 'office', None)
     bank_mode = settings.get('bank_mode', None)
@@ -40,7 +40,7 @@ def data_preload(settings, src='data_path', mode='refined'):
     poi['score'] = poi['score'].astype(float)
     poi['fs'] = False
 
-    LOGGER.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
+    # LOGGER.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
     buff_path = dpath + \
         settings['files'][mode]['buffers'].format(mode=bank_mode)
     buff = gp.read_file(buff_path)
@@ -71,7 +71,7 @@ def getSettings(path='../settings.json', mode='test'):
             settings = json.load(f)
             settings['mode'] = mode
     except Exception as inst:
-        print 'Failed to read settings, check the file'
+        print('Failed to read settings, check the file')
         raise Exception(inst)
 
     return settings
@@ -82,7 +82,7 @@ if __name__ == '__main__':
         city = sys.argv[1]
     else:
         city = 'SPB'
-    print 'CITY: {}'.format(city)
+    print('CITY: {}'.format(city))
 
     settings = getSettings()
     start = datetime.now()  # start of the calculations
@@ -102,4 +102,4 @@ if __name__ == '__main__':
     iterate(buff, poi, reg,
             filename=result_path,
             settings=settings)
-    print 'Done!'
+    print('Done!')

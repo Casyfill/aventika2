@@ -9,30 +9,31 @@ from shapely.geometry import Polygon
 from glob import glob
 import re
 import time
+import cPickle as pickle
 
 COUNTER = 1
 BASE = "http://galton.urbica.co/{city}/{type}/"
 
 CITIES = {'KZN': "kazan",
           'EKB': "yekaterinburg",
-          'MSC': "moscow_russia",
-          'SPB': "saint-petersburg_russia"}
+          'MSC': "moscow",
+          'SPB': "saint_petersburg"}
 
 # CITIES = ("amsterdam_netherlands",
-# 		  "barcelona_spain",
-# 		  "beijing_china",
-# 		  "berlin_germany",
-# 		  "moscow_russia",
-# 		  "saint-petersburg_russia",
-# 		  "kazan",
-# 		  "yekaterinburg"
-# 		  "kyiv_ukraine",
-# 		  "madrid_spain",
-# 		  "london_england",
-# 		  "new-york_new-york",
-# 		  "paris_france",
-# 		  "prague_czech-republic",
-# 		  "san-francisco_california")
+#         "barcelona_spain",
+#         "beijing_china",
+#         "berlin_germany",
+#         "moscow",
+#         "saint-petersburg",
+#         "kazan",
+#         "yekaterinburg"
+#         "kyiv_ukraine",
+#         "madrid_spain",
+#         "london_england",
+#         "new-york_new-york",
+#         "paris_france",
+#         "prague_czech-republic",
+#         "san-francisco_california")
 
 TYPES = ('foot', 'stepless')  # 'car',
 TOLERANCE = .001
@@ -46,13 +47,15 @@ def getIsochrone(point, type, city="moscow_russia", concat=2, intrvl=5):
 
     '''
     burl = BASE.format(type=type, city=city)
+    # print burl
     r = requests.get(burl, params={'lng': point[0],
                                    "lat": point[1],
                                    'intervals[]': intrvl,
                                    'concavity': concat})
-    if r.status_code != 200:
-        print r.url
+    # if r.status_code != 200:
+    # print r.url
     r.raise_for_status()
+    print '!'
 
     p = Polygon(r.json()['features'][0]['geometry']['coordinates'][0])
     global TOLERANCE
@@ -92,7 +95,7 @@ def _bufferize(p, concat, city):
     try:  # ensure stepless is smaller or equal to foot
         triple[2]['geometry'] = triple[2][
             'geometry'].intersection(triple[1]['geometry'])
-    except:
+    except Exception:
         pass
 
     return triple
@@ -106,6 +109,8 @@ def process_points(points, concat=3, city='MSC'):
         _bufferize(p, concat=concat, city=city)), 1)
     buffs = gp.GeoDataFrame(pd.DataFrame(buffers))
     buffs['priority'] = None
+    print(buffs.loc[pd.isnull(buffs['geometry']),'office_id'])
+    print(buffs.loc[buffs.is_empty,'office_id'])
 
     return buffs
 
@@ -125,19 +130,32 @@ def main(city):
     with open(proc_folder + '/banksdummy.geojson', 'w') as f:
         f.write(points.to_json())
 
-    buffs = process_points(points[['geometry', 'type', 'office_id']], concat=3, city=city)
-    buffs = buffs[pd.notnull(buffs['geometry'])]
+    buffs = process_points(points[['geometry', 'type', 'office_id']],
+                           concat=3,
+                           city=city)
 
-    with open(proc_folder + '/buffers.geojson', 'w') as f:
+    with open('../data/{c}/processed/buffers.pkl'.format(c=city), 'wb') as f:
+        pickle.dump(buffs, f)
+
+    issues = pd.isnull(buffs['geometry']).sum()
+    issues += buffs.is_empty.sum()
+
+    buffs = buffs[pd.notnull(buffs['geometry'])]
+    buffs = buffs[~ buffs.is_empty]
+    
+
+    print '{} Empty buffers filtered'.format(issues)
+    pc = proc_folder + '/buffers.geojson'
+    with open(pc, 'w') as f:
         f.write(buffs.to_json())
 
-    print 'Done! Generated buffers for {0} points to: {1}'.format(len(buffs)/3, path)
+    print 'Done! Generated buffers for {0} points to: {1}'.format(len(buffs) / 3, pc)
 
 
 def _prepare(paths):
     banks = []
     for path in paths:
-        points = gp.read_file(path)[['geometry']]
+        points = gp.read_file(path) #[['geometry']]
         points['type'] = re.findall(r"[^_]+(?=\.geojson)", path)[0]
         banks.append(points)
 

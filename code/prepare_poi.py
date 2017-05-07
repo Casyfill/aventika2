@@ -41,7 +41,7 @@ def load_transport(city):
                        p='raw',
                        f='poi_ostanovki.geojson')
 
-    poi = gp.read_file(path)[['geometry', "name_ru"]]
+    poi = gp.read_file(path)[['geometry', "name"]]
     poi.columns = ['geometry', 'name']
     poi['group'] = 'transport'
     poi['subgroup'] = 'stops'

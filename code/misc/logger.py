@@ -9,7 +9,7 @@ import os
 # import os
 
 
-def getLogger():
+def getLogger(city):
 
 
     logger = logging.getLogger('root')
@@ -19,7 +19,7 @@ def getLogger():
     path = path.replace('/code', '')
 
     date = datetime.datetime.now().strftime('%Y_%m_%d__%H:%M')
-    handler = logging.FileHandler(path + '/logs/%s_scraping.log' % date)
+    handler = logging.FileHandler(path + '/logs/{0}_{1}_scraping.log'.format(city, date))
     handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter(

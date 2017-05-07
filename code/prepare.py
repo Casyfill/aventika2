@@ -13,6 +13,7 @@ def main(pm):
 
     settings = getSettings()
     settings['bank_mode'] = None
+    settings['reg_geom'] = True
 
     start = datetime.now()  # start of the calculations
 
@@ -22,12 +23,12 @@ def main(pm):
 
     path = os.getcwd()
     path = path.replace('/code', '')
-    r_poi_path = path + settings[pm] + settings['files']['refined']['poi']
-    r_reg_path = path + settings[pm] + settings['files']['refined']['regions']
-    r_buff_path = path +  settings[pm] + settings['files']['refined']['buffers']
+    r_poi_path = path + settings[pm].format(city=settings['city']) + settings['files']['refined']['poi']
+    r_reg_path = path + settings[pm].format(city=settings['city']) + settings['files']['refined']['regions']
+    r_buff_path = path +  settings[pm].format(city=settings['city']) + settings['files']['refined']['buffers']
 
 
-    poi, buff, reg = data_preload(settings, source=pm, mode='raw')
+    poi, buff, reg = data_preload(settings, src=pm, mode='raw')
 
     # poi = drop_poi(buff, poi, settings)
     
@@ -36,15 +37,14 @@ def main(pm):
 
     buff = _bufferize(buff)
     buff = buff[pd.notnull(buff['geometry'])]
-
-    buff.geometry= buff.geometry.apply(lambda x: around(x,2))
+    # buff.geometry= buff.geometry.apply(lambda x: around(x,2))
 
 
     reg['reg_id'] = reg.index + 1
     reg['reg_area']  = reg.area
 
     reg = _bufferize(reg)
-    reg.geometry = reg.geometry.apply(lambda x: around(x,2))
+    # reg.geometry = reg.geometry.apply(lambda x: around(x,2))
 
     # with open(r_buff_path, 'w') as f:
     #     f.write(buff.to_crs(epsg=4326).reset_index().to_json())
@@ -61,5 +61,5 @@ if __name__ == '__main__':
     if len(sys.argv)>1:
         path = sys.argv[1]
     else:
-        path = 'test_path'
+        path = 'data_path'
     main(path)

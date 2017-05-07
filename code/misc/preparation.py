@@ -26,12 +26,13 @@ def get_overlay(buff, reg):
     z = z[z.area > 2000]
 
     z['score'] = z['disabled'] * z.area / z['reg_area']
+    z['area'] = z.area
     z['geometry'] = z.representative_point()
     z = z[z.intersects(buff.unary_union)]
     z['reg_id'] = z['reg_id'].astype(int).astype(
         str) + '_' + z.index.astype(str)
 
-    return z[['reg_id', 'geometry', 'score']]
+    return z[['reg_id','area','reg_area', 'geometry', 'score']]
 
 
 def drop_poi(buff, poi, settings):
