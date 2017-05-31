@@ -9,22 +9,22 @@ from shapely.geometry import Polygon
 from glob import glob
 import re
 import time
-import cPickle as pickle
+import os
 
 COUNTER = 1
 BASE = "http://galton.urbica.co/{city}/{type}/"
 
 CITIES = {'KZN': "kazan",
           'EKB': "yekaterinburg",
-          'MSC': "moscow",
-          'SPB': "saint_petersburg"}
+          'MSC': "moscow_russia",
+          'SPB': "saint-petersburg_russia"}
 
 # CITIES = ("amsterdam_netherlands",
 #         "barcelona_spain",
 #         "beijing_china",
 #         "berlin_germany",
-#         "moscow",
-#         "saint-petersburg",
+#         "moscow_russia",
+#         "saint-petersburg_russia",
 #         "kazan",
 #         "yekaterinburg"
 #         "kyiv_ukraine",
@@ -46,16 +46,16 @@ def getIsochrone(point, type, city="moscow_russia", concat=2, intrvl=5):
     return isochrone curve geometry
 
     '''
+    print('Concativity: {}'.format(concat))
     burl = BASE.format(type=type, city=city)
-    # print burl
     r = requests.get(burl, params={'lng': point[0],
                                    "lat": point[1],
                                    'intervals[]': intrvl,
                                    'concavity': concat})
-    # if r.status_code != 200:
-    # print r.url
+    print(r.url)
+    if r.status_code != 200:
+        print(r.url)
     r.raise_for_status()
-    print '!'
 
     p = Polygon(r.json()['features'][0]['geometry']['coordinates'][0])
     global TOLERANCE
@@ -82,12 +82,16 @@ def _bufferize(p, concat, city):
 
     intrvls = {'foot': 10, "car": 10, 'stepless': 8}
 
-    print '{0}. Getting buffer for: {1}, {2}'.format(COUNTER, p.geometry.x, p.geometry.y)
+    print('{0}. Getting buffer for: {1}, {2}'.format(COUNTER,
+                                                     p.geometry.x,
+                                                     p.geometry.y))
 
     triple = [{'office_id': p.office_id,
                'type': tp,
                'geometry': getIsochrone((p.geometry.x, p.geometry.y),
-                                        tp, city=CITIES[city], intrvl=intrvls[tp], concat=concat)
+                                        tp, city=CITIES[city],
+                                        intrvl=intrvls[tp], concat=concat),
+               'bank_type': p.type
                } for tp in TYPES]
 
     COUNTER += 1
@@ -109,8 +113,6 @@ def process_points(points, concat=3, city='MSC'):
         _bufferize(p, concat=concat, city=city)), 1)
     buffs = gp.GeoDataFrame(pd.DataFrame(buffers))
     buffs['priority'] = None
-    print(buffs.loc[pd.isnull(buffs['geometry']),'office_id'])
-    print(buffs.loc[buffs.is_empty,'office_id'])
 
     return buffs
 
@@ -130,32 +132,34 @@ def main(city):
     with open(proc_folder + '/banksdummy.geojson', 'w') as f:
         f.write(points.to_json())
 
-    buffs = process_points(points[['geometry', 'type', 'office_id']],
-                           concat=3,
-                           city=city)
-
-    with open('../data/{c}/processed/buffers.pkl'.format(c=city), 'wb') as f:
-        pickle.dump(buffs, f)
-
-    issues = pd.isnull(buffs['geometry']).sum()
-    issues += buffs.is_empty.sum()
-
+    buffs = process_points(
+        points[['geometry', 'type', 'office_id']], concat=3, city=city)
     buffs = buffs[pd.notnull(buffs['geometry'])]
-    buffs = buffs[~ buffs.is_empty]
-    
 
-    print '{} Empty buffers filtered'.format(issues)
-    pc = proc_folder + '/buffers.geojson'
-    with open(pc, 'w') as f:
+    buffs.to_pickle(os.path.join(proc_folder, 'buffers.pkl'))
+    try:
+        x = len(buffs)
+        buffs = buffs[pd.notnull(buffs.geometry)]
+        buffs = buffs[~buffs.is_empty]
+        print('Removed {} buffers'.format(x - len(buffs)))
+    except Exception as inst:
+        print(inst)
+
+    with open(proc_folder + '/buffers.geojson', 'w') as f:
         f.write(buffs.to_json())
+    # write 
+    for tp in buffs['bank_type'].unique().tolist():
+        with open(proc_folder + '/buffers_{}.geojson'.format(tp), 'w') as f:
+            f.write(buffs[buffs.bank_type==tp].to_json())
 
-    print 'Done! Generated buffers for {0} points to: {1}'.format(len(buffs) / 3, pc)
+    print('Done! Generated buffers for {0} points to: {1}'.format(
+        len(buffs)/3, proc_folder + '/buffers.geojson'))
 
 
 def _prepare(paths):
     banks = []
     for path in paths:
-        points = gp.read_file(path) #[['geometry']]
+        points = gp.read_file(path)[['geometry']]
         points['type'] = re.findall(r"[^_]+(?=\.geojson)", path)[0]
         banks.append(points)
 
@@ -167,7 +171,7 @@ def _prepare(paths):
 def _get_paths(folder):
     '''get office files in folder'''
     r = glob(folder + '/bank_*.geojson')
-    print[x.split('/')[-1] for x in r]
+    print([x.split('/')[-1] for x in r])
     assert(len(r) == 2)
     return r
 

@@ -40,7 +40,6 @@ def drop_poi(buff, poi, settings):
     n_pois = len(poi)
     z = buff.unary_union
 
-    global LOGGER
     LOGGER.info('Unary_union created')
     poi = poi[poi.intersects(z)]
     LOGGER.info(
@@ -72,7 +71,6 @@ def prepare(buff, poi, reg, settings):
         regs_overlayed = None
 
     buff = _bufferize(buff)
-    global LOGGER
     LOGGER.info('geometry bufferized')
 
     return buff, poi, regs_overlayed

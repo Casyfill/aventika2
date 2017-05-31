@@ -29,11 +29,11 @@ def data_preload(settings, src='data_path', mode='refined'):
         raise IOError(
             'Mode should be in {0}, instead got {1}'.format(modetypes, mode))
 
-    path = os.getcwd()
-    path = path.replace('/code', '')
+
+    path = '../data/{}/processed/'
     dpath = path + source
 
-    poi_path = dpath + settings['files'][mode]['poi']
+    poi_path = os.path.join(source, settings['files'][mode]['poi'])
     poi = gp.read_file(
         poi_path)[['geometry', 'score',
                    'pid', 'disability']].to_crs(epsg=32637)  # MOSCOW
@@ -41,9 +41,11 @@ def data_preload(settings, src='data_path', mode='refined'):
     poi['fs'] = False
 
     # LOGGER.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
-    buff_path = dpath + \
-        settings['files'][mode]['buffers'].format(mode=bank_mode)
-    buff = gp.read_file(buff_path)
+    buff_path = os.path.join(source, settings['files'][mode]['buffers'].format(mode=settings['bank_mode']))
+    try:
+        buff = gp.read_file(buff_path)
+    except:
+        print(buff_path)
     buff['bank_type'] = bank_mode
     buff.set_index(['type', 'office_id'], inplace=1)
 

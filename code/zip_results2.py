@@ -61,7 +61,7 @@ def get_last_result(city):
     result_atm = pd.read_csv(result_atm_path)
     result_bank = pd.read_csv(result_office_path)
     result = pd.concat([result_atm, result_bank])
-
+    print('In total {} banks with scores loaded'.format(len(result)))
     result['reg_score'].fillna(0, inplace=1)
     result['raw_score'] = result['score'].round(2)
 
@@ -145,20 +145,14 @@ def uset(l):
 def get_disabilities(pids, pois):
     try:
         if not isinstance(pids, list):
-            r = ['general']
-        elif len(pids) == 1:
-            r = pois.loc[pids, 'disability'].iloc[0]
+            return ['general']
         else:
-            r = pois.loc[pids, 'disability'].unique().tolist()
-
-        if len(r) == 0:
-            r = ['general']
-
-        return r
+            r = [x for x in pois.loc[pids, 'disability'].unique().tolist() if not any([(x is None), pd.isnull(x)])] 
+            if len(r) == 0:
+                r = ['general']
+            return r
     except Exception as inst:
-        print('pids:', pids)
-        print(inst)
-
+        raise Exception(type(pids), inst)
 
 def main(city):
     banks = get_banks(city)
@@ -225,6 +219,17 @@ def main(city):
 
     with open(PATH.format(city=city,p='results', f='buffers.geojson'), 'w') as f:
         f.write(buffs.to_json())
+    print('Done! Stored')
+
+    #POI
+    poi_path = PATH.format(city=city,
+                             p='processed',
+                             f='poi.geojson')
+    poi = gp.read_file(poi_path)
+    poi['pid'] += CITY_INDEX
+
+    with open(PATH.format(city=city,p='results', f='poi.geojson'), 'w') as f:
+        f.write(poi.to_json())
     print('Done! Stored')
 
 

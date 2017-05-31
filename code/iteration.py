@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pandas as pd
-import cPickle
+# import Pickle as pkl
 # import geopandas as gp
 import math
 # from shapely.ops import cascaded_union
@@ -31,9 +31,9 @@ def iterate(buff, poi, reg, filename, settings):
 
     while True:
         if bound is not None:  # check if we're over the LIMIT
-            print 'STEP:', cntr
+            print(f'STEP: {cntr}')
             if cntr > bound:
-                print 'LIMIT achieved!!!'
+                print('LIMIT achieved!!!')
                 break
 
         LOGGER.info(log_pois_string.format(i=cntr, n=len(poi)))
@@ -63,7 +63,7 @@ def iterate(buff, poi, reg, filename, settings):
                 return None
 
             # with open('../data/dumps/dump.pkl', 'wb') as f:
-            #     cPickle.dump({'buff':buff, 'poi':poi}, f)
+            #     pkl.dump({'buff':buff, 'poi':poi}, f)
         else:
             return None
 

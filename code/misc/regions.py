@@ -1,4 +1,3 @@
-from poi import adjustScore
 # from shapely.ops import unary_union
 # from shapely.ops import cascaded_union
 from functools import partial
@@ -6,7 +5,9 @@ import geopandas as gp
 from geopandas.tools import sjoin
 import pandas as pd
 import logging
-from misc import chunker_eq
+from .poi import adjustScore
+from .misc import chunker_eq
+
 LOGGER = logging.getLogger('root')
 
 
@@ -119,7 +120,7 @@ def getRegScore_area(buff, settings):
         regions split with score for each bank office
     '''
     x = buff.reset_index()
-    # print x.columns
+
     koeff = settings['koefficients']['region_density'][settings["city"]]
     d_koeff = settings['koefficients']['region']
     x['score'] = x.area * koeff * d_koeff

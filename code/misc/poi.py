@@ -123,8 +123,8 @@ def getPoiScore(buff, poi, settings):
 
     x = getPOI(buff, poi, settings)
 
-    print 'POIS:', len(x), len(x['pid'].unique())
-    if not x is None:
+    print('POIS: {}, unique: {}'.format(len(x), len(x['pid'].unique())))
+    if x is not None:
         x = adjustScore(x, settings, mode='poi')
 
         # .sort_values('SCORE', ascending=False)
