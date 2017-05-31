@@ -18,6 +18,8 @@ from datetime import datetime
 from pandas.util.testing import isiterable
 from sys import argv
 import random
+from qa import quality_assurance, quality_assurance_features
+
 
 PATH = '../data/{city}/{p}/{f}'
 
@@ -63,7 +65,7 @@ def get_last_result(city):
     result = pd.concat([result_atm, result_bank])
     print('In total {} banks with scores loaded'.format(len(result)))
     result['reg_score'].fillna(0, inplace=1)
-    result['raw_score'] = result['score'].round(2)
+    result['raw_score'] = result['score'].astype(float).round(2)
 
     result['score'] = (100 * result['score'] / result['score'].max())
     result.loc[(result['raw_score'] != 0) & (
@@ -187,7 +189,7 @@ def main(city):
             b['properties']['idxColor'] = result.loc[bid, 'label']
 
         else:
-            # print('bid not found, inferring: ', bid)
+            print('bid not found, inferring: ', bid)
             cntr += 1
             b['properties']['score'] = 0
             b['properties']['idxColor'] = 'low'
@@ -203,8 +205,10 @@ def main(city):
                               p='results',
                               f='{}_scored_banks.geojson'.format(city))
 
-    with codecs.open(result_path, 'w', encoding="utf-8") as f:
-        json.dump(banks, f, ensure_ascii=False)
+    quality_assurance_features(banks, mode='bank')
+
+    with open(result_path, 'w') as f:
+        json.dump(banks, f)
         print('Storing at: {}'.format(result_path))
 
     # gp.read_file(result_path).drop(

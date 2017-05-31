@@ -42,10 +42,8 @@ def data_preload(settings, src='data_path', mode='refined'):
 
     # LOGGER.info('loaded {n} POIs from {p}'.format(n=len(poi), p=poi_path))
     buff_path = os.path.join(source, settings['files'][mode]['buffers'].format(mode=settings['bank_mode']))
-    try:
-        buff = gp.read_file(buff_path)
-    except:
-        print(buff_path)
+    buff = gp.read_file(buff_path)
+    settings['banks'] = len(buff)/2
     buff['bank_type'] = bank_mode
     buff.set_index(['type', 'office_id'], inplace=1)
 
@@ -80,7 +78,7 @@ def getSettings(path='../settings.json', mode='test'):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 2:
+    if len(sys.argv) >= 2:
         city = sys.argv[1]
     else:
         city = 'SPB'
@@ -91,9 +89,7 @@ if __name__ == '__main__':
 
     # settings['limit'] = LIMIT
     settings['city'] = city
-    path = os.getcwd().replace('/code', '') + \
-        settings['results'].format(city=city, bank_mode=settings['bank_mode'])
-    result_path = start.strftime(path)
+    result_path = settings['results'].format(city=city, bank_mode=settings['bank_mode'])
 
     timestamp = start.strftime('%Y_%m_%d')
     LOGGER.info('{ts}: start logging'.format(ts=timestamp))

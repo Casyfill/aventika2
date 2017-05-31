@@ -27,8 +27,7 @@ def iterate(buff, poi, reg, filename, settings):
     # buffers of newly adopted offices will be added here iteratively
     bound = settings['limit']
 
-    LOGGER.info('Started iteration')
-
+    LOGGER.info('Started iteration')    
     while True:
         if bound is not None:  # check if we're over the LIMIT
             print(f'STEP: {cntr}')
@@ -38,8 +37,11 @@ def iterate(buff, poi, reg, filename, settings):
 
         LOGGER.info(log_pois_string.format(i=cntr, n=len(poi)))
 
-        bid, score, reg_score, f_pois, s_pois, f_regs, s_regs = iteration(
-            cntr, buff, poi, reg, settings)
+        if buff is None:
+            LOGGER.info('Iteration complete!')
+            return None
+
+        bid, score, reg_score, f_pois, s_pois, f_regs, s_regs = iteration(cntr, buff, poi, reg, settings)
 
         # update information
         row = {'priority': cntr,
@@ -88,10 +90,10 @@ def iteration(i, buff, poi, reg, settings):
 
     # print 'Iteration N{}. banks left:{}'.format(i,
     # sum(pd.isnull(buff['priority']))/3)
-
-    if sum(pd.isnull(buff['priority'])) == 0:
-        LOGGER.info('none unassigned banks, Iteration complete')
-        return None, None, None, [], []
+    LOGGER.info('Total BANKS: {}. Unassigned: {}'.format(settings['banks'], pd.isnull(buff['priority']).sum()/2))
+    if not pd.isnull(buff['priority']).any():
+        LOGGER.info('None unassigned banks, Iteration complete')
+        return None, None, None, [], [], [], []
 
     # get Scores
     buff = buff[pd.notnull(buff['geometry'])]
@@ -106,8 +108,8 @@ def iteration(i, buff, poi, reg, settings):
         if len(buff.index.get_level_values(1).unique()) == 1:
             return buff.index.get_level_values(1).tolist()[0], None, None, [], []
         else:
-            LOGGER.info('Iteration complete, none unassigned banks')
-            return None, None, None, [], []
+            LOGGER.info('BID is none: Iteration complete, none unassigned banks')
+            return None, None, None, [], [], [], []
 
     try:
         foot_pois = poi_counted.loc[bid, 'foot_poi']

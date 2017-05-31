@@ -120,11 +120,10 @@ def getPoiScore(buff, poi, settings):
     Returns:
         tuple: result_score pd.Series, result_poi pd.Series
     '''
-
     x = getPOI(buff, poi, settings)
 
-    print('POIS: {}, unique: {}'.format(len(x), len(x['pid'].unique())))
     if x is not None:
+        print('POIS: {}, unique: {}'.format(len(x), len(x['pid'].unique())))
         x = adjustScore(x, settings, mode='poi')
 
         # .sort_values('SCORE', ascending=False)

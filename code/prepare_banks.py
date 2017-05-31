@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from glob import glob
 import os
 from get_buffers import get_buffers
 from sys import argv
@@ -9,17 +8,32 @@ import pandas as pd
 import re
 import codecs
 import json
+from qa import quality_assurance, quality_assurance_features
+from misc import _get_paths
 
 settings = {'concat': 4,
             'base': '../data/{city}/'}
 
 
-def _get_paths(folder):
-    '''get office files in folder'''
-    r = glob(folder + '/bank_*.geojson')
-    print[x.split('/')[-1] for x in r]
-    assert(len(r) == 2)
-    return r
+DUMMY_PROPERTIES = {"info": None,
+                    "sound": None,
+                    "us_disabled": None,
+                    "vis_rasmetka": None,
+                    "us_visual": None,
+                    "pandus": None,
+                    "shop_intersect": None,
+                    "visual": None,
+                    "brail": None,
+                    "dist_button": None,
+                    "vsp": None,
+                    "bankomat_adapt": None,
+                    "office_id": None,
+                    "type": None,
+                    "disability": [],
+                    "address": None,
+                    "name": None,
+                    "adapt": 0
+                    }
 
 
 def get_bank_dummy(path):
@@ -27,26 +41,38 @@ def get_bank_dummy(path):
 
     banks = None
     for p in paths:
-        with codecs.open(p, 'r', encoding="utf-8") as f:
+        with open(p, 'r') as f:
             b = json.load(f)
 
+        # add type
         tp = re.findall(r"[^_]+(?=\.geojson)", p)[0]
+        assert tp in ('atm', 'office'), "Wrong type of banks:{}".format(tp)
         for el in b['features']:
-            el['properties']['type'] = tp
+            el['properties']['type'] = tp  # add type
 
-    if banks is None:
-        banks = b
-    else:
-        banks['features'].extend(b['features'])
+            for prop, v in DUMMY_PROPERTIES.items():
+                if prop not in el['properties'].keys():
+                    el['properties'][prop] = v
+            el['properties'] = {k: v for k, v in el['properties'].items() if
+                                k in DUMMY_PROPERTIES.keys()}
+
+        if banks is None:
+            banks = b
+        else:
+            banks['features'].extend(b['features'])
 
     # points = pd.concat(banks).reset_index(drop=True)
 
-    for i, el in enumerate(b['features']):
-            el['properties']['office_id'] = i + 1
+    # defines generated office id
+    for i, el in enumerate(banks['features']):
+        el['properties']['office_id'] = i + 1
+        el['id'] = i + 1
 
-    with codecs.open(path + 'processed/banksdummy.geojson', 'w') as f:
-        json.dump(banks, f, ensure_ascii=False)
-        # f.write(points.to_json())
+    # print(banks.keys())
+    quality_assurance_features(banks, mode='dummy')
+
+    with open(path + 'processed/banksdummy.geojson', 'w') as f:
+        json.dump(banks, f)
 
 
 def get_all_buffers(path, concat, city):
@@ -57,8 +83,6 @@ def get_all_buffers(path, concat, city):
         b = get_buffers(points[points['type'] == tp], concat, city)
         with open(path + 'processed/buffers_{}.geojson'.format(tp), 'w') as f:
             f.write(b.to_json())
-
-# def get_pois(path)
 
 
 def main(city):
